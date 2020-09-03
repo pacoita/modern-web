@@ -1,0 +1,23 @@
+.sidenav-container {
+  // 65px - Header size
+  min-height: calc(100vh - 65px);
+
+  .sidenav {
+    width: 180px;
+    background-color: #f3f3f3;
+  }
+
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
