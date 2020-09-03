@@ -1,0 +1,52 @@
+<section>
+  <h1>Screen Wake Lock API</h1>
+  <mat-card>
+    <p>The <strong>Screen Wake Lock API</strong> provides a way to prevent devices from dimming or locking the screen
+      when an application needs to keep running.</p>
+    <cite><a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API" target="_blank">Source
+        MDN</a>
+    </cite>
+  </mat-card>
+</section>
+<section>
+  <div class="instructions">
+    <ng-container *ngIf="isSupported; else noSupported">
+      <mat-checkbox class="enable-box" [(ngModel)]="lockEnabled" (ngModelChange)="lockEnabledChange($event)">Enable wake lock</mat-checkbox>
+      <mat-checkbox *ngIf="lockEnabled" [(ngModel)]="reGetLock">Re-acquire wake lock</mat-checkbox>
+      <span class="api-status" [ngClass]="isSentinelActive ? 'active' : 'inactive'">{{isSentinelActive ? 'Wake sentinel active' : 'Wake sentinel inactive'}}</span>
+      <span class="error-text">{{errorText}}</span>
+    </ng-container>
+    <ng-template #noSupported>
+      <h2>{{this.supportText}}</h2>
+      <cite>Be quick in memorizing the recipe :)</cite>
+    </ng-template>
+  </div>
+
+  <mat-card class="demo-card">
+    <mat-card-header>
+      <mat-card-title>Cosmopolitan</mat-card-title>
+      <div>
+        <img src="assets/images/cosmo.png" alt="Cosmopolitan">
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <strong>Ingredients: </strong>
+      <ul>
+        <li>1 1/2 oz Citrus vodka</li>
+        <li>1 oz Cointreau</li>
+        <li>1/2 oz Fresh lime juice</li>
+        <li>1 dash Cranberry juice</li>
+      </ul>
+      <hr>
+      <strong>Preparation: </strong>
+      <br><br>
+      <p>
+        Add all ingredients into a shaker with ice and shake.
+        <br><br>
+        Strain into a chilled cocktail glass.
+        <br><br>
+        Garnish with an lime or orange zest.
+      </p>
+    </mat-card-content>
+  </mat-card>
+</section>
