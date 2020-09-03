@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'wakelock', loadChildren: () => import('./wake-lock/wake-lock.module').then(m => m.WakeLockModule) },
+  { path: 'visibility', loadChildren: () => import('./visibility/visibility.module').then(m => m.VisibilityModule) },
   { path: 'home', component: HomeComponent },
   { path: '**', redirectTo: '/home'}
 ];

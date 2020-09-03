@@ -1,0 +1,20 @@
+<section>
+  <h1>Visibility API</h1>
+  <mat-card>
+    <p>The <strong>Page Visibility API</strong>
+      provides events you can watch for to know when a document becomes visible or hidden,
+      as well as features to look at the current visibility state of the page.
+    </p>
+    <cite><a href="https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API" target="_blank">Source
+        MDN</a></cite>
+  </mat-card>
+
+    <p> The video plays only when the page is visible, otherwise it will automatically pause when the page is not visible.</p>
+
+  <video id="videoElement" #videoElement controls="" autoplay>
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4"
+      media="all and (max-width:680px)">
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm" media="all and (max-width:680px)">
+    <p>There is a problem playing this video. Please try using a different browser.</p>
+  </video>
+</section>
