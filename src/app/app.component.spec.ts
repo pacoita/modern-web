@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'modernWeb'`, () => {
+  it(`should have as title 'modern-web'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('modernWeb');
+    expect(app.title).toEqual('modern-web');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('modernWeb app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('modern-web app is running!');
   });
 });
