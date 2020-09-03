@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "modernWeb": {
+    "modern-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
