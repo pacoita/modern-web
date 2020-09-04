@@ -34,10 +34,14 @@
           <mat-icon class="icon-space" aria-label="viration icon">vibration</mat-icon>
           Vibration API
         </a>
+
+        <a mat-list-item [routerLink]="['/light']">
+          <mat-icon class="icon-space" aria-label="highlight icon">highlight</mat-icon>
+          Ambient Light
+        </a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content class="content">
-      <!-- Add Content Here -->
       <div>
         <router-outlet></router-outlet>
       </div>

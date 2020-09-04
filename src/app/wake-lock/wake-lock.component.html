@@ -7,14 +7,14 @@
 </section>
 <section>
   <div class="instructions">
-    <ng-container *ngIf="isSupported; else noSupported">
+    <ng-container *ngIf="!unsupportedText; else noSupported">
       <mat-checkbox class="enable-box" [(ngModel)]="lockEnabled" (ngModelChange)="lockEnabledChange($event)">Enable wake lock</mat-checkbox>
       <mat-checkbox *ngIf="lockEnabled" [(ngModel)]="reGetLock">Re-acquire wake lock</mat-checkbox>
       <span class="api-status" [ngClass]="isSentinelActive ? 'active' : 'inactive'">{{isSentinelActive ? 'Wake sentinel active' : 'Wake sentinel inactive'}}</span>
       <span class="error-text">{{errorText}}</span>
     </ng-container>
     <ng-template #noSupported>
-      <h2>{{this.supportText}}</h2>
+      <h2>{{this.unsupportedText}}</h2>
       <cite>Be quick in memorizing the recipe :)</cite>
     </ng-template>
   </div>

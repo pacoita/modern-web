@@ -7,11 +7,10 @@ import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
   styleUrls: ['./wake-lock.component.scss'],
 })
 export class WakeLockComponent implements OnInit, OnDestroy {
-  isSupported = false;
   isSentinelActive = false;
   lockEnabled = false;
   reGetLock = false;
-  supportText: string | undefined;
+  unsupportedText: string | undefined;
   errorText: string | undefined;
   private wakeLock: any;
 
@@ -26,11 +25,8 @@ export class WakeLockComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit(): void {
-    if ('wakeLock' in navigator) {
-      this.isSupported = true;
-    } else {
-      this.isSupported = false;
-      this.supportText = 'Snap! Screen Wake lock is not supported by your browser.';
+    if (!('wakeLock' in navigator)) {
+      this.unsupportedText = 'Snap! Screen Wake lock is not supported by your browser.';
     }
   }
 

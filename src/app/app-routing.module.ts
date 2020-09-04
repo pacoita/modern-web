@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'share', loadChildren: () => import('./share/share.module').then(m => m.ShareModule) },
   { path: 'vibrate', loadChildren: () => import('./vibration/vibration.module').then(m => m.VibrationModule) },
   { path: 'home', component: HomeComponent },
+  { path: 'light', loadChildren: () => import('./light/light.module').then(m => m.LightModule) },
   { path: '**', redirectTo: '/home'}
 ];
 

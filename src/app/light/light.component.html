@@ -1,0 +1,30 @@
+<section class="container" [ngClass]="ambient === 'bright' ? 'lightTheme' : 'darkTheme'" #container>
+  <div class="flex-centered">
+  <h1>Ambient Light Events</h1>
+    <mat-icon class="icon-space" aria-label="warning icon">warning</mat-icon>
+    Still experimental
+  </div>
+  <mat-card class="descr-card">
+    <p>The ambient light events are a handy way to make a web page or an application aware of any change in the light intensity.<br>
+      It allows them to react to such a change, for example by changing the color contrast of the User Interface (UI) or by changing
+      the exposure necessary to take a picture.
+    </p>
+  </mat-card>
+
+  <ng-container *ngIf="!unsupportedText; else noSupported">
+    <mat-card class="light-card">
+      <mat-card-title>
+        <h2>Ambient Device Light level</h2>
+      </mat-card-title>
+      <mat-card-content>
+        <h1 class="lightValue">{{lightValue}}</h1>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+  <ng-template #noSupported>
+    <h2>{{this.unsupportedText}}</h2>
+    <div class="img-center">
+      <img src="assets/images/cat-hungry.png" alt="cat">
+    </div>
+  </ng-template>
+</section>
