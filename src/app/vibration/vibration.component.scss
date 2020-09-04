@@ -1,0 +1,28 @@
+.demo-instruction {
+  margin: 1.5rem 0.5rem;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 1rem;
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0 2rem 0;
+
+  .radio-button {
+    margin: 0.5rem;
+  }
+}
+
+.answer {
+  padding: 1.5rem 0;
+  font-weight: 700;
+  &.correct {
+    color: #008000;
+  }
+  &.wrong {
+    color: #ff0000;
+  }
+}

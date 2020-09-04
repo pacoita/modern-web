@@ -11,8 +11,8 @@ export class WakeLockComponent implements OnInit, OnDestroy {
   isSentinelActive = false;
   lockEnabled = false;
   reGetLock = false;
-  supportText: string | undefined = undefined;
-  errorText: string | undefined = undefined;
+  supportText: string | undefined;
+  errorText: string | undefined;
   private wakeLock: any;
 
   @HostListener('document:visibilitychange', ['$event'])

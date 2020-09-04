@@ -9,9 +9,9 @@ export class VisibilityComponent implements OnInit, AfterViewInit {
   apiSupported = false;
 
   @ViewChild('videoElement')
-  videoElement: ElementRef | undefined = undefined;
+  videoElement: ElementRef | undefined;
 
-  nativeElement: HTMLVideoElement | undefined = undefined;
+  nativeElement: HTMLVideoElement | undefined;
 
   // Play/pause the video according to the document visibility state.
   @HostListener('document:visibilitychange', ['$event'])

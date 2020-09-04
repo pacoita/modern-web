@@ -7,9 +7,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-right: 0.5rem;
 }
 
+div.mat-step-label,
+div.mat-step-label.mat-step-label-active.mat-step-label-selected {
+  min-width: auto;
+}
+
 // Rules used to style mat-cards in the demos
 .descr-card {
-  max-width: 50%;
+  max-width: 680px;
   background-color: #f3f3f3;
   margin: 0 auto 2rem auto;
 }

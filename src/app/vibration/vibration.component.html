@@ -1,0 +1,72 @@
+<section>
+  <h1>Vibration API</h1>
+  <mat-card class="descr-card">
+    <p>The <strong>navigator.vibrate()</strong> method pulses the vibration hardware on the device, if such hardware
+      exists.
+      If the device doesn't support vibration, this method has no effect. If a vibration pattern is already in progress
+      when this method is called,
+      the previous pattern is halted and the new one begins instead.
+    </p>
+  </mat-card>
+
+  <div class="demo-instruction">
+    <p> A small quiz to demo the Vibration API.</p>
+    <p> <strong>Correct answer</strong> --> your device will vibrate shortly for 3 times.</p>
+    <p> <strong>Wrong answer</strong> --> your device will vibrate just once for a long period.</p>
+    <p> (Note: Vibration will work only on the compatble browsers and devices)</p>
+  </div>
+
+  <ng-container *ngIf="firstFormGroup && secondFormGroup; else loading">
+    <mat-horizontal-stepper [linear]="true" editable="false" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <strong>What's the name of the most famous Aperitiv cocktail in Italy?</strong>
+          <mat-radio-group aria-label="Select an option" formControlName="question" class="questions">
+            <mat-radio-button class="radio-button" value="1">Aperol Spritz</mat-radio-button>
+            <mat-radio-button class="radio-button" value="2">Orange juice</mat-radio-button>
+            <mat-radio-button class="radio-button" value="3">Mojito</mat-radio-button>
+            <mat-radio-button class="radio-button" value="4">Espresso</mat-radio-button>
+          </mat-radio-group>
+          <div>
+            <button *ngIf="answers[0] === undefined; else goTo2" mat-raised-button
+              (click)="verify(firstFormGroup, 0)">Verify</button>
+            <ng-template #goTo2>
+              <div [ngClass]="answers[0] ? 'correct' : 'wrong'" class="answer">
+                {{answers[0] ? 'Correct, you can even use Campari instead of Aperol!' : 'Oh, that is wrong...'}}</div>
+              <button mat-raised-button color="primary" matStepperNext>Next question</button>
+            </ng-template>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <strong>Which animal has been used for the Firefox browser logo?</strong>
+          <mat-radio-group aria-label="Select an option" formControlName="question" class="questions">
+            <mat-radio-button class="radio-button" value="1">Wolf</mat-radio-button>
+            <mat-radio-button class="radio-button" value="2">Fox</mat-radio-button>
+            <mat-radio-button class="radio-button" value="3">Red panda</mat-radio-button>
+            <mat-radio-button class="radio-button" value="4">Wild cat</mat-radio-button>
+          </mat-radio-group>
+          <div>
+            <button *ngIf="answers[1] === undefined; else finish" mat-raised-button
+              (click)="verify(secondFormGroup, 1)">Verify</button>
+            <ng-template #finish>
+              <div [ngClass]="answers[1] ? 'correct' : 'wrong'" class="answer">
+                {{answers[1] ? 'Correct, yay!!' : 'Oh, that is wrong...'}}</div>
+              <button mat-raised-button color="primary" matStepperNext>See results</button>
+            </ng-template>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <strong>You concluded the quiz with a score of: {{finalScore}} of 2!</strong>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </ng-container>
+
+  <ng-template #loading>
+    <h2>Quiz loading...</h2>
+  </ng-template>
+
+</section>
