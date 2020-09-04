@@ -15,9 +15,7 @@ export class ShareService {
 
   async shareItem(item: ShareObject): Promise<void> {
     try {
-      if ((navigator as any).canShare(this.data)) {
-        await navigator.share(this.data);
-      }
+      await navigator.share(this.data);
     } catch (err) {
       alert('Share is not supported by your browser.');
       console.error(err.name, err.message);
