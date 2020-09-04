@@ -11,11 +11,9 @@ export interface ShareObject {
   providedIn: 'root'
 })
 export class ShareService {
-  private data = {};
-
   async shareItem(item: ShareObject): Promise<void> {
     try {
-      await navigator.share(this.data);
+      await navigator.share(item);
     } catch (err) {
       alert('Share is not supported by your browser.');
       console.error(err.name, err.message);

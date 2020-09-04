@@ -7,6 +7,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; min-width: 
   margin-right: 0.5rem;
 }
 
+.flex-centered {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 div.mat-step-label,
 div.mat-step-label.mat-step-label-active.mat-step-label-selected {
   min-width: auto;
