@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-interface ShareObject {
+export interface ShareObject {
   title: string;
   text: string;
   url?: string;
@@ -15,11 +15,11 @@ export class ShareService {
 
   async shareItem(item: ShareObject): Promise<void> {
     try {
-      if (!((navigator as any).canShare(this.data))) {
-        alert('Share is not supported by your browser.');
+      if ((navigator as any).canShare(this.data)) {
+        await navigator.share(this.data);
       }
-      await navigator.share(this.data);
     } catch (err) {
+      alert('Share is not supported by your browser.');
       console.error(err.name, err.message);
     }
   }

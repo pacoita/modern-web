@@ -1,10 +1,70 @@
 <h1>Share API</h1>
-<mat-card>
-  <p>The <strong>navigator.share()</strong> method of the Web Share API invokes the native sharing mechanism of the device.</p>
-  <cite><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share" target="_blank">Source MDN</a></cite>
+<mat-card class="descr-card">
+  <p>The <strong>navigator.share()</strong> method of the Web Share API invokes the native sharing mechanism of the
+    device.</p>
 </mat-card>
 
-<div class="demo-instruction">
-  <p>Click the button to see how the share API works.</p>
-  <button mat-raised-button color="primary" (click)="shareDemo()">Share demos</button>
+<div class="cards-container">
+  <mat-card class="demo-card">
+  <mat-card-header>
+    <mat-card-title>Cosmopolitan</mat-card-title>
+    <button class="share-btn" mat-mini-fab color="primary" aria-label="Share icon" (click)="share('Cosmopolitan')">
+      <mat-icon>share</mat-icon>
+    </button>
+    <div>
+      <img src="assets/images/cosmo.png" alt="Cosmopolitan">
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <strong>Ingredients: </strong>
+    <ul>
+      <li>1 1/2 oz Citrus vodka</li>
+      <li>1 oz Cointreau</li>
+      <li>1/2 oz Fresh lime juice</li>
+      <li>1 dash Cranberry juice</li>
+    </ul>
+    <hr>
+    <strong>Preparation: </strong>
+    <br><br>
+    <p>
+      Add all ingredients into a shaker with ice and shake.
+      <br><br>
+      Strain into a chilled cocktail glass.
+      <br><br>
+      Garnish with an lime or orange zest.
+    </p>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="demo-card">
+  <mat-card-header>
+    <mat-card-title>Manhattan</mat-card-title>
+    <button class="share-btn" mat-mini-fab color="primary" aria-label="Share icon" (click)="share('Manhattan')">
+      <mat-icon>share</mat-icon>
+    </button>
+    <div>
+      <img src="assets/images/manhattan.png" alt="Manhattan">
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <strong>Ingredients: </strong>
+    <ul>
+      <li>2oz Rye Whiskey</li>
+      <li>1oz Sweet Vermouth</li>
+      <li>Dashes Angostura Bitters</li>
+    </ul>
+    <hr>
+    <strong>Preparation: </strong>
+    <br><br>
+    <p>
+      Add ingredients to a mixing glass
+      with cracked ice.
+      <br><br>
+      Strain into a chilled cocktail glass.
+      <br><br>
+      Garnish with a cherry.
+    </p>
+  </mat-card-content>
+</mat-card>
 </div>
+

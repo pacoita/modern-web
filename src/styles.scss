@@ -6,3 +6,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .icon-space {
   margin-right: 0.5rem;
 }
+
+// Rules used to style mat-cards in the demos
+.descr-card {
+  max-width: 50%;
+  background-color: #f3f3f3;
+  margin: 0 auto 2rem auto;
+}
+.demo-card {
+  margin-top: 1rem;
+  max-width: 400px;
+
+  .mat-card-header {
+    flex-direction: column;
+    text-align: center;
+    img {
+      width: 50%;
+    }
+  }
+
+  .mat-card-content {
+    padding: 1em;
+  }
+  hr {
+    margin: 1em 0;
+  }
+}

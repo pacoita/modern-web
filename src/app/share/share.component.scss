@@ -1,0 +1,10 @@
+.cards-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  .share-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
