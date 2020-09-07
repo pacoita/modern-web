@@ -20,9 +20,9 @@ div.mat-step-label.mat-step-label-active.mat-step-label-selected {
 
 // Rules used to style mat-cards in the demos
 .descr-card {
-  max-width: 680px;
+  max-width: 900px;
   background-color: #f3f3f3;
-  margin: 0 auto 2rem auto;
+  margin-bottom: 2rem;
 }
 .demo-card {
   margin-top: 1rem;
@@ -41,5 +41,20 @@ div.mat-step-label.mat-step-label-active.mat-step-label-selected {
   }
   hr {
     margin: 1em 0;
+  }
+}
+
+.accordion-container {
+  max-width: 900px;
+  margin-top: 2rem;
+  h1 {
+    margin-bottom: 0;
+  }
+  .img-container {
+    text-align: center;
+    img {
+      width: 100%;
+      max-width: 900px;
+    }
   }
 }
