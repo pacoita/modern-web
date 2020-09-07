@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+$max-width: 900px;
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; min-width: 350px; }
@@ -20,7 +20,7 @@ div.mat-step-label.mat-step-label-active.mat-step-label-selected {
 
 // Rules used to style mat-cards in the demos
 .descr-card {
-  max-width: 900px;
+  max-width: $max-width;
   background-color: #f3f3f3;
   margin-bottom: 2rem;
 }
@@ -45,7 +45,7 @@ div.mat-step-label.mat-step-label-active.mat-step-label-selected {
 }
 
 .accordion-container {
-  max-width: 900px;
+  max-width: $max-width;
   margin-top: 2rem;
   h1 {
     margin-bottom: 0;
@@ -54,7 +54,6 @@ div.mat-step-label.mat-step-label-active.mat-step-label-selected {
     text-align: center;
     img {
       width: 100%;
-      max-width: 900px;
     }
   }
 }
