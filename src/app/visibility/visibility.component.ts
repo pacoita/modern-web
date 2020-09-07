@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-visibility',
@@ -23,6 +24,9 @@ export class VisibilityComponent implements OnInit, AfterViewInit {
       this.nativeElement?.play();
       console.log('Video is playing again.');
     }
+  }
+  constructor(private titleService: Title ) {
+    this.titleService.setTitle('Visibility');
   }
 
   ngOnInit(): void {

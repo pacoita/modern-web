@@ -17,7 +17,7 @@
   </div>
 
   <ng-container *ngIf="firstFormGroup && secondFormGroup; else loading">
-    <mat-horizontal-stepper [linear]="true" editable="false" #stepper>
+    <mat-horizontal-stepper [linear]="true" editable="false" #stepper class="descr-card">
       <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
           <strong>What's the name of the most famous Aperitiv cocktail in Italy?</strong>
@@ -68,5 +68,20 @@
   <ng-template #loading>
     <h2>Quiz loading...</h2>
   </ng-template>
+
+  <div class="accordion-container">
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1>Browser compatibility</h1>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="img-container">
+          <img src="assets/images/vibration.png" alt="Vibration api support">
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
 
 </section>

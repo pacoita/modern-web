@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const materialModules = [
   MatToolbarModule,
@@ -18,7 +19,8 @@ const materialModules = [
   MatCardModule,
   MatCheckboxModule,
   MatStepperModule,
-  MatRadioModule
+  MatRadioModule,
+  MatExpansionModule,
 ];
 
 @NgModule({

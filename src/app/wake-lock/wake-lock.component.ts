@@ -1,5 +1,6 @@
 import { WakeLockModule } from './wake-lock.module';
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-wake-lock',
@@ -22,7 +23,9 @@ export class WakeLockComponent implements OnInit, OnDestroy {
     }
   }
 
-  constructor() {}
+  constructor(private titleService: Title ) {
+    this.titleService.setTitle('Wake Lock');
+  }
 
   ngOnInit(): void {
     if (!('wakeLock' in navigator)) {

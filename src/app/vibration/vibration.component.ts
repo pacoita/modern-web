@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as jsonData from './solutions.json';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-vibration',
@@ -19,7 +20,9 @@ export class VibrationComponent implements OnInit {
   solutions: string[] = (jsonData as any).default.answers;
   answers: boolean[] = [];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private titleService: Title ) {
+    this.titleService.setTitle('Vibrate');
+  }
 
   ngOnInit(): void {
     this.firstFormGroup = this.fb.group({

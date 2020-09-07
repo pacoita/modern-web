@@ -8,9 +8,11 @@
 <section>
   <div class="instructions">
     <ng-container *ngIf="!unsupportedText; else noSupported">
-      <mat-checkbox class="enable-box" [(ngModel)]="lockEnabled" (ngModelChange)="lockEnabledChange($event)">Enable wake lock</mat-checkbox>
+      <mat-checkbox class="enable-box" [(ngModel)]="lockEnabled" (ngModelChange)="lockEnabledChange($event)">Enable wake
+        lock</mat-checkbox>
       <mat-checkbox *ngIf="lockEnabled" [(ngModel)]="reGetLock">Re-acquire wake lock</mat-checkbox>
-      <span class="api-status" [ngClass]="isSentinelActive ? 'active' : 'inactive'">{{isSentinelActive ? 'Wake sentinel active' : 'Wake sentinel inactive'}}</span>
+      <span class="api-status"
+        [ngClass]="isSentinelActive ? 'active' : 'inactive'">{{isSentinelActive ? 'Wake sentinel active' : 'Wake sentinel inactive'}}</span>
       <span class="error-text">{{errorText}}</span>
     </ng-container>
     <ng-template #noSupported>
@@ -46,4 +48,20 @@
       </p>
     </mat-card-content>
   </mat-card>
+
+  <div class="accordion-container">
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1>Browser compatibility</h1>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="img-container">
+          <img src="assets/images/wakelock.png" alt="wakelock support">
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
 </section>

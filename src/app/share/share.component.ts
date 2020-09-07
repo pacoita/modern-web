@@ -1,5 +1,6 @@
 import { ShareService, ShareObject } from './share.service';
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-share',
@@ -49,7 +50,8 @@ export class ShareComponent {
     },
   ];
 
-  constructor(private shareService: ShareService) {
+  constructor(private shareService: ShareService, private titleService: Title ) {
+    this.titleService.setTitle('Share');
   }
 
   share(name: string): void {
