@@ -12,16 +12,16 @@ export class LightComponent implements OnInit {
   luxValue$ = new ReplaySubject<number>(1);
 
   @HostListener('window:devicelight', ['$event'])
-  private async onDeviceLightChange(event: DeviceLightEvent): Promise<void> {
-    this.updateLight(event.value);
+  public async onDeviceLightChange(event: DeviceLightEvent): Promise<void> {
+    this.updateTheme(event.value);
   }
 
   ngOnInit(): void {
-    if ('AmbientLightSensor' in window && 'ondevicelight' in window) {
+    if ('AmbientLightSensor' in window) {
       try {
         const sensor = new (window as any).AmbientLightSensor();
         sensor.addEventListener('reading', (event: any) => {
-          this.updateLight(sensor.illuminance);
+          this.updateTheme(sensor.illuminance);
         });
         sensor.start();
       } catch (err) {
@@ -31,9 +31,14 @@ export class LightComponent implements OnInit {
       this.unsupportedText =
         'Your browser doesn\'t support Ambient Device Light Sensor API';
     }
+    if (!('ondevicelight' in window)) {
+      this.unsupportedText =
+        'Your browser doesn\'t support Ambient Device Light Events';
+    }
   }
 
-  private updateLight(luxValue: number): void {
+
+  private updateTheme(luxValue: number): void {
     /*
     10 ~ 50 lux : Dim Environment
     100 ~ 1000 lux : Normal
