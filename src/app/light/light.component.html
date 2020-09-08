@@ -1,15 +1,18 @@
-<section class="container" [ngClass]="ambient === 'bright' ? 'lightTheme' : 'darkTheme'" #container>
+<section class="content container" [ngClass]="ambient === 'bright' ? 'lightTheme' : 'darkTheme'" #container>
   <div class="flex-centered warn-text">
     <h1>Ambient Light Events</h1>
-    <mat-icon class="icon-space" aria-label="warning icon">warning</mat-icon>
-    Still experimental
   </div>
   <mat-card class="descr-card">
-    <p>The ambient light events are a handy way to make a web page or an application aware of any change in the light
-      intensity.<br>
+    <p>The <strong>AmbientLightSensor</strong> interface returns the current light level or illuminance of the ambient light around the hosting device..<br>
       It allows them to react to such a change, for example by changing the color contrast of the User Interface (UI) or
       by changing
       the exposure necessary to take a picture.
+      <br/><br/>
+      <span class="flex-centered">
+        <mat-icon class="icon-space" aria-label="lock icon">warning</mat-icon>
+        <strong>Still experimental</strong>
+      </span>
+      Enable the <cite><strong>generic sensor extra classes</strong></cite> flag in Chrome (chrome://flags/#enable-generic-sensor-extra-classes) to test it.
     </p>
   </mat-card>
 
@@ -19,14 +22,34 @@
         <h2>Ambient Device Light level</h2>
       </mat-card-title>
       <mat-card-content>
-        <h1 class="lightValue">{{lightValue}}</h1>
+        <h1 class="lightValue">
+          <ng-container *ngIf="luxValue$ | async; else notAvailable"></ng-container>
+          <ng-template #notAvailable>N/A</ng-template>
+        </h1>
       </mat-card-content>
     </mat-card>
   </ng-container>
   <ng-template #noSupported>
     <h2>{{this.unsupportedText}}</h2>
     <div class="img-center">
-      <img src="assets/images/cat-hungry.png" alt="cat">
+      <img src="assets/images/cat.png" alt="cat">
     </div>
   </ng-template>
+
+  <div class="accordion-container">
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1>Browser compatibility</h1>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="img-container">
+          <img src="assets/images/ambientlight.png" alt="Ambient Light Sensor api support">
+        </div>
+        <br/><br/>
+        <a href="https://caniuse.com/?search=ambient%20light" target="_blank">Source: can I use</a>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
 </section>

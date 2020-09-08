@@ -1,3 +1,4 @@
+@import '../../variables';
 .warn-text {
   margin-bottom: 2rem;
   h1 {
@@ -20,14 +21,15 @@
 
   .img-center {
     margin: 2rem auto;
-    max-width: 250px;
+    text-align: center;
   }
 
   .light-card {
     text-align: center;
+    max-width: $max-width;
     h1 {
       font-size: 5em;
-      color: #5e5e5e;
+      color: $grayDark;
     }
   }
 }

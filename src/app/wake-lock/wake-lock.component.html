@@ -1,11 +1,10 @@
-<section>
+<section class="content">
   <h1>Screen Wake Lock API</h1>
   <mat-card class="descr-card">
     <p>The <strong>Screen Wake Lock API</strong> provides a way to prevent devices from dimming or locking the screen
       when an application needs to keep running.</p>
   </mat-card>
-</section>
-<section>
+
   <div class="instructions">
     <ng-container *ngIf="!unsupportedText; else noSupported">
       <mat-checkbox class="enable-box" [(ngModel)]="lockEnabled" (ngModelChange)="lockEnabledChange($event)">Enable wake
