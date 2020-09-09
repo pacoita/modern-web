@@ -9,13 +9,14 @@ import { ReplaySubject } from 'rxjs';
 export class LightComponent implements OnInit {
   ambient: 'dark' | 'bright' = 'bright';
   statusText: string | undefined;
-  luxValue$ = new ReplaySubject<number>(1);
+  luxValue: number | undefined;
 
   ngOnInit(): void {
     if ('AmbientLightSensor' in window) {
       try {
         const sensor = new (window as any).AmbientLightSensor();
         sensor.onreading = () => {
+          alert(sensor.illuminance);
           this.updateTheme(sensor.illuminance);
         };
         sensor.onerror = (event: any) => {
@@ -49,6 +50,6 @@ export class LightComponent implements OnInit {
       console.log({ event });
       this.ambient = 'bright';
     }
-    this.luxValue$.next(luxValue);
+    this.luxValue = luxValue;
   }
 }

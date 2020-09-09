@@ -23,7 +23,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     if (!('chooseFileSystemEntries' in window)) {
       this.unsupportedText =
-        'Your browser does not support Native File System API or you did not activate the relative flag if you use Chrome.';
+        'Your browser does not support Native File System API or you did not activate the Chrome flag.';
     }
   }
 
