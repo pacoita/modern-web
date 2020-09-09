@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 
 @Component({
@@ -8,35 +8,33 @@ import { ReplaySubject } from 'rxjs';
 })
 export class LightComponent implements OnInit {
   ambient: 'dark' | 'bright' = 'bright';
-  unsupportedText: string | undefined;
+  statusText: string | undefined;
   luxValue$ = new ReplaySubject<number>(1);
-
-  @HostListener('window:devicelight', ['$event'])
-  public async onDeviceLightChange(event: DeviceLightEvent): Promise<void> {
-    this.updateTheme(event.value);
-  }
 
   ngOnInit(): void {
     if ('AmbientLightSensor' in window) {
       try {
         const sensor = new (window as any).AmbientLightSensor();
-        sensor.addEventListener('reading', (event: any) => {
+        sensor.onreading = () => {
           this.updateTheme(sensor.illuminance);
-        });
+        };
+        sensor.onerror = (event: any) => {
+          if (event.error.name === 'NotAllowedError') {
+            this.statusText = 'Permission to access sensor was denied.';
+          } else if (event.error.name === 'NotReadableError') {
+            this.statusText = 'Cannot connect to the sensor.';
+          }
+          console.log(event.error.name, event.error.message);
+        };
         sensor.start();
       } catch (err) {
         console.error(err.name, err.message);
       }
     } else {
-      this.unsupportedText =
-        'Your browser doesn\'t support Ambient Device Light Sensor API';
-    }
-    if (!('ondevicelight' in window)) {
-      this.unsupportedText =
-        'Your browser doesn\'t support Ambient Device Light Events';
+      this.statusText =
+        'Your browser doesn\'t support Ambient Device Light Sensor';
     }
   }
-
 
   private updateTheme(luxValue: number): void {
     /*

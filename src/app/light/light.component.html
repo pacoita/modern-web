@@ -1,26 +1,26 @@
 <section class="content container" [ngClass]="ambient === 'bright' ? 'lightTheme' : 'darkTheme'" #container>
   <div class="flex-centered warn-text">
-    <h1>Ambient Light Events</h1>
+    <h1>Sensor API</h1>
   </div>
   <mat-card class="descr-card">
-    <p>The <strong>AmbientLightSensor</strong> API returns the current light level of the ambient light around the hosting device.<br>
+    <p>The <strong>AmbientLightSensor</strong> interface of the Sensor API returns the current level of the ambient light around the hosting device.<br>
       Ambient light events are fired by the browser when the light sensor on the device detecs a change in the luminosity.
       <br/><br/>
       <span class="flex-centered">
         <mat-icon class="icon-space" aria-label="lock icon">warning</mat-icon>
         <strong>Still experimental</strong>
       </span>
-      Enable the <cite><strong>generic sensor extra classes</strong></cite> flag in Chrome (chrome://flags/#enable-generic-sensor-extra-classes) to test it.
+      Enable the <cite><strong>generic sensor extra classes</strong></cite> flag in Chrome to test it (chrome://flags/#enable-generic-sensor-extra-classes).
     </p>
   </mat-card>
 
-  <ng-container *ngIf="!unsupportedText; else noSupported">
-    <mat-card class="light-card">
+  <ng-container *ngIf="!statusText; else noSupported">
+    <mat-card class="lux-card">
       <mat-card-title>
         <h2>Ambient Device Light level</h2>
       </mat-card-title>
       <mat-card-content>
-        <h1 class="lightValue">
+        <h1>
           <ng-container *ngIf="luxValue$ | async; else notAvailable"></ng-container>
           <ng-template #notAvailable>N/A</ng-template>
         </h1>
@@ -28,7 +28,7 @@
     </mat-card>
   </ng-container>
   <ng-template #noSupported>
-    <h2>{{unsupportedText}}</h2>
+    <h2>{{statusText}}</h2>
     <div class="img-center">
       <img src="assets/images/cat.png" width="150" alt="cat">
     </div>

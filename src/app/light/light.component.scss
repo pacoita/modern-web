@@ -8,27 +8,29 @@
 
 .container {
   padding: 1rem;
-  &.darkTheme {
-    background-color: rgb(0 0 0 / 67%);
-    color: white;
-  }
-
   &.lightTheme {
     background-color: white;
     color: rgb(0 0 0 / 87%);
+    .lux-card {
+      text-align: center;
+      max-width: $max-width;
+      h1 {
+        font-size: 5em;
+        color: $grayDark;
+      }
+    }
+  }
+
+  &.darkTheme {
+    background-color: rgb(0 0 0 / 67%);
+    color: white;
+    .light-card {
+   //   @extend;
+    }
   }
 
   .img-center {
     margin: 2rem auto;
     text-align: center;
-  }
-
-  .light-card {
-    text-align: center;
-    max-width: $max-width;
-    h1 {
-      font-size: 5em;
-      color: $grayDark;
-    }
   }
 }
