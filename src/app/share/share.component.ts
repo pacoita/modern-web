@@ -1,5 +1,5 @@
-import { ShareService, ShareObject } from './share.service';
-import { Component } from '@angular/core';
+import { ShareObject } from './share-object';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -7,12 +7,14 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './share.component.html',
   styleUrls: ['./share.component.scss'],
 })
-export class ShareComponent {
+export class ShareComponent implements OnInit {
+  unsupportedText: string | undefined;
 
   dataToShare: ShareObject[] = [
     {
       title: 'Cosmopolitan',
       text: `-- See more demos by Francesco Leardini -- \n\n
+      \n\n -- Cosmopolitan -- \n\n
       \n\n Ingredients: \n\n
       - 1 1/2 oz Citrus vodka \n\n
       - 1 oz Cointreau \n\n
@@ -22,16 +24,12 @@ export class ShareComponent {
       Add all ingredients into a shaker with ice and shake.\n\n
       Strain into a chilled cocktail glass.\n\n
       `,
-      url: 'GITHUB Address -- tbd',
-    },
-    {
-      title: 'Share APIs images',
-      text: 'Web share level 2 allows to attach also files: ',
-     files: []
+      url: 'https://github.com/pacoita/modern-web',
     },
     {
       title: 'Manhattan',
       text: `-- See more demos by Francesco Leardini -- \n\n
+      \n\n -- Manhattan -- \n\n
       \n\n Ingredients: \n\n
       - 2oz Rye Whiskey \n\n
       - 1oz Sweet Vermouth \n\n
@@ -41,25 +39,30 @@ export class ShareComponent {
       with cracked ice.\n\n
       Strain into a chilled cocktail glass.\n\n
       `,
-      url: 'GITHUB Address -- tbd',
-    },
-    {
-      title: 'Share APIs images',
-      text: 'Web share level 2 allows to attach also files: ',
-     files: []
+      url: 'https://github.com/pacoita/modern-web',
     },
   ];
 
-  constructor(private shareService: ShareService, private titleService: Title ) {
+  constructor(private titleService: Title) {
     this.titleService.setTitle('Share');
   }
 
+  ngOnInit(): void {
+    if (!('share' in navigator)) {
+      this.unsupportedText = 'Web Share API is not supported by your browser.';
+    }
+  }
+
   share(name: string): void {
-    const target = this.dataToShare.find(t => t.title === name);
-    if (target) {
-      this.shareService.shareItem(target);
-    } else {
-      console.error('The provided cocktail is not shareable: ', name);
+    const target = this.dataToShare.find((t) => t.title === name);
+    try {
+      if (target) {
+        navigator.share(target);
+      } else {
+        console.error('The provided cocktail is not shareable: ', name);
+      }
+    } catch (err) {
+      console.error(err.name, err.message);
     }
   }
 }

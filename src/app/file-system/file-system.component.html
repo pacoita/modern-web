@@ -1,30 +1,46 @@
 <section class="content">
   <h1>Native File System API</h1>
   <mat-card class="descr-card">
-    <p>The <strong>Native File System API</strong> provides new features to manipulate local files, providing an improved
-       experience to our users similar to a native app. FOr example we do not have to download again the file each time we want to edit it, but we
-       can save it directly or even implement auto save funtionalitiy.
-      <br><br>
-      <span class="flex-centered">
-        <mat-icon class="icon-space" aria-label="lock icon">lock</mat-icon>
-        <strong>Feature available only in secure contexts (HTTPS).</strong>
-      </span>
+    <p>The <strong>Native File System API</strong> offers new features to manipulate local files providing an
+      improved experience to our users similar to a native app.
+      We don't have to download the file each time we want to edit it, but we can save it directly.
+      We can even implement an auto-save functionality.
       <br><br>
       <span class="flex-centered">
         <mat-icon class="icon-space" aria-label="lock icon">warning</mat-icon>
         <strong>Still experimental</strong>
       </span>
-      Enable the <cite><strong>Native File System</strong></cite> flag in Chrome (chrome://flags/#native-file-system-api) to test it.
+      Enable the <cite><strong>Native File System</strong></cite> flag in Chrome
+      (chrome://flags/#native-file-system-api) to test it.
       Active by default from Chrome 86.
     </p>
   </mat-card>
   <div class="native-demo" *ngIf="!unsupportedText; else noSupported">
-    <textarea name="textbox" id="textbox" rows="15" placeholder="Start digiting your biography and save it for the future generations..."></textarea>
+    <p class="file-name">
+      <ng-container *ngIf="fileHandle">File opened: {{fileHandle.name}}</ng-container>
+    </p>
+    <div class="action-bar">
+      <button mat-raised-button (click)="openFile()">
+        <mat-icon class="icon-space">folder_open</mat-icon>
+        Open
+      </button>
+      <button mat-raised-button (click)="saveAs(textbox.value)">
+        <mat-icon class="icon-space">playlist_add</mat-icon>
+        Save as
+      </button>
+      <button *ngIf="fileHandle" color="primary" mat-raised-button (click)="saveFile(textbox.value)">
+        <mat-icon class="icon-space">save</mat-icon>
+        Save
+      </button>
+    </div>
+    <textarea #textbox name="textbox" id="textbox" rows="15"
+      placeholder=" Start digiting your biography and save it for the future generations... 👇"></textarea>
+    <cite>For demo purposes, only .txt files are accepted.</cite>
+    <p class="error">
+      {{errorText}}
+    </p>
   </div>
   <ng-template #noSupported>
     <h2>{{unsupportedText}}</h2>
-    <!-- <div class="img-center">
-      <img src="assets/images/cat.png" width="150" alt="cat">
-    </div> -->
   </ng-template>
 </section>

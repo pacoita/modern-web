@@ -1,5 +1,5 @@
 <section class="content">
-  <h1>Share API</h1>
+  <h1>Web Share API</h1>
   <mat-card class="descr-card">
     <p>The <strong>navigator.share()</strong> method of the Web Share API invokes the native sharing mechanism of the
       device.<br><br>
@@ -10,11 +10,14 @@
     </p>
   </mat-card>
 
+  <ng-container *ngIf="unsupportedText">
+    <h2 class="error">{{unsupportedText}}</h2>
+  </ng-container>
   <div class="cards-container">
     <mat-card class="demo-card">
       <mat-card-header>
         <mat-card-title>Cosmopolitan</mat-card-title>
-        <button class="share-btn" mat-mini-fab color="primary" aria-label="Share icon" (click)="share('Cosmopolitan')">
+        <button class="share-btn" mat-mini-fab color="primary" aria-label="Share icon" [disabled]="unsupportedText" (click)="share('Cosmopolitan')">
           <mat-icon>share</mat-icon>
         </button>
         <div>
@@ -45,7 +48,7 @@
     <mat-card class="demo-card">
       <mat-card-header>
         <mat-card-title>Manhattan</mat-card-title>
-        <button class="share-btn" mat-mini-fab color="primary" aria-label="Share icon" (click)="share('Manhattan')">
+        <button class="share-btn" mat-mini-fab color="primary" aria-label="Share icon" [disabled]="unsupportedText"  (click)="share('Manhattan')">
           <mat-icon>share</mat-icon>
         </button>
         <div>
