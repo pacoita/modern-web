@@ -34,6 +34,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
   async openFile(): Promise<any> {
     try {
       // By opening a file, the user grants READ permission
+      // Chrome 86+ will allow to grant READ + WRITE permissions
       this.fileHandle = await window.chooseFileSystemEntries({
         // 'open-file' (default) gives us an open file dialog
         type: 'open-file',
