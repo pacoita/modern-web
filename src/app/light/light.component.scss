@@ -6,26 +6,34 @@
   }
 }
 
+.generic-value-light {
+  text-align: center;
+  max-width: $max-width;
+  h1 {
+    padding: 1.5rem;
+    font-size: 5em;
+    color: $grayDark;
+  }
+}
+
 .container {
   padding: 1rem;
   &.lightTheme {
     background-color: white;
     color: rgb(0 0 0 / 87%);
     .lux-card {
-      text-align: center;
-      max-width: $max-width;
-      h1 {
-        font-size: 5em;
-        color: $grayDark;
-      }
+      @extend .generic-value-light;
     }
   }
 
   &.darkTheme {
     background-color: rgb(0 0 0 / 67%);
     color: white;
-    .light-card {
-   //   @extend;
+    .lux-card {
+      @extend .generic-value-light;
+      h1 {
+        color: white;
+      }
     }
   }
 

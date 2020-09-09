@@ -48,6 +48,5 @@ export class LightComponent implements OnInit {
       this.ambient = 'bright';
     }
     this.luxValue = luxValue;
-    alert(`this.luxValue: ${this.luxValue} -- this.ambient: ${this.ambient}`);
   }
 }

@@ -1,10 +1,9 @@
 <section class="content container" [ngClass]="ambient === 'bright' ? 'lightTheme' : 'darkTheme'" #container>
   <div class="flex-centered warn-text">
-    <h1>Sensor API</h1>
+    <h1>Ambient Light Sensor</h1>
   </div>
   <mat-card class="descr-card">
-    <p>The <strong>AmbientLightSensor</strong> interface of the Sensor API returns the current level of the ambient light around the hosting device.<br>
-      Ambient light events are fired by the browser when the light sensor on the device detecs a change in the luminosity.
+    <p>The <strong>AmbientLightSensor</strong> interface of the Sensor API returns the current level of the ambient light around the hosting device.
       <br/><br/>
       <span class="flex-centered">
         <mat-icon class="icon-space" aria-label="lock icon">warning</mat-icon>
@@ -17,12 +16,11 @@
   <ng-container *ngIf="!statusText; else noSupported">
     <mat-card class="lux-card">
       <mat-card-title>
-        <h2>Ambient Device Light level</h2>
+        <h2>Light level</h2>
       </mat-card-title>
       <mat-card-content>
         <h1>
-          luxValue {{luxValue}}
-          <ng-container *ngIf="luxValue; else notAvailable"></ng-container>
+          <ng-container *ngIf="luxValue; else notAvailable">{{luxValue}}</ng-container>
           <ng-template #notAvailable>N/A</ng-template>
         </h1>
       </mat-card-content>
