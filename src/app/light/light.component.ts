@@ -16,7 +16,6 @@ export class LightComponent implements OnInit {
       try {
         const sensor = new (window as any).AmbientLightSensor();
         sensor.onreading = () => {
-          alert(sensor.illuminance);
           this.updateTheme(sensor.illuminance);
         };
         sensor.onerror = (event: any) => {
@@ -43,13 +42,12 @@ export class LightComponent implements OnInit {
     100 ~ 1000 lux : Normal
     > 10000 lux : Bright
     */
-    if (luxValue < 50) {
-      console.log({ event });
+    if (luxValue <= 50) {
       this.ambient = 'dark';
     } else {
-      console.log({ event });
       this.ambient = 'bright';
     }
     this.luxValue = luxValue;
+    alert(`this.luxValue: ${this.luxValue} -- this.ambient: ${this.ambient}`);
   }
 }

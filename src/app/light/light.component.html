@@ -21,6 +21,7 @@
       </mat-card-title>
       <mat-card-content>
         <h1>
+          luxValue {{luxValue}}
           <ng-container *ngIf="luxValue; else notAvailable"></ng-container>
           <ng-template #notAvailable>N/A</ng-template>
         </h1>
