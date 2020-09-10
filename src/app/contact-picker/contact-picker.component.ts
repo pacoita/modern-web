@@ -33,4 +33,13 @@ export class ContactPickerComponent implements OnInit {
       this.statusText = `${err.name} - ${err.message}`;
     }
   }
+
+  getObjectUrl(blob: Blob): string | undefined {
+    try {
+      return URL.createObjectURL(blob);
+    } catch (err) {
+      this.statusText = `${err.name} - ${err.message}`;
+      return;
+    }
+  }
 }
