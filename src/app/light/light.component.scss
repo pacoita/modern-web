@@ -1,8 +1,8 @@
-@import '../../variables';
+@import "../../variables";
 .warn-text {
   margin-bottom: 2rem;
   h1 {
-    margin: 0 2rem 0 0 ;
+    margin: 0 2rem 0 0;
   }
 }
 
@@ -12,7 +12,7 @@
   h1 {
     padding: 1.5rem;
     font-size: 5em;
-    color: $grayDark;
+    color: $grayLight;
   }
 }
 
@@ -29,6 +29,14 @@
   &.darkTheme {
     background-color: rgb(0 0 0 / 67%);
     color: white;
+    .mat-card,
+    .mat-expansion-panel {
+      color: white;
+      background-color: $grayDark;
+    }
+    .mat-expansion-panel-header-title {
+      color: white;
+    }
     .lux-card {
       @extend .generic-value-light;
     }

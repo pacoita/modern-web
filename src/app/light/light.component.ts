@@ -55,9 +55,9 @@ export class LightComponent implements OnInit {
 
   private updateTheme(luxValue: number): void {
     /*
-    10 ~ 50 lux : Dim Environment
-    100 ~ 1000 lux : Normal
-    > 10000 lux : Bright
+    10 ~ 50 lux  Dim Environment
+    100 ~ 1000 lux  Normal
+    > 10000 lux  Bright
     */
     if (luxValue <= 50) {
       this.ambient = 'dark';
