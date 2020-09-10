@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReplaySubject, Observable } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-light',
@@ -8,16 +8,17 @@ import { ReplaySubject, Observable } from 'rxjs';
 })
 export class LightComponent implements OnInit {
   ambient: 'dark' | 'bright' = 'bright';
-  statusText: string | undefined;
-  private luxValueSub = new ReplaySubject<number>(1);
+  supportedText: string | undefined;
+  errorText: string | undefined;
+  private luxValueSub = new ReplaySubject<number>();
   luxValue$ = this.luxValueSub.asObservable();
 
   ngOnInit(): void {
     if ('AmbientLightSensor' in window) {
       this.readAmbientLight();
     } else {
-      this.statusText =
-        'Your browser doesn\'t support Ambient Device Light Sensor';
+      this.supportedText =
+        'Your browser does not support Ambient Device Light Sensor';
     }
   }
 
@@ -45,7 +46,7 @@ export class LightComponent implements OnInit {
       };
       sensor.start();
     } catch (err) {
-      console.error(err.name, err.message);
+      this.errorText = `${err.name} -- ${err.message}`;
     }
   }
 
@@ -60,6 +61,7 @@ export class LightComponent implements OnInit {
     } else {
       this.ambient = 'bright';
     }
+    this.errorText = `${luxValue}`;
     this.luxValueSub.next(luxValue);
   }
 }

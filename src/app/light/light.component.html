@@ -1,4 +1,3 @@
-ambient {{ambient}}
 <section class="content container" [ngClass]="ambient === 'bright' ? 'lightTheme' : 'darkTheme'">
   <div class="flex-centered warn-text">
     <h1>Ambient Light Sensor</h1>
@@ -14,7 +13,8 @@ ambient {{ambient}}
     </p>
   </mat-card>
 
-  <ng-container *ngIf="!statusText; else noSupported">
+  <ng-container *ngIf="!supportedText; else noSupported">
+    <h2>{{errorText}}</h2>
     <mat-card class="lux-card">
       <mat-card-title>
         <h2>Light level</h2>
@@ -30,7 +30,7 @@ ambient {{ambient}}
     </mat-card>
   </ng-container>
   <ng-template #noSupported>
-    <h2>{{statusText}}</h2>
+    <h2>{{supportedText}}</h2>
     <div class="img-center">
       <img src="assets/images/cat.png" width="150" alt="cat">
     </div>
