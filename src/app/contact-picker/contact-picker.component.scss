@@ -1,0 +1,22 @@
+@import '../../variables';
+section {
+  .cards-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+
+    .mat-card-content {
+      border-top: 1px solid $grayDark;
+      padding-top: 0.5rem;
+      span {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

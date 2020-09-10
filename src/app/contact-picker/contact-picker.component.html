@@ -1,17 +1,42 @@
-<section>
+<section class="content">
   <div class="flex-centered warn-text">
     <h1>Contact Picker API</h1>
   </div>
   <mat-card class="descr-card">
     <p>The <strong>Contact Picker API</strong> fills another gap between web and native apps, allowing to
-      access the address book on a mobile device. With this API we can retrieve details like: contact name, contact profile image, email address, phone number, street address.
-      <br/><br/>
+      access the address book on a mobile device. With this API we can retrieve details like: contact name, contact
+      profile image, email address, phone number, street address.
+      <br /><br />
       <span class="flex-centered">
         <mat-icon class="icon-space" aria-label="lock icon">lock</mat-icon>
         <span>This feature is available only on secure contexts (HTTPS).</span>
       </span>
-      <p  class="flex-centered"><mat-icon class="icon-space" aria-label="Android icon">android</mat-icon> Available from Chrome 80 - Android only (Marshmallow or newer).</p>
+    <p class="flex-centered">
+      <mat-icon class="icon-space" aria-label="Android icon">android</mat-icon> Available from Chrome 80 - Android only
+      (Marshmallow or newer).
+    </p>
   </mat-card>
+
+  <button mat-raised-button color="primary" (click)="selectContacts()" [disabled]="!supported">
+    <mat-icon class="icon-space" aria-label="lock icon">person</mat-icon>
+    Select contacts
+  </button>
+  <div class="cards-container">
+    <mat-card *ngFor="let contact of contacts">
+      <mat-card-header>
+        <div *ngIf="contact?.icon?.length" mat-card-avatar>{{contact.icon}}</div>
+        <mat-card-title>{{contact?.name}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <span *ngIf="contact?.tel?.length">
+          <mat-icon class="icon-space" aria-label="phone icon">phone</mat-icon>{{contact.tel}}</span>
+        <span *ngIf="contact?.email?.length">
+          <mat-icon class="icon-space" aria-label="email icon">email</mat-icon>{{contact.email}}</span>
+        <span *ngIf="contact?.address?.length">
+          <mat-icon class="icon-space" aria-label="address icon">place</mat-icon>{{contact.address}}</span>
+      </mat-card-content>
+    </mat-card>
+  </div>
   <ng-container *ngIf="!statusText; else noSupported">
   </ng-container>
   <ng-template #noSupported>
