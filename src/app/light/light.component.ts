@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 
 @Component({
@@ -10,8 +10,9 @@ export class LightComponent implements OnInit {
   ambient: 'dark' | 'bright' = 'bright';
   supportedText: string | undefined;
   errorText: string | undefined;
-  private luxValueSub = new ReplaySubject<number>();
-  luxValue$ = this.luxValueSub.asObservable();
+  luxValue: number | undefined;
+
+  constructor(private cdRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     if ('AmbientLightSensor' in window) {
@@ -34,12 +35,14 @@ export class LightComponent implements OnInit {
           // state -> prompt | granted | denied
           if (result.state === 'denied') {
             this.errorText = 'Permission to access sensor was denied.';
+            this.luxValue = undefined;
             return;
           }
           this.readAmbientLight();
         } else if (event.error.name === 'NotReadableError') {
           this.errorText = 'Cannot connect to the sensor.';
         }
+        this.luxValue = undefined;
       };
       sensor.onreading = () => {
         this.updateTheme(sensor.illuminance);
@@ -61,7 +64,7 @@ export class LightComponent implements OnInit {
     } else {
       this.ambient = 'bright';
     }
-    this.errorText = `${luxValue}`;
-    this.luxValueSub.next(luxValue);
+    this.luxValue = luxValue;
+    this.cdRef.detectChanges();
   }
 }

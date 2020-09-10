@@ -14,14 +14,14 @@
   </mat-card>
 
   <ng-container *ngIf="!supportedText; else noSupported">
-    <h2>{{errorText}}</h2>
+    <h2 class="error">{{errorText}}</h2>
     <mat-card class="lux-card">
       <mat-card-title>
         <h2>Light level</h2>
       </mat-card-title>
       <mat-card-content>
         <h1>
-          <ng-container *ngIf="luxValue$ | async as luxValue; else notAvailable">
+          <ng-container *ngIf="luxValue; else notAvailable">
             {{luxValue}}
           </ng-container>
           <ng-template #notAvailable>N/A</ng-template>
