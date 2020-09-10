@@ -1,4 +1,5 @@
-<section class="content container" [ngClass]="ambient === 'bright' ? 'lightTheme' : 'darkTheme'" #container>
+ambient {{ambient}}
+<section class="content container" [ngClass]="ambient === 'bright' ? 'lightTheme' : 'darkTheme'">
   <div class="flex-centered warn-text">
     <h1>Ambient Light Sensor</h1>
   </div>
@@ -20,7 +21,9 @@
       </mat-card-title>
       <mat-card-content>
         <h1>
-          <ng-container *ngIf="luxValue; else notAvailable">{{luxValue}}</ng-container>
+          <ng-container *ngIf="luxValue$ | async as luxValue; else notAvailable">
+            {{luxValue}}
+          </ng-container>
           <ng-template #notAvailable>N/A</ng-template>
         </h1>
       </mat-card-content>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-light',
@@ -9,30 +9,43 @@ import { ReplaySubject } from 'rxjs';
 export class LightComponent implements OnInit {
   ambient: 'dark' | 'bright' = 'bright';
   statusText: string | undefined;
-  luxValue: number | undefined;
+  private luxValueSub = new ReplaySubject<number>(1);
+  luxValue$ = this.luxValueSub.asObservable();
 
   ngOnInit(): void {
     if ('AmbientLightSensor' in window) {
-      try {
-        const sensor = new (window as any).AmbientLightSensor();
-        sensor.onreading = () => {
-          this.updateTheme(sensor.illuminance);
-        };
-        sensor.onerror = (event: any) => {
-          if (event.error.name === 'NotAllowedError') {
-            this.statusText = 'Permission to access sensor was denied.';
-          } else if (event.error.name === 'NotReadableError') {
-            this.statusText = 'Cannot connect to the sensor.';
-          }
-          console.log(event.error.name, event.error.message);
-        };
-        sensor.start();
-      } catch (err) {
-        console.error(err.name, err.message);
-      }
+      this.readAmbientLight();
     } else {
       this.statusText =
         'Your browser doesn\'t support Ambient Device Light Sensor';
+    }
+  }
+
+  private readAmbientLight(): void {
+    try {
+      const sensor = new (window as any).AmbientLightSensor();
+      sensor.onerror = async (event: any) => {
+        if (event.error.name === 'NotAllowedError') {
+          // Ask for permissions if not granted yet
+          const result = await navigator.permissions.query({
+            name: 'ambient-light-sensor',
+          });
+          // state -> prompt | granted | denied
+          if (result.state === 'denied') {
+            this.statusText = 'Permission to access sensor was denied.';
+            return;
+          }
+          this.readAmbientLight();
+        } else if (event.error.name === 'NotReadableError') {
+          this.statusText = 'Cannot connect to the sensor.';
+        }
+      };
+      sensor.onreading = () => {
+        this.updateTheme(sensor.illuminance);
+      };
+      sensor.start();
+    } catch (err) {
+      console.error(err.name, err.message);
     }
   }
 
@@ -47,6 +60,6 @@ export class LightComponent implements OnInit {
     } else {
       this.ambient = 'bright';
     }
-    this.luxValue = luxValue;
+    this.luxValueSub.next(luxValue);
   }
 }
