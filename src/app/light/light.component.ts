@@ -33,12 +33,12 @@ export class LightComponent implements OnInit {
           });
           // state -> prompt | granted | denied
           if (result.state === 'denied') {
-            this.statusText = 'Permission to access sensor was denied.';
+            this.errorText = 'Permission to access sensor was denied.';
             return;
           }
           this.readAmbientLight();
         } else if (event.error.name === 'NotReadableError') {
-          this.statusText = 'Cannot connect to the sensor.';
+          this.errorText = 'Cannot connect to the sensor.';
         }
       };
       sensor.onreading = () => {
