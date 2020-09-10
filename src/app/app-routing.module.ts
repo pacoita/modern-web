@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'vibrate', loadChildren: () => import('./vibration/vibration.module').then(m => m.VibrationModule) },
   { path: 'light', loadChildren: () => import('./light/light.module').then(m => m.LightModule) },
   { path: 'file', loadChildren: () => import('./file-system/file-system.module').then(m => m.FileSystemModule) },
+  { path: 'contacts', loadChildren: () => import('./contact-picker/contact-picker.module').then(m => m.ContactPickerModule) },
   { path: 'home', component: HomeComponent },
   { path: '**', redirectTo: '/home'}
 ];
