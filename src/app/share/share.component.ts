@@ -15,7 +15,7 @@ export class ShareComponent implements OnInit {
       title: 'Cosmopolitan',
       text: `See more demos by Francesco Leardini
 
-      -- Cosmopolitan --
+      ---- Cosmopolitan ----
 
       Ingredients:
 
@@ -26,27 +26,29 @@ export class ShareComponent implements OnInit {
 
       Preparation:
 
-      Add all ingredients into a shaker with ice and shake.
-      Strain into a chilled cocktail glass.
+      Add all ingredients into a shaker with ice and shake. \n
+      Strain into a chilled cocktail glass. \n
       `,
-      url: '👉 https://github.com/pacoita/modern-web',
+      url: 'https://github.com/pacoita/modern-web',
     },
     {
       title: 'Manhattan',
       text: `See more demos by Francesco Leardini
 
-      -- Manhattan --
+      ---- Manhattan ----
 
       Ingredients:
+
       - 2oz Rye Whiskey \n
       - 1oz Sweet Vermouth \n
       - Dashes Angostura Bitters \n
-      Preparation: \n
-      Add ingredients to a mixing glass
-      with cracked ice.\n
-      Strain into a chilled cocktail glass.\n
+
+      Preparation:
+
+      Add ingredients to a mixing glass with cracked ice. \n
+      Strain into a chilled cocktail glass. \n
       `,
-      url: '👉 https://github.com/pacoita/modern-web',
+      url: 'https://github.com/pacoita/modern-web',
     },
   ];
 

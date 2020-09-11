@@ -24,7 +24,7 @@
   <div class="cards-container">
     <mat-card *ngFor="let contact of contacts">
       <mat-card-header>
-        <div *ngIf="contact?.icon?.length" mat-card-avatar><img [src]="getObjectUrl(contact.icon)" alt="contact icon"></div>
+        <div *ngIf="contact?.icon?.length" mat-card-avatar><img [src]="getObjectUrl(contact.icon)" onerror="" alt="contact icon"></div>
         <mat-card-title>{{contact?.name}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
