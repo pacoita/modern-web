@@ -1,19 +1,38 @@
-import {Breakpoints, BreakpointObserver} from '@angular/cdk/layout';
-import {Component} from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { BreakpointService } from './../common/breakpoint.service';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  styleUrls: ['./navigation.component.scss'],
 })
-export class NavigationComponent {
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-  .pipe(
-    map(result => result.matches),
-    shareReplay(1)
-  );
+export class NavigationComponent implements OnInit, OnDestroy {
+  isHandset: boolean | undefined;
 
-constructor(private breakpointObserver: BreakpointObserver) {}
+  @ViewChild('drawer')
+  drawer!: MatSidenav;
+
+  private destroy$ = new Subject<boolean>();
+
+  constructor(private breakpointService: BreakpointService) {}
+
+  ngOnInit(): void {
+    this.breakpointService.isHandset$.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(res => this.isHandset = res);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+  }
+
+  // Toggle the sidebar on mobile devices
+  toggleOnNavigation(): void {
+    if (this.isHandset) {
+      this.drawer.toggle();
+    }
+  }
 }

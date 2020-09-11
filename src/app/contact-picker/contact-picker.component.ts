@@ -34,9 +34,10 @@ export class ContactPickerComponent implements OnInit {
     }
   }
 
-  getObjectUrl(blob: Blob): string | undefined {
+  getObjectUrl(blobData: Blob[]): string | undefined {
     try {
-      return URL.createObjectURL(blob);
+      // We take only the first icon
+      return window.URL.createObjectURL(blobData[0]);
     } catch (err) {
       this.statusText = `${err.name} - ${err.message}`;
       return;

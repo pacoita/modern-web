@@ -7,45 +7,45 @@
   </mat-toolbar>
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+      [attr.role]="isHandset ? 'dialog' : 'navigation'" [mode]="isHandset ? 'over' : 'side'"
+      [opened]="isHandset === false">
       <mat-nav-list class="links-panel">
-        <a mat-list-item [routerLink]="['/home']">
+        <a mat-list-item [routerLink]="['/home']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="home icon">home</mat-icon>
           Home
         </a>
 
-        <a mat-list-item [routerLink]="['/wakelock']">
+        <a mat-list-item [routerLink]="['/wakelock']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="app_blocking icon">app_blocking</mat-icon>
           Wake Lock
         </a>
 
-        <a mat-list-item [routerLink]="['/visibility']">
+        <a mat-list-item [routerLink]="['/visibility']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="visibility icon">visibility</mat-icon>
           Visibility
         </a>
 
-        <a mat-list-item [routerLink]="['/share']">
+        <a mat-list-item [routerLink]="['/share']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="share icon">share</mat-icon>
           Share
         </a>
 
-        <a mat-list-item [routerLink]="['/vibrate']">
+        <a mat-list-item [routerLink]="['/vibrate']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="viration icon">vibration</mat-icon>
           Vibration
         </a>
 
-        <a mat-list-item [routerLink]="['/light']">
+        <a mat-list-item [routerLink]="['/light']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="highlight icon">highlight</mat-icon>
           Ambient Light
         </a>
 
-        <a mat-list-item [routerLink]="['/file']">
+        <a mat-list-item [routerLink]="['/file']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="Native File System icon">article</mat-icon>
           File System
         </a>
 
-        <a mat-list-item [routerLink]="['/contacts']">
+        <a mat-list-item [routerLink]="['/contacts']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="Contact picker icon">perm_contact_calendar</mat-icon>
           Contacts
         </a>

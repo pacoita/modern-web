@@ -13,33 +13,40 @@ export class ShareComponent implements OnInit {
   dataToShare: ShareObject[] = [
     {
       title: 'Cosmopolitan',
-      text: `-- See more demos by Francesco Leardini -- \n\n
-      \n\n -- Cosmopolitan -- \n\n
-      \n\n Ingredients: \n\n
-      - 1 1/2 oz Citrus vodka \n\n
-      - 1 oz Cointreau \n\n
-      - 1/2 oz Fresh lime juice \n\n
-      - 1 dash Cranberry juice \n\n
-      Preparation: \n\n
-      Add all ingredients into a shaker with ice and shake.\n\n
-      Strain into a chilled cocktail glass.\n\n
+      text: `See more demos by Francesco Leardini
+
+      -- Cosmopolitan --
+
+      Ingredients:
+
+      - 1 1/2 oz Citrus vodka \n
+      - 1 oz Cointreau \n
+      - 1/2 oz Fresh lime juice \n
+      - 1 dash Cranberry juice \n
+
+      Preparation:
+
+      Add all ingredients into a shaker with ice and shake.
+      Strain into a chilled cocktail glass.
       `,
-      url: 'https://github.com/pacoita/modern-web',
+      url: '👉 https://github.com/pacoita/modern-web',
     },
     {
       title: 'Manhattan',
-      text: `-- See more demos by Francesco Leardini -- \n\n
-      \n\n -- Manhattan -- \n\n
-      \n\n Ingredients: \n\n
-      - 2oz Rye Whiskey \n\n
-      - 1oz Sweet Vermouth \n\n
-      - Dashes Angostura Bitters \n\n
-      Preparation: \n\n
+      text: `See more demos by Francesco Leardini
+
+      -- Manhattan --
+
+      Ingredients:
+      - 2oz Rye Whiskey \n
+      - 1oz Sweet Vermouth \n
+      - Dashes Angostura Bitters \n
+      Preparation: \n
       Add ingredients to a mixing glass
-      with cracked ice.\n\n
-      Strain into a chilled cocktail glass.\n\n
+      with cracked ice.\n
+      Strain into a chilled cocktail glass.\n
       `,
-      url: 'https://github.com/pacoita/modern-web',
+      url: '👉 https://github.com/pacoita/modern-web',
     },
   ];
 
