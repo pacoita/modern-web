@@ -1,10 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-light',
   templateUrl: './light.component.html',
-  styleUrls: ['./light.component.scss'],
+  styleUrls: ['./light.component.scss']
 })
 export class LightComponent implements OnInit {
   ambient: 'dark' | 'bright' = 'bright';
