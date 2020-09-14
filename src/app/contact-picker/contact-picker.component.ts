@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact-picker',
@@ -11,7 +12,7 @@ export class ContactPickerComponent implements OnInit {
 
   contacts: any[] = [];
 
-  constructor() {}
+  constructor(private domSanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     if (!('contacts' in navigator && 'ContactsManager' in window)) {
@@ -34,14 +35,10 @@ export class ContactPickerComponent implements OnInit {
     }
   }
 
-  getObjectUrl(blobData: any[]): string | undefined {
+  getObjectUrl(blobImg: Blob[]): string | undefined {
     try {
       // We take only the first icon
-      alert(`blobData ${JSON.stringify(blobData)}`);
-      alert(`blobData[0] ${blobData[0]}`);
-      const imgUrl = URL.createObjectURL(blobData[0]);
-      alert(`URL ${imgUrl}`);
-      return  imgUrl;
+      return this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(blobImg[0])) as string;
     } catch (err) {
       this.statusText = `${err.name} - ${err.message}`;
       return;
