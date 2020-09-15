@@ -16,7 +16,6 @@
       (Marshmallow or newer).
     </p>
   </mat-card>
-
   <button mat-raised-button color="primary" (click)="selectContacts()" [disabled]="!supported">
     <mat-icon class="icon-space" aria-label="lock icon">person</mat-icon>
     Select contacts
@@ -26,21 +25,25 @@
       <mat-card-header>
         <div *ngIf="contact?.icon?.length" mat-card-avatar>
           <ng-container *ngIf="getObjectUrl(contact.icon) as imageUrl; else defaultIcon">
-            <img [src]="imageUrl" alt="contact icon">
+            <img mat-card-avatar [src]="imageUrl" alt="contact icon">
           </ng-container>
           <ng-template #defaultIcon>
             <mat-icon class="space-icon">person</mat-icon>
           </ng-template>
         </div>
         <mat-card-title>{{contact?.name.join(', ')}}</mat-card-title>
+        <mat-card-subtitle>&nbsp;</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <span *ngIf="contact?.tel?.length">
-          <mat-icon class="icon-space" aria-label="phone icon">phone</mat-icon>{{contact.tel.join(', ')}}</span>
+          <mat-icon class="icon-space" aria-label="phone icon">phone</mat-icon>{{contact.tel.join(', ')}}
+        </span>
         <span *ngIf="contact?.email?.length">
-          <mat-icon class="icon-space" aria-label="email icon">email</mat-icon>{{contact.email.join(', ')}}</span>
+          <mat-icon class="icon-space" aria-label="email icon">email</mat-icon>{{contact.email.join(', ')}}
+        </span>
         <span *ngIf="contact?.address?.length">
-          <mat-icon class="icon-space" aria-label="address icon">place</mat-icon>{{contact.address.join(', ')}}</span>
+          <mat-icon class="icon-space" aria-label="address icon">place</mat-icon>{{contact.address.join(', ')}}
+        </span>
       </mat-card-content>
     </mat-card>
   </div>
