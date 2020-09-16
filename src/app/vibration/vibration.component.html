@@ -1,19 +1,16 @@
 <section class="content">
   <h1>Vibration API</h1>
   <mat-card class="descr-card">
-    <p>The <strong>navigator.vibrate()</strong> method pulses the vibration hardware on the device, if such hardware
-      exists.
-      If the device doesn't support vibration, this method has no effect. If a vibration pattern is already in progress
-      when this method is called,
-      the previous pattern is halted and the new one begins instead.
+    <p>The vibration API offers the <strong>navigator.vibrate()</strong> method to interact with the vibration hardware on the device, if available.
+      It is possible to define a single vibration or a more complex pattern, composed by vibrations and pauses.
     </p>
   </mat-card>
 
   <div class="demo-instruction">
-    <p> A small quiz to demo the Vibration API.</p>
-    <p> <strong>Correct answer</strong> --> your device will vibrate shortly for 3 times.</p>
+    <p> A small quiz to test the Vibration API.</p>
+    <p> <strong>Correct answer</strong> --> your device will emit 3 short vibrations.</p>
     <p> <strong>Wrong answer</strong> --> your device will vibrate just once for a long period.</p>
-    <p> (Note: Vibration will work only on the compatble browsers and devices)</p>
+    <p> (Note: Vibration will work only on the compatble browsers and devices with vibration hardware)</p>
   </div>
 
   <ng-container *ngIf="firstFormGroup && secondFormGroup; else loading">

@@ -9,6 +9,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./vibration.component.scss']
 })
 export class VibrationComponent implements OnInit {
+  // Each value is in ms
+  // Vibrate - pause pattern
   correctAnswerPattern = [100, 30, 100, 30, 100];
   wrongAnswerPattern = [700];
 
@@ -25,6 +27,9 @@ export class VibrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // We don't check if ('vibrate' in navigator)
+    // as we want to show the quiz anyway -> Progressive enahncement!
+
     this.firstFormGroup = this.fb.group({
       question: ['', Validators.required]
     });

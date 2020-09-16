@@ -17,6 +17,7 @@ export class WakeLockComponent implements OnInit, OnDestroy {
 
   @HostListener('document:visibilitychange', ['$event'])
   private async onVisibilyChange(event: Event): Promise<void> {
+    // The Visibility API triggers this event
     if (this.wakeLock !== null && document.visibilityState === 'visible' && this.reGetLock) {
       this.requestWakeLock();
       console.log('Wake Lock has been reacquired');
@@ -34,6 +35,7 @@ export class WakeLockComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // The lock would be release anyway when the tab/window is not visible anymore
     this.releaseLock();
   }
 
@@ -52,8 +54,7 @@ export class WakeLockComponent implements OnInit, OnDestroy {
    */
   private async requestWakeLock(): Promise<void> {
     try {
-      // Cast currently needed to avoid typescript error due to missing typings
-      // 'screen' is currently the only type of wake lock
+      // 'screen' is currently the only type of wake lock. 'system' type is not provided anymore.
       this.wakeLock = await (navigator as any).wakeLock.request('screen');
 
       // The screen wake lock is released when we minimize a tab/window
@@ -65,7 +66,7 @@ export class WakeLockComponent implements OnInit, OnDestroy {
       });
       this.isSentinelActive = true;
     } catch (err) {
-      // The browser can refuse the request if the device has low battery left, for instance.
+      // The browser can refuse the request if the device has low battery, for instance.
       this.isSentinelActive = false;
       this.errorText = `${err.name}, ${err.message}`;
     }
