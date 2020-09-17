@@ -26,8 +26,9 @@ export class LightComponent implements OnInit {
     try {
       const sensor = new (window as any).AmbientLightSensor();
       sensor.onerror = async (event: any) => {
+        // Ask for permissions if not granted yet
         if (event.error.name === 'NotAllowedError') {
-          // Ask for permissions if not granted yet
+          // The permission object here provides access to the Permissions API functionality :)
           const result = await navigator.permissions.query({
             name: 'ambient-light-sensor',
           });

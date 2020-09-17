@@ -1,0 +1,42 @@
+<section class="content container">
+  <div class="flex-centered">
+    <h1>Online/Offline events</h1>
+  </div>
+  <mat-card class="descr-card">
+    <div class="flex-centered">
+      <mat-icon class="icon-space" aria-label="warning icon">warning</mat-icon>
+      <span>These events are not always very accurate!</span>
+      <br><br>
+      <span>
+        Consider the use of a service worker if you want to be sure about the real client connectivity state.
+      </span>
+    </div>
+  </mat-card>
+
+  <mat-card [ngClass]="clientOnline ? 'online' : 'offline'">
+    <h2>You are {{clientOnline ? 'online 😄' : 'offline 😢'}}</h2>
+    <div class="img-center">
+      <img *ngIf="clientOnline; else offline" src="assets/images/cat_online.png" width="150" alt="Cat online">
+      <ng-template #offline>
+        <img src="assets/images/cat_offline.png" width="150" alt="Cat offline">
+      </ng-template>
+    </div>
+  </mat-card>
+
+  <div class="accordion-container">
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1>Browser compatibility</h1>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="img-container">
+          <img src="assets/images/offline.png" alt="Offline/Online events support">
+        </div>
+        <br><br>
+        <a href="https://caniuse.com/vibration" target="_blank">Source: can I use</a>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</section>

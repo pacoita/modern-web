@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'light', loadChildren: () => import('./light/light.module').then(m => m.LightModule) },
   { path: 'file', loadChildren: () => import('./file-system/file-system.module').then(m => m.FileSystemModule) },
   { path: 'contacts', loadChildren: () => import('./contact-picker/contact-picker.module').then(m => m.ContactPickerModule) },
+  { path: 'offline', loadChildren: () => import('./offline/offline.module').then(m => m.OfflineModule) },
   { path: 'home', component: HomeComponent },
   { path: '**', redirectTo: '/home'}
 ];

@@ -1,5 +1,5 @@
 <section class="content container" [ngClass]="ambient === 'bright' ? 'lightTheme' : 'darkTheme'">
-  <div class="flex-centered warn-text">
+  <div class="warn-text">
     <h1>Ambient Light Sensor</h1>
   </div>
   <mat-card class="descr-card">
@@ -32,7 +32,7 @@
   <ng-template #noSupported>
     <h2>{{supportedText}}</h2>
     <div class="img-center">
-      <img src="assets/images/cat.png" width="150" alt="cat">
+      <img src="assets/images/cat.png" alt="cat">
     </div>
   </ng-template>
 

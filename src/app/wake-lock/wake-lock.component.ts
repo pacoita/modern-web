@@ -1,4 +1,3 @@
-import { WakeLockModule } from './wake-lock.module';
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
@@ -19,18 +18,19 @@ export class WakeLockComponent implements OnInit, OnDestroy {
   private async onVisibilyChange(event: Event): Promise<void> {
     // The Visibility API triggers this event
     if (this.wakeLock !== null && document.visibilityState === 'visible' && this.reGetLock) {
-      this.requestWakeLock();
+      await this.requestWakeLock();
       console.log('Wake Lock has been reacquired');
     }
   }
 
-  constructor(private titleService: Title ) {
+  constructor(private titleService: Title) {
     this.titleService.setTitle('Wake Lock');
   }
 
   ngOnInit(): void {
     if (!('wakeLock' in navigator)) {
-      this.unsupportedText = 'Snap! Screen Wake lock is not supported by your browser.';
+      this.unsupportedText =
+        'Snap! Screen Wake lock is not supported by your browser.';
     }
   }
 
@@ -39,9 +39,9 @@ export class WakeLockComponent implements OnInit, OnDestroy {
     this.releaseLock();
   }
 
-  lockEnabledChange(lockEnabled: boolean): void {
+  async lockEnabledChange(lockEnabled: boolean): Promise<void> {
     if (lockEnabled) {
-      this.requestWakeLock();
+      await this.requestWakeLock();
     } else {
       this.reGetLock = false;
       this.releaseLock();
@@ -49,7 +49,7 @@ export class WakeLockComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Request a screen wake lock.
+   * Request a screen wake lock
    * @returns WakeLockSentinel object
    */
   private async requestWakeLock(): Promise<void> {
@@ -77,8 +77,9 @@ export class WakeLockComponent implements OnInit, OnDestroy {
    */
   private releaseLock(): void {
     this.wakeLock?.release().then(() => {
-      this.wakeLock = null;
-      this.isSentinelActive = false;
-    });
+        this.wakeLock = null;
+        this.isSentinelActive = false;
+      })
+      .catch((err: any) => (this.errorText = `${err.name}, ${err.message}`));
   }
 }

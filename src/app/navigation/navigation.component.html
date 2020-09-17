@@ -27,7 +27,7 @@
 
         <a mat-list-item [routerLink]="['/share']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="share icon">share</mat-icon>
-          Share
+          Web Share
         </a>
 
         <a mat-list-item [routerLink]="['/vibrate']" (click)="toggleOnNavigation()">
@@ -47,7 +47,12 @@
 
         <a mat-list-item [routerLink]="['/contacts']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="Contact picker icon">perm_contact_calendar</mat-icon>
-          Contacts
+          Contact Picker
+        </a>
+
+        <a mat-list-item [routerLink]="['/offline']" (click)="toggleOnNavigation()">
+          <mat-icon class="icon-space" aria-label="Offline icon">signal_wifi_off</mat-icon>
+          Offline/Online
         </a>
       </mat-nav-list>
     </mat-sidenav>

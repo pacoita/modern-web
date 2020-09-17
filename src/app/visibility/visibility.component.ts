@@ -16,7 +16,7 @@ export class VisibilityComponent implements OnInit, AfterViewInit {
 
   // Play/pause the video according to the document visibility state.
   @HostListener('document:visibilitychange', ['$event'])
-  private async onVisibilyChange(event: Event): Promise<void> {
+  private onVisibilyChange(event: Event): void {
     if (document.hidden) {
       this.nativeElement?.pause();
       console.log('Video is paused.');
