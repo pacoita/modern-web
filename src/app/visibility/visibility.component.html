@@ -10,11 +10,10 @@
   <p> The video plays only when the page is visible, it will automatically pause otherwise.
   </p>
 
-  <video id="videoElement" #videoElement controls="controls">
+  <video id="videoElement" #videoElement controls autoplay poster="assets/images/video.png">
     <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
     <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm">
     <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg" />
-    <p>There is a problem playing this video. Please try using a different browser.</p>
   </video>
 
   <div class="accordion-container">
