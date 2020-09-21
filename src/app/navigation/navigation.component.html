@@ -1,7 +1,7 @@
 <div class="example-container">
   <mat-toolbar color="primary">
     <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      <img src="assets/icons/menu.png" class="icon-space" width="24" height="24" alt="Menu">
     </button>
     <span>Web APIs</span>
   </mat-toolbar>
@@ -11,47 +11,47 @@
       [opened]="isHandset === false">
       <mat-nav-list class="links-panel">
         <a mat-list-item [routerLink]="['/home']" (click)="toggleOnNavigation()">
-          <mat-icon class="icon-space" aria-label="home icon">home</mat-icon>
+          <img src="assets/icons/home.png" class="icon-space" width="24" height="24" alt="Home icon">
           Home
         </a>
 
         <a mat-list-item [routerLink]="['/visibility']" (click)="toggleOnNavigation()">
-          <mat-icon class="icon-space" aria-label="visibility icon">visibility</mat-icon>
+          <img src="assets/icons/visibility.png" class="icon-space" width="24" height="24" alt="Visibility icon">
           Page Visibility
         </a>
 
         <a mat-list-item [routerLink]="['/wakelock']" (click)="toggleOnNavigation()">
-          <mat-icon class="icon-space" aria-label="app_blocking icon">app_blocking</mat-icon>
+          <img src="assets/icons/app_blocking.png" class="icon-space" width="24" height="24" alt="app_blocking icon">
           Wake Lock
         </a>
 
         <a mat-list-item [routerLink]="['/share']" (click)="toggleOnNavigation()">
-          <mat-icon class="icon-space" aria-label="share icon">share</mat-icon>
+          <img src="assets/icons/share.png" class="icon-space" width="24" height="24" alt="Share icon">
           Web Share
         </a>
 
         <a mat-list-item [routerLink]="['/vibrate']" (click)="toggleOnNavigation()">
-          <mat-icon class="icon-space" aria-label="viration icon">vibration</mat-icon>
+          <img src="assets/icons/vibration.png" class="icon-space" width="24" height="24" alt="vibration icon">
           Vibration
         </a>
 
         <a mat-list-item [routerLink]="['/light']" (click)="toggleOnNavigation()">
-          <mat-icon class="icon-space" aria-label="highlight icon">highlight</mat-icon>
+          <img src="assets/icons/highlight.png" class="icon-space" width="24" height="24" alt="highlight icon">
           Ambient Light
         </a>
 
         <a mat-list-item [routerLink]="['/file']" (click)="toggleOnNavigation()">
-          <mat-icon class="icon-space" aria-label="Native File System icon">article</mat-icon>
+          <img src="assets/icons/article.png" class="icon-space" width="24" height="24" alt="Native File System icon">
           File System
         </a>
 
         <a mat-list-item [routerLink]="['/contacts']" (click)="toggleOnNavigation()">
-          <mat-icon class="icon-space" aria-label="Contact picker icon">perm_contact_calendar</mat-icon>
+          <img src="assets/icons/contact.png" class="icon-space" width="24" height="24" alt="Contacts icon">
           Contact Picker
         </a>
 
         <a mat-list-item [routerLink]="['/offline']" (click)="toggleOnNavigation()">
-          <mat-icon class="icon-space" aria-label="Offline icon">signal_wifi_off</mat-icon>
+          <img src="assets/icons/signal_wifi.png" class="icon-space" width="24" height="24" alt="Wifi icon">
           Offline/Online
         </a>
       </mat-nav-list>

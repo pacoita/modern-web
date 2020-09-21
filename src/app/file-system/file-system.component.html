@@ -7,7 +7,7 @@
       We can even implement an auto-save functionality.
       <br><br>
       <span class="flex-centered">
-        <mat-icon class="icon-space" aria-label="warning icon">warning</mat-icon>
+        <img src="assets/icons/warning.png" class="icon-space" width="24" height="24" alt="warning icon">
         Still experimental
       </span>
       Enable the <cite><strong>Native File System</strong></cite> flag in Chrome to test it (chrome://flags/#native-file-system-api).
@@ -20,15 +20,15 @@
     </p>
     <div class="action-bar">
       <button mat-raised-button (click)="openFile()">
-        <mat-icon class="icon-space">folder_open</mat-icon>
+        <img src="assets/icons/folder_open.png" class="icon-space" width="24" height="24" alt="folder_open icon">
         Open
       </button>
       <button mat-raised-button (click)="saveAs(textbox.value)">
-        <mat-icon class="icon-space">playlist_add</mat-icon>
+        <img src="assets/icons/playlist_add.png" class="icon-space" width="24" height="24" alt="playlist_add icon">
         Save as
       </button>
       <button *ngIf="fileHandle" color="primary" mat-raised-button (click)="saveFile(textbox.value)">
-        <mat-icon class="icon-space">save</mat-icon>
+        <img src="assets/icons/save.png" class="icon-space" width="24" height="24" alt="save icon">
         Save
       </button>
     </div>

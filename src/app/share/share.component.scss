@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 .cards-container {
   display: flex;
   justify-content: space-evenly;
@@ -9,7 +9,8 @@
     top: 1rem;
     right: 1rem;
   }
-  img {
+  .content-img {
+    width: 50%;
     min-height: 238px;
   }
   ul {
