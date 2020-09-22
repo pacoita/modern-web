@@ -10,8 +10,9 @@ export class LightComponent implements OnInit {
   supportedText: string | undefined;
   errorText: string | undefined;
   luxValue: number | undefined;
+  private sensor: any;
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+  constructor(private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     if ('AmbientLightSensor' in window) {
@@ -24,8 +25,8 @@ export class LightComponent implements OnInit {
 
   private readAmbientLight(): void {
     try {
-      const sensor = new (window as any).AmbientLightSensor();
-      sensor.onerror = async (event: any) => {
+      this.sensor = this.sensor ?? new (window as any).AmbientLightSensor();
+      this.sensor.onerror = async (event: any) => {
         // Ask for permissions if not granted yet
         if (event.error.name === 'NotAllowedError') {
           // The permission object here provides access to the Permissions API functionality :)
@@ -44,10 +45,10 @@ export class LightComponent implements OnInit {
         }
         this.luxValue = undefined;
       };
-      sensor.onreading = () => {
-        this.updateTheme(sensor.illuminance);
+      this.sensor.onreading = () => {
+        this.updateTheme(this.sensor.illuminance);
       };
-      sensor.start();
+      this.sensor.start();
     } catch (err) {
       this.errorText = `${err.name} -- ${err.message}`;
     }
@@ -55,9 +56,9 @@ export class LightComponent implements OnInit {
 
   private updateTheme(luxValue: number): void {
     /*
-    10 ~ 50 lux  Dim Environment
+    10 ~ 50 lux     Dark Environment
     100 ~ 1000 lux  Normal
-    > 10000 lux  Bright
+    > 10000 lux     Bright Environment
     */
     if (luxValue <= 50) {
       this.ambient = 'dark';

@@ -12,12 +12,12 @@ export class WakeLockComponent implements OnInit, OnDestroy {
   reGetLock = false;
   unsupportedText: string | undefined;
   errorText: string | undefined;
-  private wakeLock: any;
+  private wakeLockSentinel: any;
 
+  // The Visibility API triggers this event
   @HostListener('document:visibilitychange', ['$event'])
   private async onVisibilyChange(event: Event): Promise<void> {
-    // The Visibility API triggers this event
-    if (this.wakeLock !== null && document.visibilityState === 'visible' && this.reGetLock) {
+    if (this.wakeLockSentinel !== null && document.visibilityState === 'visible' && this.reGetLock) {
       await this.requestWakeLock();
       console.log('Wake Lock has been reacquired');
     }
@@ -35,10 +35,10 @@ export class WakeLockComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // The lock would be release anyway when the tab/window is not visible anymore
     this.releaseLock();
   }
 
+  // The wake lock can be requested ONLY after a user interaction (eg. mouse click)
   async lockEnabledChange(lockEnabled: boolean): Promise<void> {
     if (lockEnabled) {
       await this.requestWakeLock();
@@ -50,23 +50,22 @@ export class WakeLockComponent implements OnInit, OnDestroy {
 
   /**
    * Request a screen wake lock
-   * @returns WakeLockSentinel object
    */
   private async requestWakeLock(): Promise<void> {
     try {
-      // 'screen' is currently the only type of wake lock. 'system' type is not provided anymore.
-      this.wakeLock = await (navigator as any).wakeLock.request('screen');
+      // 'screen' is currently the only type of wake lock.
+      // 'system' type, preventing the CPU to suspend, has been removed.
+      this.wakeLockSentinel = await (navigator as any).wakeLock.request('screen');
 
       // The screen wake lock is released when we minimize a tab/window
       // or navigate away when a screen wake lock is active.
-      this.wakeLock.addEventListener('release', () => {
+      this.wakeLockSentinel.addEventListener('release', () => {
         this.isSentinelActive = false;
-        // The wake lock has been released if we leave or minimise the current page.
         console.log('Wake Lock has been released...');
       });
       this.isSentinelActive = true;
     } catch (err) {
-      // The browser can refuse the request if the device has low battery, for instance.
+      // The browser can refuse the wake lock request if the device has low battery, for instance.
       this.isSentinelActive = false;
       this.errorText = `${err.name}, ${err.message}`;
     }
@@ -76,10 +75,10 @@ export class WakeLockComponent implements OnInit, OnDestroy {
    * Release the screen wake lock
    */
   private releaseLock(): void {
-    this.wakeLock?.release().then(() => {
-        this.wakeLock = null;
-        this.isSentinelActive = false;
-      })
+    this.wakeLockSentinel?.release().then(() => {
+      this.wakeLockSentinel = null;
+      this.isSentinelActive = false;
+    })
       .catch((err: any) => (this.errorText = `${err.name}, ${err.message}`));
   }
 }

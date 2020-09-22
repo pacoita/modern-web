@@ -16,8 +16,6 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
   textarea!: ElementRef;
   textAreaElement!: HTMLTextAreaElement;
 
-  // TODO: Autosave checkbox (?)
-
   constructor() {}
 
   ngOnInit(): void {
@@ -34,13 +32,13 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
   async openFile(): Promise<any> {
     try {
       // By opening a file, the user grants READ permission
-      // Chrome 86+ will allow to grant READ + WRITE permissions
+      // Chrome 86+ will allow to grant READ + WRITE permissions at once
       this.fileHandle = await window.chooseFileSystemEntries({
         // 'open-file' (default) gives us an open file dialog
         type: 'open-file',
         accepts: [
           {
-            description: 'Text files',
+            description: 'Text files only',
             mimeTypes: ['text/plain'],
             extensions: ['txt'],
           },
@@ -58,13 +56,13 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
 
   async saveAs(fileText: string): Promise<void> {
     try {
-      // Save dialog grants WRITE permission over the file
+      // Save dialog grants WRITE permission
       this.fileHandle = await window.chooseFileSystemEntries({
-        // 'save-file' gives us a file save dialog. Again we accept only txt files here.
+        // 'save-file' gives us a file save dialog.
         type: 'save-file',
         accepts: [
           {
-            description: 'Text files',
+            description: 'Text files only',
             mimeTypes: ['text/plain'],
             extensions: ['txt'],
           },
@@ -86,6 +84,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
         return await this.saveAs(fileText);
       }
     } catch (error) {
+      // If the user doesn't grant WRITE permissions a DOMException is triggered
       this.errorText = error.message;
       console.error(error.name, error.message);
     }
@@ -94,12 +93,12 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
   private async writeTextFile(fileHandle: FileSystemFileHandle, fileText: string): Promise<void> {
     // Creates a writeable stream.
     // Chrome first checks if the user has granted write permission to the file
-    const writeable = fileHandle.createWritable();
+    const writeable = await fileHandle.createWritable();
 
     // Write the textarea content to the stream.
-    (await writeable).write(fileText);
+    writeable.write(fileText);
 
     // No changes are written to the disk until we close the stream!
-    (await writeable).close();
+    writeable.close();
   }
 }
