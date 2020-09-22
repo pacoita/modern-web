@@ -22,7 +22,6 @@
   </button>
   <div class="cards-container">
     <mat-card *ngFor="let contact of contacts">
-      contact {{ contact | json}}
       <mat-card-header>
         <div *ngIf="contact?.icon?.length">
           <ng-container *ngIf="getObjectUrl(contact.icon) as imageUrl; else defaultIcon">

@@ -25,16 +25,6 @@
           Wake Lock
         </a>
 
-        <a mat-list-item [routerLink]="['/share']" (click)="toggleOnNavigation()">
-          <mat-icon class="icon-space" aria-label="share icon">share</mat-icon>
-          Web Share
-        </a>
-
-        <a mat-list-item [routerLink]="['/vibrate']" (click)="toggleOnNavigation()">
-          <mat-icon class="icon-space" aria-label="viration icon">vibration</mat-icon>
-          Vibration
-        </a>
-
         <a mat-list-item [routerLink]="['/light']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="highlight icon">highlight</mat-icon>
           Ambient Light
@@ -43,6 +33,11 @@
         <a mat-list-item [routerLink]="['/file']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="Native File System icon">article</mat-icon>
           File System
+        </a>
+        
+        <a mat-list-item [routerLink]="['/share']" (click)="toggleOnNavigation()">
+          <mat-icon class="icon-space" aria-label="share icon">share</mat-icon>
+          Web Share
         </a>
 
         <a mat-list-item [routerLink]="['/contacts']" (click)="toggleOnNavigation()">
@@ -53,6 +48,10 @@
         <a mat-list-item [routerLink]="['/offline']" (click)="toggleOnNavigation()">
           <mat-icon class="icon-space" aria-label="Offline icon">signal_wifi_off</mat-icon>
           Offline/Online
+        </a>
+        <a mat-list-item [routerLink]="['/vibrate']" (click)="toggleOnNavigation()">
+          <mat-icon class="icon-space" aria-label="viration icon">vibration</mat-icon>
+          Vibration
         </a>
       </mat-nav-list>
     </mat-sidenav>

@@ -2,10 +2,13 @@ section {
   .online {
     background-color: #0080009e;
   }
+
   .offline {
     background-color: #f44336a3;
   }
+
   .img-center {
+    height: 150px;
     margin: 2rem auto;
     text-align: center;
   }
