@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -6,8 +6,7 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './visibility.component.html',
   styleUrls: ['./visibility.component.scss']
 })
-export class VisibilityComponent implements OnInit, AfterViewInit {
-  apiSupported = false;
+export class VisibilityComponent implements AfterViewInit {
 
   @ViewChild('videoElement')
   videoElement: ElementRef | undefined;
@@ -25,18 +24,12 @@ export class VisibilityComponent implements OnInit, AfterViewInit {
       console.log('Video is playing again.');
     }
   }
-  constructor(private titleService: Title ) {
+  constructor(private titleService: Title) {
     this.titleService.setTitle('Visibility');
   }
 
-  ngOnInit(): void {
-    if (typeof document.hidden !== 'undefined') {
-      this.apiSupported = true;
-    }
-  }
-
   ngAfterViewInit(): void {
-    if (this.apiSupported === undefined) {
+    if (typeof document.hidden === undefined) {
       alert('Your browser does not support Page Visibility API.');
     } else {
       // Updates the page title according to the video status.
@@ -44,13 +37,12 @@ export class VisibilityComponent implements OnInit, AfterViewInit {
       this.nativeElement?.addEventListener(
         'pause', () => {
           document.title = 'Pause!';
-        }, false
+        }
       );
       this.nativeElement?.addEventListener(
         'play', () => {
           document.title = 'Play!';
-        },
-        false
+        }
       );
     }
   }

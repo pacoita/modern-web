@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
+
+interface IAddress {
+  addressLine: string;
+  city: string;
+  country: string;
+  postalCode: string;
+}
+
 @Component({
   selector: 'app-contact-picker',
   templateUrl: './contact-picker.component.html',
@@ -45,8 +53,9 @@ export class ContactPickerComponent implements OnInit {
     }
   }
 
-  formatAddresses(addresses: any[]): string {
-    // We take only the first address
-    return JSON.stringify(addresses[0]);
+  formatAddresses(addresses: IAddress[]): string {
+    // We take only the first available address
+    const address = addresses[0];
+    return `${address?.addressLine} ${address?.city} ${address?.postalCode} ${address?.country}`;
   }
 }
