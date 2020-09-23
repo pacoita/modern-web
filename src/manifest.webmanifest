@@ -20,32 +20,26 @@
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-128x128.png",
-      "sizes": "128x128",
+      "src": "assets/icons/icon-170x170.png",
+      "sizes": "170x170",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-144x144.png",
-      "sizes": "144x144",
+      "src": "assets/icons/icon-202x202.png",
+      "sizes": "202x202",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-152x152.png",
-      "sizes": "152x152",
+      "src": "assets/icons/icon-256x256.png",
+      "sizes": "256x256",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "assets/icons/icon-512x512.png",
-      "sizes": "512x512",
+      "src": "assets/icons/icon-682x682.png",
+      "sizes": "682x682",
       "type": "image/png",
       "purpose": "maskable any"
     }
