@@ -1,15 +1,29 @@
+@import '../../styles/variables';
 section {
   .online {
-    background-color: #0080009e;
+    background-color: $onlineGreen;
   }
 
   .offline {
-    background-color: #f44336a3;
+    background-color: $offlineRed;
   }
 
   .img-center {
     height: 150px;
     margin: 2rem auto;
     text-align: center;
+  }
+
+  .img-source {
+    font-size: 0.7rem;
+    margin-top: 1rem;
+    a {
+      text-decoration: none;
+      &:visited,
+      &:hover,
+      &:active {
+        color: $grayDark;
+      }
+    }
   }
 }

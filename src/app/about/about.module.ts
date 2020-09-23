@@ -1,3 +1,4 @@
+import { NgMaterialModule } from './../ng-material/ng-material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +10,8 @@ import { AboutComponent } from './about.component';
   declarations: [AboutComponent],
   imports: [
     CommonModule,
-    AboutRoutingModule
+    AboutRoutingModule,
+    NgMaterialModule
   ]
 })
 export class AboutModule { }

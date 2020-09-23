@@ -1,0 +1,28 @@
+section {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  h1 {
+    text-align: center;
+  }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+    a:first-child {
+      margin-right: 2rem;
+    }
+  }
+
+  .img-wrap {
+    text-align: center;
+    img {
+      border-radius: 40%;
+      width: 200px;
+    }
+  }
+  h3 {
+    margin-top: 1.5rem;
+  }
+}
