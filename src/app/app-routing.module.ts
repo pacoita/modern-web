@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'wakelock', loadChildren: () => import('./wake-lock/wake-lock.module').then(m => m.WakeLockModule) },
   { path: 'visibility', loadChildren: () => import('./visibility/visibility.module').then(m => m.VisibilityModule) },
   { path: 'share', loadChildren: () => import('./share/share.module').then(m => m.ShareModule) },
@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'contacts', loadChildren: () => import('./contact-picker/contact-picker.module').then(m => m.ContactPickerModule) },
   { path: 'offline', loadChildren: () => import('./offline/offline.module').then(m => m.OfflineModule) },
   { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) },
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home'}
 ];
 
