@@ -13,7 +13,7 @@ Keep in mind that, being some APIs still in an experimental phase, you might nee
 
 The application is a Progressive Web App (PWA), installable on your device. 
 
-On **desktop machines** you can install the app lcoally by clicking in the *install* icon in the browser address bar (the image below shows the icon in Chrome):
+On **desktop machines** you can install the app locally by clicking in the *install* icon in the browser address bar (the image below shows the icon in Chrome):
 <p align="center">
 <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--ujOImKwb--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/0v3mf9jqinssq2qiy6h6.png" alt="Desktop Install">
 </p> 
