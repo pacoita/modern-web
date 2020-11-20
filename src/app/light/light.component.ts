@@ -29,10 +29,12 @@ export class LightComponent implements OnInit {
       this.sensor.onerror = async (event: any) => {
         // Ask for permissions if not granted yet
         if (event.error.name === 'NotAllowedError') {
+
           // The permission object here provides access to the Permissions API functionality :)
           const result = await navigator.permissions.query({
             name: 'ambient-light-sensor',
           });
+
           // state -> prompt | granted | denied
           if (result.state === 'denied') {
             this.errorText = 'Permission to access sensor was denied.';

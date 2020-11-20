@@ -11,6 +11,7 @@
           "/index.html",
           "/manifest.webmanifest",
           "/*.css",
+          "/assets/images/cat_offline.png",
           "/*.js"
         ]
       }
@@ -22,6 +23,7 @@
       "resources": {
         "files": [
           "/assets/**",
+          "!/assets/images/cat_offline.png",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
