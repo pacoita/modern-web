@@ -1,27 +1,30 @@
 # modern-web
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
+This project is an examples gallery showing the usage of some modern Browser APIs. 
 
-## Development server
+## Demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+You can test the different APIs with your device at: https://pacoita.github.io/modern-web/home
 
-## Code scaffolding
+⚠️ &nbsp; The browser support is displayed at the bottom of each API page. 
+Keep in mind that, being some APIs still in an experimental phase, you might need Chrome and to enable some `Chrome-flags` to test them properly. In each API description is reported all what you need to enable for testing.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## PWA Capabilities
 
-## Build
+The application is a Progressive Web App (PWA), installable on your device. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+On **desktop machines** you can install the app locally by clicking in the *install* icon in the browser address bar (the image below shows the icon in Chrome):
+<p align="center">
+<img src="https://res.cloudinary.com/practicaldev/image/fetch/s--ujOImKwb--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/0v3mf9jqinssq2qiy6h6.png" alt="Desktop Install">
+</p> 
 
-## Running unit tests
+Accessing the app with a **mobile device**, you should be automatically prompted to add the application to your device home screen.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+If you are interested in [learning more about PWAs](https://dev.to/paco_ita/a-gentle-introduction-to-progressive-web-apps-step-1-24da), have a look at the articles collection I wrote about this topic on the Dev.to portal.
 
-## Running end-to-end tests
+## What's coming next...
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+For each API, I am planning to create an [article](https://dev.to/paco_ita) describing in detail how to use it and its typical use cases.
+The project is still evolving and I am planning to add further APIs in the future, like: **Background Sync** and **web bluetooth**. 
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+If you are interested in knowing about the project status or when a new article has been published, follow me on [Twitter](https://twitter.com/paco_ITA) where I will post any update.
