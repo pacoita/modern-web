@@ -1,7 +1,15 @@
 @import 'variables';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; min-width: 350px; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  min-width: 350px;
+}
 
 section.content {
   max-width: $max-width;
@@ -31,6 +39,7 @@ div.mat-step-label.mat-step-label-active.mat-step-label-selected {
   background-color: #f3f3f3;
   margin-bottom: 2rem;
 }
+
 .demo-card {
   margin-top: 1rem;
   max-width: 400px;
@@ -43,6 +52,7 @@ div.mat-step-label.mat-step-label-active.mat-step-label-selected {
   .mat-card-content {
     padding: 1em;
   }
+
   hr {
     margin: 1em 0;
   }
@@ -52,14 +62,25 @@ div.mat-step-label.mat-step-label-active.mat-step-label-selected {
   // 2rem to align with the mat-card, having 1rem padding left/right
   max-width: calc(#{$max-width} + 2rem);
   margin-top: 2rem;
+
   h1 {
     margin-bottom: 0;
     font-size: 21px;
   }
+
   .img-container {
     text-align: center;
+
     img {
       width: 100%;
     }
   }
+}
+
+.link,
+.link:visited,
+.link:hover {
+  text-decoration: none;
+  font-weight: 500;
+  color: $materialBlue;
 }
