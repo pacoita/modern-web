@@ -10,7 +10,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class VibrationComponent implements OnInit {
   // Each value is in ms
-  // Vibrate - pause pattern
+  // "Vibrate - pause" values pattern
   correctAnswerPattern = [100, 30, 100, 30, 100];
   wrongAnswerPattern = [700];
 
@@ -27,8 +27,8 @@ export class VibrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // We don't check if ('vibrate' in navigator)
-    // as we want to show the quiz anyway -> Progressive enahncement!
+    // NB. We don't check if ('vibrate' in navigator)
+    // as we want to show the quiz anyway -> Progressive enhancement!
 
     this.firstFormGroup = this.fb.group({
       question: ['', Validators.required]

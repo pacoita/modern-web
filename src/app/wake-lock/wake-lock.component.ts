@@ -38,7 +38,7 @@ export class WakeLockComponent implements OnInit, OnDestroy {
     this.releaseLock();
   }
 
-  // The wake lock can be requested ONLY after a user interaction (eg. mouse click)
+  // 1. The wake lock can be requested ONLY after a user interaction (eg. mouse click)
   async lockEnabledChange(lockEnabled: boolean): Promise<void> {
     if (lockEnabled) {
       await this.requestWakeLock();
@@ -48,9 +48,7 @@ export class WakeLockComponent implements OnInit, OnDestroy {
     }
   }
 
-  /**
-   * Request a screen wake lock
-   */
+  // 2. Request a screen wake lock
   private async requestWakeLock(): Promise<void> {
     try {
       // 'screen' is currently the only type of wake lock.
@@ -72,13 +70,14 @@ export class WakeLockComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Release the screen wake lock
+   * 3. Release the screen wake lock
    */
   private releaseLock(): void {
-    this.wakeLockSentinel?.release().then(() => {
-      this.wakeLockSentinel = null;
-      this.isSentinelActive = false;
-    })
+    this.wakeLockSentinel?.release()
+      .then(() => {
+        this.wakeLockSentinel = null;
+        this.isSentinelActive = false;
+      })
       .catch((err: any) => (this.errorText = `${err.name}, ${err.message}`));
   }
 }

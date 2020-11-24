@@ -12,9 +12,12 @@
 
   <div class="instructions">
     <ng-container *ngIf="!unsupportedText; else noSupported">
-      <mat-checkbox class="enable-box" [(ngModel)]="lockEnabled" (ngModelChange)="lockEnabledChange($event)">Enable wake
-        lock</mat-checkbox>
-      <mat-checkbox *ngIf="lockEnabled" [(ngModel)]="reGetLock">Re-acquire wake lock</mat-checkbox>
+      <mat-checkbox class="enable-box" [(ngModel)]="lockEnabled" (ngModelChange)="lockEnabledChange($event)">
+        Enable wake lock
+      </mat-checkbox>
+      <mat-checkbox *ngIf="lockEnabled" [(ngModel)]="reGetLock">
+        Re-acquire wake lock
+      </mat-checkbox>
       <span class="api-status"
         [ngClass]="isSentinelActive ? 'active' : 'inactive'">{{isSentinelActive ? 'Wake sentinel active' : 'Wake sentinel inactive'}}</span>
       <span class="error-text">{{errorText}}</span>

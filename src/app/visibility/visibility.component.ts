@@ -32,7 +32,7 @@ export class VisibilityComponent implements AfterViewInit {
     if (typeof document.hidden === undefined) {
       alert('Your browser does not support Page Visibility API.');
     } else {
-      // Updates the page title according to the video status for the sake of demo.
+      // Updates the page title according to the video status for the sake of the demo.
       this.nativeElement = this.videoElement?.nativeElement;
       this.nativeElement?.addEventListener(
         'pause', () => {
