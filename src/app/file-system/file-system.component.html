@@ -1,7 +1,7 @@
 <section class="content">
-  <h1>Native File System API</h1>
+  <h1>File System Access API</h1>
   <mat-card class="descr-card">
-    <p>The <strong>Native File System API</strong> offers new features to manipulate local files providing an
+    <p>The <strong>File System Access API</strong> offers new features to manipulate local files providing an
       improved experience to our users like a native app.
       We don't have to download the file each time we want to edit it, but we can save it directly.
       We can even implement an auto-save functionality.
@@ -13,11 +13,10 @@
       <br>
       <span class="flex-centered">
         <img src="assets/icons/warning.png" class="icon-space" width="24" height="24" alt="warning icon">
-        Still experimental
+        Active by default from Chrome 86.
       </span>
-      Enable the <cite><strong>Native File System</strong></cite> flag in Chrome to test it
+      In older Chrome versions you might need to enable the related flag in Chrome to test it
       (chrome://flags/#native-file-system-api).
-      Active by default from Chrome 86.
     </p>
   </mat-card>
   <div class="native-demo" *ngIf="!unsupportedText; else noSupported">
