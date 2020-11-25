@@ -1,5 +1,6 @@
 import { ElementRef, AfterViewInit } from '@angular/core';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-file-system',
@@ -15,7 +16,9 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
   textarea!: ElementRef;
   textAreaElement!: HTMLTextAreaElement;
 
-  constructor() { }
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('File System');
+  }
 
   ngOnInit(): void {
     // Conditions valid until Chrome 85 and From v86 respectively

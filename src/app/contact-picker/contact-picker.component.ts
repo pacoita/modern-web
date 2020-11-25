@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 
 
 interface IAddress {
@@ -20,7 +20,9 @@ export class ContactPickerComponent implements OnInit {
 
   contacts: any[] = [];
 
-  constructor(private domSanitizer: DomSanitizer) {}
+  constructor(private domSanitizer: DomSanitizer, private titleService: Title) {
+    this.titleService.setTitle('Contact Picker');
+  }
 
   ngOnInit(): void {
     if (!('contacts' in navigator && 'ContactsManager' in window)) {

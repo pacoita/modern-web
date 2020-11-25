@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-offline',
@@ -6,7 +7,6 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./offline.component.scss']
 })
 export class OfflineComponent {
-
   clientOnline = true;
 
   @HostListener('window:offline', ['$event'])
@@ -17,5 +17,9 @@ export class OfflineComponent {
   @HostListener('window:online', ['$event'])
   private onOnline(event: Event): void {
     this.clientOnline = true;
+  }
+
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Online Events');
   }
 }

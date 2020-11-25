@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-light',
@@ -12,7 +13,9 @@ export class LightComponent implements OnInit {
   luxValue: number | undefined;
   private sensor: any;
 
-  constructor(private cdRef: ChangeDetectorRef) { }
+  constructor(private cdRef: ChangeDetectorRef, private titleService: Title) {
+    this.titleService.setTitle('Ambient light');
+  }
 
   ngOnInit(): void {
     if ('AmbientLightSensor' in window) {

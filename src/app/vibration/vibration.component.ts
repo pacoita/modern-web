@@ -10,7 +10,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class VibrationComponent implements OnInit {
   // Each value is in ms
-  // "Vibrate - pause" values pattern
+  // "Vibrate - Pause" values pattern
   correctAnswerPattern = [100, 30, 100, 30, 100];
   wrongAnswerPattern = [700];
 
@@ -23,7 +23,7 @@ export class VibrationComponent implements OnInit {
   answers: boolean[] = [];
 
   constructor(private fb: FormBuilder, private titleService: Title ) {
-    this.titleService.setTitle('Vibrate');
+    this.titleService.setTitle('Vibration');
   }
 
   ngOnInit(): void {
