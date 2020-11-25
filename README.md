@@ -1,6 +1,6 @@
 # modern-web
 
-This project is an examples gallery showing the usage of some modern Browser APIs. 
+This project is an examples gallery showing the usage of some modern browser APIs. 
 
 ## Demo
 
@@ -25,6 +25,6 @@ If you are interested in [learning more about PWAs](https://dev.to/paco_ita/a-ge
 ## What's coming next...
 
 For each API, I am goign to create some articles describing in detail how to use it and its typical use cases.
-The project is still evolving and I am planning to add further APIs in the future, like: **Background Sync** and **Web Bluetooth**. 
+The project is still evolving and I am planning to add further APIs in the future. 
 
 If you are interested in knowing about the project status or when a new article has been published, follow me on [Twitter](https://twitter.com/paco_ITA) where I will post any update.
