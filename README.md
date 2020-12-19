@@ -28,3 +28,7 @@ For each API, I am goign to create some articles describing in detail how to use
 The project is still evolving and I am planning to add further APIs in the future. 
 
 If you are interested in knowing about the project status or when a new article has been published, follow me on [Twitter](https://twitter.com/paco_ITA) where I will post any update.
+
+### Published articles:
+
+- **Vibration API** on [Dev.to](https://dev.to/paco_ita/enhance-your-web-apps-with-a-vibration-43pl) and [Hashnode](https://modern-web.hashnode.dev/vibration-api)
