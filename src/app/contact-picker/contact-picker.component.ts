@@ -32,11 +32,12 @@ export class ContactPickerComponent implements OnInit {
   }
 
   async selectContacts(): Promise<void> {
-    // Available fields: 'name', 'email', 'tel', 'address', 'icon'
-    // Nb. address and icon fields available only in Chrome 84+
+    // 'getProperties' dynamically returns the available contact properties
+    // const fields = await (navigator as any).contacts.getProperties();
 
-    // Dynamically returns the available contact properties
-    const fields = await (navigator as any).contacts.getProperties();
+    // Nb. address and icon fields available only in Chrome 84+
+    // 'name', 'email', 'tel', 'address', 'icon'
+    const fields = ['name', 'address', 'icon'];
     const options = { multiple: true };
     try {
       this.contacts = await (navigator as any).contacts.select(fields, options);
