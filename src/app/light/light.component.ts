@@ -30,7 +30,6 @@ export class LightComponent implements OnInit {
     try {
       this.sensor = this.sensor ?? new (window as any).AmbientLightSensor();
       this.sensor.onerror = async (event: any) => {
-
         // Ask for permissions if not granted yet
         if (event.error.name === 'NotAllowedError') {
 
@@ -51,9 +50,13 @@ export class LightComponent implements OnInit {
         }
         this.luxValue = undefined;
       };
+
+      // Light values changes will be registered as they occurr
       this.sensor.onreading = () => {
         this.updateTheme(this.sensor.illuminance);
       };
+
+      // We start "reading" light values
       this.sensor.start();
     } catch (err) {
       this.errorText = `${err.name} -- ${err.message}`;

@@ -48,18 +48,6 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
       console.error(error.name, error.message);
     }
   }
-
-  async saveAs(fileText: string): Promise<void> {
-    try {
-      // Save dialog grants WRITE permission
-      this.fileHandle = await this.getNewFileHandle();
-      await this.writeTextFile(this.fileHandle, fileText);
-    } catch (error) {
-      this.errorText = error.message;
-      console.error(error.name, error.message);
-    }
-  }
-
   async saveFile(fileText: string): Promise<void> {
     try {
       if (this.fileHandle) {
@@ -70,6 +58,17 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
       }
     } catch (error) {
       // If the user doesn't grant WRITE permission a DOMException is triggered
+      this.errorText = error.message;
+      console.error(error.name, error.message);
+    }
+  }
+
+  async saveAs(fileText: string): Promise<void> {
+    try {
+      // Save dialog grants WRITE permission
+      this.fileHandle = await this.getNewFileHandle();
+      await this.writeTextFile(this.fileHandle, fileText);
+    } catch (error) {
       this.errorText = error.message;
       console.error(error.name, error.message);
     }

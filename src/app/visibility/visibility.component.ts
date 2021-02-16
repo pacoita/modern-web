@@ -13,7 +13,7 @@ export class VisibilityComponent implements AfterViewInit {
 
   nativeElement: HTMLVideoElement | undefined;
 
-  // Play/pause the video according to the document visibility state.
+  // 1. Play/pause the video according to the document visibility state.
   @HostListener('document:visibilitychange', ['$event'])
   private onVisibilyChange(event: Event): void {
     if (document.hidden) {
@@ -32,7 +32,7 @@ export class VisibilityComponent implements AfterViewInit {
     if (typeof document.hidden === undefined) {
       alert('Your browser does not support Page Visibility API.');
     } else {
-      // Updates the page title according to the video status for the sake of the demo.
+      // 2. Updates the page title according to the video status for the sake of the demo.
       this.nativeElement = this.videoElement?.nativeElement;
       this.nativeElement?.addEventListener(
         'pause', () => {

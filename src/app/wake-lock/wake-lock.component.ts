@@ -34,15 +34,12 @@ export class WakeLockComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    this.releaseLock();
-  }
-
   // 1. The wake lock can be requested ONLY after a user interaction (eg. mouse click)
   async lockEnabledChange(lockEnabled: boolean): Promise<void> {
     if (lockEnabled) {
       await this.requestWakeLock();
     } else {
+      // Checkbox is cleared --> release lock
       this.reGetLock = false;
       this.releaseLock();
     }
@@ -55,12 +52,16 @@ export class WakeLockComponent implements OnInit, OnDestroy {
       // 'system' type, preventing the CPU to suspend, has been removed.
       this.wakeLockSentinel = await (navigator as any).wakeLock.request('screen');
 
-      // The screen wake lock is released when we minimize a tab/window
-      // or navigate away when a screen wake lock is active.
+      // 3. From this moment we have the screen lock!
+
+      // The screen wake lock is automatically released when we minimize a window
+      // or open a new browser tab when a screen wake lock is active.
       this.wakeLockSentinel.addEventListener('release', () => {
         this.isSentinelActive = false;
         console.log('Wake Lock has been released...');
       });
+
+      // Variable used only to show the label in the UI
       this.isSentinelActive = true;
     } catch (err) {
       // The browser can refuse the wake lock request if the device has low battery, for instance.
@@ -70,7 +71,7 @@ export class WakeLockComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * 3. Release the screen wake lock
+   * 4. Release the screen wake lock
    */
   private releaseLock(): void {
     this.wakeLockSentinel?.release()
@@ -79,5 +80,8 @@ export class WakeLockComponent implements OnInit, OnDestroy {
         this.isSentinelActive = false;
       })
       .catch((err: any) => (this.errorText = `${err.name}, ${err.message}`));
+  }
+  ngOnDestroy(): void {
+    this.releaseLock();
   }
 }
