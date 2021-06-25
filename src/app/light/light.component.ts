@@ -51,7 +51,7 @@ export class LightComponent implements OnInit {
         this.luxValue = undefined;
       };
 
-      // Light values changes will be registered as they occurr
+      // Light value changes will be registered 
       this.sensor.onreading = () => {
         this.updateTheme(this.sensor.illuminance);
       };
