@@ -51,4 +51,20 @@
   <ng-container *ngIf="statusText">
     <h2>{{statusText}}</h2>
   </ng-container>
+<div class="accordion-container">
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h1>Browser compatibility</h1>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="img-container">
+        <img src="assets/images/contacts-picker.png" alt="Contact Picker api support">
+      </div>
+      <br /><br />
+      <a href="https://caniuse.com/https://caniuse.com/mdn-api_contactsmanager" target="_blank">Source: can I use</a>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
 </section>

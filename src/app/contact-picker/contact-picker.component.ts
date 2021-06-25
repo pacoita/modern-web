@@ -27,7 +27,7 @@ export class ContactPickerComponent implements OnInit {
   ngOnInit(): void {
     if (!('contacts' in navigator && 'ContactsManager' in window)) {
       this.supported = false;
-      this.statusText = 'Your browser does not support Contact Picker API';
+      this.statusText = 'Your browser does not support the Contact Picker API';
     }
   }
 
