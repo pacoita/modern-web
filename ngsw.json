@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1624616235616,
+  "timestamp": 1624617047094,
   "index": "/modern-web/index.html",
   "assetGroups": [
     {
@@ -116,7 +116,7 @@
     "/modern-web/assets/icons/icon-96x96.png": "1b1ff56a7822caf0e30d817714b638a68514f477",
     "/modern-web/assets/icons/lock.png": "408cc8bbd56052344987b68cdcd41f2b05ccf6db",
     "/modern-web/assets/icons/menu.png": "a8544129f5fc72c0ab69cc722f27857fceb3d8d3",
-    "/modern-web/assets/icons/person.png": "2349e6bdff8d0fd268dbf6fe3b1c3f110ee6bc91",
+    "/modern-web/assets/icons/person.png": "b290ba53e782f5609afb7cc06cce757a4f08a5db",
     "/modern-web/assets/icons/phone.png": "32449ef60deabb18fb585913d9eea2e9aafa0338",
     "/modern-web/assets/icons/place.png": "0fe45c65e1fc623e7398aa156d289feac06a301c",
     "/modern-web/assets/icons/playlist_add.png": "a5366c67b48e7daa31abdbee117391c6efc332fd",
