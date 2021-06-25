@@ -43,11 +43,13 @@
             <h1>Browser compatibility</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="img-container">
-          <img src="assets/images/ambientlight.png" alt="Ambient Light Sensor api support">
-        </div>
-        <br /><br />
-        <a href="https://caniuse.com/?search=ambient%20light" target="_blank">Source: can I use</a>
+        <ng-template matExpansionPanelContent>
+          <div class="img-container">
+            <img src="assets/images/ambientlight.png" alt="Ambient Light Sensor api support">
+          </div>
+          <br /><br />
+          <a href="https://caniuse.com/?search=ambient%20light" target="_blank">Source: can I use</a>
+        </ng-template>
       </mat-expansion-panel>
     </mat-accordion>
   </div>

@@ -38,7 +38,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
       // Chrome 86+ allows to grant READ + WRITE permissions at once
 
       // NB. We keep the fileHandle reference for later use (eg. save the file)
-      this.fileHandle = await this.getExistingFileHandle();
+      this.fileHandle = await this.getFileHandle();
 
       // Returns a File object representing the selected file on disk
       const openedFile = await this.fileHandle.getFile();
@@ -86,7 +86,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
     writeable.close();
   }
 
-  private getExistingFileHandle(): Promise<FileSystemFileHandle> {
+  private getFileHandle(): Promise<FileSystemFileHandle> {
     const options = this.getFilePickerOptions();
 
     // Chrome 86+

@@ -18,7 +18,7 @@
       <mat-card-header>
         <mat-card-title>Cosmopolitan</mat-card-title>
         <button class="share-btn" mat-mini-fab color="primary" aria-label="Share icon" [disabled]="unsupportedText" (click)="share('Cosmopolitan')">
-          <img src="assets/icons/share.png" class="icon-space" width="24" height="24" alt="share icon">
+          <img src="assets/icons/share_white.png" width="24" height="24" alt="share icon">
         </button>
         <div>
           <img src="assets/images/cosmo.png" class="content-img" alt="Cosmopolitan">
@@ -49,7 +49,7 @@
       <mat-card-header>
         <mat-card-title>Manhattan</mat-card-title>
         <button class="share-btn" mat-mini-fab color="primary" aria-label="Share icon" [disabled]="unsupportedText"  (click)="share('Manhattan')">
-          <img src="assets/icons/share.png" class="icon-space" width="24" height="24" alt="share icon">
+          <img src="assets/icons/share_white.png" width="24" height="24" alt="share icon">
         </button>
         <div>
           <img src="assets/images/manhattan.png" class="content-img" alt="Manhattan">
@@ -85,11 +85,13 @@
             <h1>Browser compatibility</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="img-container">
-          <img src="assets/images/share.png" alt="Share api support">
-        </div>
-        <br><br>
-        <a href="https://caniuse.com/web-share" target="_blank">Source: can I use</a>
+        <ng-template matExpansionPanelContent>
+          <div class="img-container">
+            <img src="assets/images/share.png" alt="Share api support">
+          </div>
+          <br><br>
+          <a href="https://caniuse.com/web-share" target="_blank">Source: can I use</a>
+        </ng-template>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
