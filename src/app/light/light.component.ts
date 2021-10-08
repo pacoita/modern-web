@@ -29,13 +29,16 @@ export class LightComponent implements OnInit {
   private readAmbientLight(): void {
     try {
       this.sensor = this.sensor ?? new (window as any).AmbientLightSensor();
+
       this.sensor.onerror = async (event: any) => {
         // Ask for permissions if not granted yet
         if (event.error.name === 'NotAllowedError') {
+          // https://github.com/microsoft/TypeScript/issues/33923#issuecomment-911409125
+          const permissionName = 'ambient-light-sensor' as PermissionName;
 
-          // The "permissions" object provides access to the Permissions API functionality, yet another API :)
+          // The "permissions" object provides access to the Permissions API... yet another API :)
           const result = await navigator.permissions.query({
-            name: 'ambient-light-sensor',
+            name: permissionName,
           });
 
           // state -> prompt | granted | denied
@@ -51,14 +54,14 @@ export class LightComponent implements OnInit {
         this.luxValue = undefined;
       };
 
-      // Light value changes will be registered 
+      // Light value changes will be registered
       this.sensor.onreading = () => {
         this.updateTheme(this.sensor.illuminance);
       };
 
       // We start "reading" light values
       this.sensor.start();
-    } catch (err) {
+    } catch (err: any) {
       this.errorText = `${err.name} -- ${err.message}`;
     }
   }
