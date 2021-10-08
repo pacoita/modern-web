@@ -15,7 +15,7 @@ The application is a Progressive Web App (PWA), installable on your device.
 
 On **desktop machines** you can install the app locally by clicking in the *install* icon in the browser address bar (the image below shows the icon in Chrome):
 <p align="center">
-    <img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ug7peju22vtyfbrffg1k.PNG" alt="Desktop Install">
+    <img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3c9fvo5c7cx2hux9mlor.PNG" alt="Desktop Install">
 </p> 
 
 Accessing the app with a **mobile device**, you should be automatically prompted to add the application to your device home screen.
