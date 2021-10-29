@@ -69,10 +69,11 @@ export class WakeLockComponent implements OnInit, OnDestroy {
       });
 
       this.isSentinelActive = true;
-    } catch (err: any) {
+    } catch (err) {
       // The browser can refuse the wake lock request if the device has low battery, for instance.
       this.isSentinelActive = false;
-      this.errorText = `${err.name}, ${err.message}`;
+      this.errorText = `An error occurred.`;
+      console.error(err);      
     }
   }
 

@@ -21,8 +21,11 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    // Conditions valid until Chrome 85 and From v86 respectively
-    if (!('chooseFileSystemEntries' in window) && !('showOpenFilePicker' in window)) {
+    // Conditions valid until Chrome 85 and from v86 respectively
+    if (
+      !('chooseFileSystemEntries' in window) &&
+      !('showOpenFilePicker' in window)
+    ) {
       this.unsupportedText =
         'Your browser does not support File System Access API or you did not activate the Chrome flag.';
     }
@@ -35,16 +38,15 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
   async openFile(): Promise<any> {
     try {
       // By opening a file, the user grants READ + WRITE permissions at once (Chrome 86+)
-
       // NB. We keep the fileHandle reference for later use (eg. save the file)
       this.fileHandle = await this.getFileHandle();
 
       // Returns a File object representing the selected file on disk
       const openedFile = await this.fileHandle.getFile();
       this.textAreaElement.value = await openedFile.text();
-    } catch (error: any) {
-      this.errorText = error.message;
-      console.error(error.name, error.message);
+    } catch (error) {
+      this.errorText = (error as any).message;
+      console.error(error);
     }
   }
   async saveFile(fileText: string): Promise<void> {
@@ -55,10 +57,10 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
         // It is a brand new file, save it to a new file
         return await this.saveAs(fileText);
       }
-    } catch (error: any) {
+    } catch (error) {
       // If the user doesn't grant WRITE permission a DOMException is triggered
-      this.errorText = error.message;
-      console.error(error.name, error.message);
+      this.errorText = (error as any).message;
+      console.error(error);
     }
   }
 
@@ -67,13 +69,16 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
       // Save dialog grants WRITE permission
       this.fileHandle = await this.getNewFileHandle();
       await this.writeTextFile(this.fileHandle, fileText);
-    } catch (error: any) {
-      this.errorText = error.message;
-      console.error(error.name, error.message);
+    } catch (error) {
+      this.errorText = (error as any).message;
+      console.error(error);
     }
   }
 
-  private async writeTextFile(fileHandle: FileSystemFileHandle, textContent: string): Promise<void> {
+  private async writeTextFile(
+    fileHandle: FileSystemFileHandle,
+    textContent: string
+  ): Promise<void> {
     // Creates a writeable stream.
     // Chrome first checks if the user has granted WRITE permission to the file
     const writeable = await fileHandle.createWritable();
@@ -85,7 +90,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
     writeable.close();
   }
 
-  private getFileHandle(): Promise<FileSystemFileHandle> {
+  private async getFileHandle(): Promise<FileSystemFileHandle> {
     const options = this.getFilePickerOptions();
 
     // Chrome 86+
@@ -109,13 +114,17 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
     return window.chooseFileSystemEntries(options);
   }
 
-  private getFilePickerOptions(type: 'open-file' | 'save-file' = 'open-file'): any {
+  private getFilePickerOptions(
+    type: 'open-file' | 'save-file' = 'open-file'
+  ): any {
     if ('showSaveFilePicker' in window) {
       return {
-        types: [{
-          description: 'Text files',
-          accept: { 'text/plain': ['.txt'] },
-        }],
+        types: [
+          {
+            description: 'Text files',
+            accept: { 'text/plain': ['.txt'] },
+          },
+        ],
       };
     }
 
@@ -127,7 +136,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
           mimeTypes: ['text/plain'],
           extensions: ['txt'],
         },
-      ]
+      ],
     };
   }
 }

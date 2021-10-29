@@ -52,7 +52,7 @@ export class ContactPickerComponent implements OnInit {
       return this.domSanitizer.bypassSecurityTrustUrl(
         URL.createObjectURL(blobImg[0])
       ) as string;
-    } catch (err: any) {
+    } catch (err) {
       this.statusText = `${err.name} - ${err.message}`;
       return;
     }

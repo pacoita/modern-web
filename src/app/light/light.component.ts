@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-light',
   templateUrl: './light.component.html',
-  styleUrls: ['./light.component.scss']
+  styleUrls: ['./light.component.scss'],
 })
 export class LightComponent implements OnInit {
   ambient: 'dark' | 'bright' = 'bright';
@@ -61,8 +61,9 @@ export class LightComponent implements OnInit {
 
       // We start "reading" light values
       this.sensor.start();
-    } catch (err: any) {
-      this.errorText = `${err.name} -- ${err.message}`;
+    } catch (err) {
+      this.errorText = `An error occurred.`;
+      console.error(err);
     }
   }
 
