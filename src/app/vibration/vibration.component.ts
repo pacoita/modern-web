@@ -27,14 +27,14 @@ export class VibrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // NB. We don't check if ('vibrate' in navigator)
+    // NB. We don't check if the Vibration API is supported -> ('vibrate' in navigator)
     // as we want to show the quiz anyway -> Progressive enhancement!
 
     this.firstFormGroup = this.fb.group({
-      question: ['', Validators.required]
+      question: ['', Validators.required],
     });
     this.secondFormGroup = this.fb.group({
-      question: ['', Validators.required]
+      question: ['', Validators.required],
     });
   }
 

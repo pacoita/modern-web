@@ -34,8 +34,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
 
   async openFile(): Promise<any> {
     try {
-      // By opening a file, the user grants READ permission
-      // Chrome 86+ allows to grant READ + WRITE permissions at once
+      // By opening a file, the user grants READ + WRITE permissions at once (Chrome 86+)
 
       // NB. We keep the fileHandle reference for later use (eg. save the file)
       this.fileHandle = await this.getFileHandle();
@@ -43,7 +42,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
       // Returns a File object representing the selected file on disk
       const openedFile = await this.fileHandle.getFile();
       this.textAreaElement.value = await openedFile.text();
-    } catch (error) {
+    } catch (error: any) {
       this.errorText = error.message;
       console.error(error.name, error.message);
     }
@@ -56,7 +55,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
         // It is a brand new file, save it to a new file
         return await this.saveAs(fileText);
       }
-    } catch (error) {
+    } catch (error: any) {
       // If the user doesn't grant WRITE permission a DOMException is triggered
       this.errorText = error.message;
       console.error(error.name, error.message);
@@ -68,7 +67,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
       // Save dialog grants WRITE permission
       this.fileHandle = await this.getNewFileHandle();
       await this.writeTextFile(this.fileHandle, fileText);
-    } catch (error) {
+    } catch (error: any) {
       this.errorText = error.message;
       console.error(error.name, error.message);
     }

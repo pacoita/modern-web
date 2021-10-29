@@ -49,8 +49,10 @@ export class ContactPickerComponent implements OnInit {
   getObjectUrl(blobImg: Blob[]): string | undefined {
     try {
       // We take only one icon
-      return this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(blobImg[0])) as string;
-    } catch (err) {
+      return this.domSanitizer.bypassSecurityTrustUrl(
+        URL.createObjectURL(blobImg[0])
+      ) as string;
+    } catch (err: any) {
       this.statusText = `${err.name} - ${err.message}`;
       return;
     }
