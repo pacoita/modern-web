@@ -10,6 +10,9 @@ import { Title } from '@angular/platform-browser';
 export class FileSystemComponent implements OnInit, AfterViewInit {
   unsupportedText: string | undefined;
   errorText: string | undefined;
+
+  // TIP: We could persist the fileHandle locally in an IndexedDB in order to
+  // restore previously opened files or show the latest opened files.
   fileHandle: FileSystemFileHandle | undefined;
 
   @ViewChild('textbox')
@@ -92,8 +95,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
     fileHandle: FileSystemFileHandle,
     textContent: string
   ): Promise<void> {
-    // Creates a writeable stream.
-    // Chrome first checks if the user has granted WRITE permission to the file
+    // Creates a WRITABLE STREAM. Chrome first checks if the user has granted WRITE permission to the file
     const writeable = await fileHandle.createWritable();
 
     // Writes the textarea content to the stream.
