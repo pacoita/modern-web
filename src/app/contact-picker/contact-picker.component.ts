@@ -32,28 +32,30 @@ export class ContactPickerComponent implements OnInit {
   }
 
   async selectContacts(): Promise<void> {
-    // 'getProperties' dynamically returns the available contact properties
+    // 'getProperties' dynamically returns the available contact properties. Uncomment it to see them.
     // const fields = await (navigator as any).contacts.getProperties();
 
-    // Nb. address and icon fields available only in Chrome 84+
     // 'name', 'email', 'tel', 'address', 'icon'
     const fields = ['name', 'address', 'icon'];
     const options = { multiple: true };
     try {
+      // The select method opens the "contact picker" dialog
       this.contacts = await (navigator as any).contacts.select(fields, options);
     } catch (err) {
-      this.statusText = `${err.name} - ${err.message}`;
+      this.statusText = `An error occurred.`;
+      console.error(err);
     }
   }
 
   getObjectUrl(blobImg: Blob[]): string | undefined {
     try {
-      // We take only one icon
+      // We take only one icon here
       return this.domSanitizer.bypassSecurityTrustUrl(
         URL.createObjectURL(blobImg[0])
       ) as string;
     } catch (err) {
-      this.statusText = `${err.name} - ${err.message}`;
+      this.statusText = `An error occurred.`;
+      console.error(err);
       return;
     }
   }
