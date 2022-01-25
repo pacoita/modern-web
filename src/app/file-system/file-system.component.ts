@@ -35,13 +35,16 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
     this.textAreaElement = this.textarea.nativeElement as HTMLTextAreaElement;
   }
 
+  /**
+   * It opens an existing file, creating a fileHandle for it.
+   */
   async openFile(): Promise<any> {
     try {
-      // By opening a file, the user grants READ + WRITE permissions at once (Chrome 86+)
-      // NB. We keep the fileHandle reference for later use (eg. save the file)
+      // By opening a file, the user grants READ permissions at once (Chrome 86+)
+      // NB. We keep the fileHandle reference for later use (eg. save directly the file)
       this.fileHandle = await this.getFileHandle();
 
-      // Returns a File object representing the selected file on disk
+      // Returns a standard File object representing the selected file on disk
       const openedFile = await this.fileHandle.getFile();
       this.textAreaElement.value = await openedFile.text();
     } catch (error) {
@@ -49,6 +52,12 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
       console.error(error);
     }
   }
+
+  /**
+   * The text passed as parameter is saved on the existing file, using an existing fileHandle.
+   * If the fileHandle does not exist, a new file and the relative fileHandle will be created.
+   * @param fileText The text content
+   */
   async saveFile(fileText: string): Promise<void> {
     try {
       if (this.fileHandle) {
@@ -64,6 +73,10 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * It saves the text contento into a new file. A new fileHandle is generated.
+   * @param fileText The text content
+   */
   async saveAs(fileText: string): Promise<void> {
     try {
       // Save dialog grants WRITE permission
@@ -95,7 +108,9 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
 
     // Chrome 86+
     if ('showOpenFilePicker' in window) {
-      return window.showOpenFilePicker(options).then((handles: FileSystemFileHandle[]) => handles[0]);
+      return window
+        .showOpenFilePicker(options)
+        .then((handles: FileSystemFileHandle[]) => handles[0]);
     }
     // Chrome 85 and previous versions
     return window.chooseFileSystemEntries(options);
