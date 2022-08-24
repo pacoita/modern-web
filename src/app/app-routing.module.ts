@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'file', loadChildren: () => import('./file-system/file-system.module').then(m => m.FileSystemModule) },
   { path: 'contacts', loadChildren: () => import('./contact-picker/contact-picker.module').then(m => m.ContactPickerModule) },
   { path: 'offline', loadChildren: () => import('./offline/offline.module').then(m => m.OfflineModule) },
+  { path: 'battery', loadChildren: () => import('./battery/battery.module').then(m => m.BatteryModule) },
   { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home'}
