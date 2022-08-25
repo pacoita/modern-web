@@ -8,9 +8,9 @@ import { Title } from '@angular/platform-browser';
 })
 export class LightComponent implements OnInit {
   ambient: 'dark' | 'bright' = 'bright';
-  supportedText: string | undefined;
-  errorText: string | undefined;
-  luxValue: number | undefined;
+  supportedText?: string;
+  errorText?: string;
+  luxValue?: number;
   private sensor: any;
 
   constructor(private cdRef: ChangeDetectorRef, private titleService: Title) {

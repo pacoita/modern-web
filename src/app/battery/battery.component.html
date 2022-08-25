@@ -1,1 +1,56 @@
-<p>battery works!</p>
+<section class="content container">
+  <div class="warn-text">
+    <h1>Battery Status API</h1>
+  </div>
+  <mat-card class="descr-card">
+    TODO
+    <p>The <strong>AmbientLightSensor</strong> interface of the Sensor API returns the current level of the ambient
+      light around the hosting device.
+      <br /><br />
+      <span class="flex-centered">
+        <img src="assets/icons/warning.png" class="icon-space" width="24" height="24" alt="warning icon">
+        <span>Still experimental</span>
+      </span>
+      Enable the <cite><strong>generic sensor extra classes</strong></cite> flag in Chrome to test it
+      (chrome://flags/#enable-generic-sensor-extra-classes).
+    </p>
+  </mat-card>
+
+  <ng-container *ngIf="!supportedText; else noSupported">
+    <h2>{{errorText}}</h2>
+    <mat-card class="lux-card">
+      <mat-card-title>
+        <h1>Battery infos</h1>
+      </mat-card-title>
+      <ng-container *ngIf="batteryStats?.level; else notAvailable">
+        <br>
+        <h2>Battery level: {{batteryStats.level * 100}}%</h2>
+        <h2 *ngIf="chargingTime">chargingTime: {{chargingTime}} minutes</h2>
+        <h2 *ngIf="dischargingTime">dischargingTime: {{dischargingTime}} minutes</h2>
+      </ng-container>
+      <ng-template #notAvailable>N/A</ng-template>
+    </mat-card>
+  </ng-container>
+  <ng-template #noSupported>
+    <h2>{{supportedText}}</h2>
+  </ng-template>
+
+  <div class="accordion-container">
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1>Browser compatibility</h1>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <div class="img-container">
+            <img src="assets/images/ambientlight.png" alt="Ambient Light Sensor api support">
+          </div>
+          <br /><br />
+          <a href="https://caniuse.com/?search=ambient%20light" target="_blank">Source: can I use</a>
+        </ng-template>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</section>
