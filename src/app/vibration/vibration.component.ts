@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import * as jsonData from './solutions.json';
 import { Title } from '@angular/platform-browser';
 
@@ -14,15 +14,15 @@ export class VibrationComponent implements OnInit {
   correctAnswerPattern = [100, 30, 100, 30, 100];
   wrongAnswerPattern = [700];
 
-  firstFormGroup: FormGroup | undefined;
-  secondFormGroup: FormGroup | undefined;
+  firstFormGroup: UntypedFormGroup | undefined;
+  secondFormGroup: UntypedFormGroup | undefined;
 
   finalScore = 0;
 
   solutions: string[] = (jsonData as any).default.answers;
   answers: boolean[] = [];
 
-  constructor(private fb: FormBuilder, private titleService: Title ) {
+  constructor(private fb: UntypedFormBuilder, private titleService: Title ) {
     this.titleService.setTitle('Vibration');
   }
 
@@ -38,7 +38,7 @@ export class VibrationComponent implements OnInit {
     });
   }
 
-  verify(targetForm: FormGroup, questionIndex: number): void {
+  verify(targetForm: UntypedFormGroup, questionIndex: number): void {
     const isCorrectAnswer =
       targetForm.get('question')?.value === this.solutions[questionIndex];
     let vibrationPattern = this.wrongAnswerPattern;
