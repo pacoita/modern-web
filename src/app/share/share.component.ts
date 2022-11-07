@@ -70,7 +70,7 @@ export class ShareComponent implements OnInit {
       } else {
         console.error('The provided cocktail is not shareable: ', name);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.name, err.message);
     }
   }
