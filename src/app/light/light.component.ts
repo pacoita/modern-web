@@ -22,7 +22,7 @@ export class LightComponent implements OnInit {
       this.readAmbientLight();
     } else {
       this.supportedText =
-        'Your browser does not support Ambient Device Light Sensor';
+        'Your browser does not support Ambient Device Light Sensor 😢';
     }
   }
 
