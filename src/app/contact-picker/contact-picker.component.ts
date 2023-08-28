@@ -32,14 +32,16 @@ export class ContactPickerComponent implements OnInit {
   }
 
   async selectContacts(): Promise<void> {
-    // 'getProperties' dynamically returns the available contact properties. Uncomment it to see them.
+    // The 'getProperties' method returns the available contact properties. Uncomment it to see them.
     // const fields = await (navigator as any).contacts.getProperties();
 
-    // 'name', 'email', 'tel', 'address', 'icon'
+    // Available fields: 'name', 'email', 'tel', 'address', 'icon'
     const fields = ['name', 'address', 'icon'];
+    // Allowing to select multiple contacts at once.
     const options = { multiple: true };
     try {
-      // The select method opens the "contact picker" dialog
+      // Contacts is a read-only property of the Navigator interface providing a ContactsManager object.
+      // The select() method opens the "contact picker" dialog.
       this.contacts = await (navigator as any).contacts.select(fields, options);
     } catch (err) {
       this.statusText = `An error occurred.`;

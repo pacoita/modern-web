@@ -28,8 +28,10 @@ export class LightComponent implements OnInit {
 
   private readAmbientLight(): void {
     try {
+      // 1. We create a new instance of the AmbientLightSensor object.
       this.sensor = this.sensor ?? new (window as any).AmbientLightSensor();
 
+      // 2. Permissions must be granted in order to proceed successfully
       this.sensor.onerror = async (event: any) => {
         // Ask for permissions if not granted yet
         if (event.error.name === 'NotAllowedError') {
@@ -54,13 +56,14 @@ export class LightComponent implements OnInit {
         this.luxValue = undefined;
       };
 
-      // Light value changes will be registered
+      // 4. "LIVE" light value changes are registered
       this.sensor.onreading = () => {
         this.updateTheme(this.sensor.illuminance);
       };
 
-      // We start "reading" light values
+      // 3. We start "reading" light values
       this.sensor.start();
+
     } catch (err) {
       this.errorText = `An error occurred.`;
       console.error(err);
