@@ -109,26 +109,17 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
     const options = this.getFilePickerOptions();
 
     // Chrome 86+
-    if ('showOpenFilePicker' in window) {
-      return window
-        .showOpenFilePicker(options)
-        .then((handles: FileSystemFileHandle[]) => handles[0]);
-    }
-    // Chrome 85 and previous versions
-    return window.chooseFileSystemEntries(options);
+    return window
+      .showOpenFilePicker(options)
+      .then((handles: FileSystemFileHandle[]) => handles[0]);
   }
 
   private getNewFileHandle(): Promise<FileSystemFileHandle> {
     let options = {};
 
     // Chrome 86+
-    if ('showSaveFilePicker' in window) {
-      options = this.getFilePickerOptions();
-      return window.showSaveFilePicker(options);
-    }
-    // Chrome 85 and previous versions
-    options = this.getFilePickerOptions('save-file');
-    return window.chooseFileSystemEntries(options);
+    options = this.getFilePickerOptions();
+    return window.showSaveFilePicker(options);
   }
 
   private getFilePickerOptions(
