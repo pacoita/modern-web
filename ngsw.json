@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1693234105976,
+  "timestamp": 1693234951129,
   "index": "/modern-web/index.html",
   "assetGroups": [
     {
@@ -24,11 +24,11 @@
         "/modern-web/common.74a897dbae83558e.js",
         "/modern-web/favicon.ico",
         "/modern-web/index.html",
-        "/modern-web/main.d002d2f014963ec7.js",
+        "/modern-web/main.53c6ad4206578c7d.js",
         "/modern-web/manifest.webmanifest",
         "/modern-web/polyfills.c74f1b6d2b6a28a1.js",
         "/modern-web/runtime.15263a4198f032a9.js",
-        "/modern-web/styles.76d14878d0d9bc4f.css"
+        "/modern-web/styles.ad95866e3af95f89.css"
       ],
       "patterns": []
     },
@@ -148,12 +148,12 @@
     "/modern-web/assets/images/wakelock.png": "4dc186decf0e6d892ed60e1d876e405625bbb1e8",
     "/modern-web/common.74a897dbae83558e.js": "51cb32569ec8ab4361c9b76b38f5346adfa29722",
     "/modern-web/favicon.ico": "60b9f5025aface39d9b6b3b5ede71b6d8b057768",
-    "/modern-web/index.html": "1c5a5859d187d5c35d22002a7af7e49a1c39cb20",
-    "/modern-web/main.d002d2f014963ec7.js": "ced62bb373e5c8f8c614ec8e1a51171e81792e57",
+    "/modern-web/index.html": "777a3eb75a66faf1e3ed4b851fe2e52b5e3c8716",
+    "/modern-web/main.53c6ad4206578c7d.js": "2542a6cb3f5688c15fb76fb303fec7e7e363cca0",
     "/modern-web/manifest.webmanifest": "c655a568a9222dedf3ff2de1afb53d353ad4689e",
     "/modern-web/polyfills.c74f1b6d2b6a28a1.js": "f7cd07c6c8c3efd2f85c1378d182a5e64c059a72",
     "/modern-web/runtime.15263a4198f032a9.js": "fa796a0f75b8d67ccb530018fc62ac987636f77e",
-    "/modern-web/styles.76d14878d0d9bc4f.css": "947d1ef51d1badd2ec233183f17a97fa45d68299"
+    "/modern-web/styles.ad95866e3af95f89.css": "45954ab58366f4ba17274004e494c55aa138554b"
   },
   "navigationUrls": [
     {
