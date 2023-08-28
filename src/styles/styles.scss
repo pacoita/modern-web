@@ -21,6 +21,9 @@ section.content {
 
 .icon-space {
   margin-right: 0.5rem;
+  &.nav-icon {
+    margin-bottom: -0.35rem;
+  }
 }
 
 .flex-centered {
