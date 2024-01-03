@@ -8,12 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { OrientationComponent } from './orientation/orientation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    HomeComponent
+    HomeComponent,
+    OrientationComponent
   ],
   imports: [
     BrowserModule,
