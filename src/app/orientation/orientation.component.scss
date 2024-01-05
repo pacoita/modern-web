@@ -1,0 +1,30 @@
+.card-wrap {
+    position: relative;
+    font-family: arial;
+    color: white;
+    img {
+        width: 100%;
+    }
+
+    .digits {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        
+        font-size: 1.5rem;
+    }
+
+    .date {
+        position: absolute;
+        top: 70%;
+        left: 45%;
+        font-size: 0.9rem;
+    }
+
+    .name {
+        position: absolute;
+        top: 82%;
+        left: 10%;
+        font-size: 1.1rem;
+    }
+}
