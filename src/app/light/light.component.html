@@ -1,6 +1,6 @@
 <section class="content container" [ngClass]="ambient === 'bright' ? 'lightTheme' : 'darkTheme'">
   <div class="warn-text">
-    <h1>Ambient Light Sensor</h1>
+    <h1 class="label">Ambient Light Sensor</h1>
   </div>
   <mat-card class="descr-card">
     <p>The <strong>AmbientLightSensor</strong> interface of the Sensor API returns the current level of the ambient
@@ -16,7 +16,7 @@
   </mat-card>
 
   <ng-container *ngIf="!supportedText; else noSupported">
-    <h2>{{errorText}}</h2>
+    <h2 class="label">{{errorText}}</h2>
     <mat-card class="lux-card">
       <mat-card-title>
         <h2>Light level</h2>

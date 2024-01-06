@@ -28,13 +28,7 @@
 
   &.darkTheme {
     background-color: rgb(0 0 0 / 67%);
-    color: white;
-    .mat-card,
-    .mat-expansion-panel {
-      color: white;
-      background-color: $grayDark;
-    }
-    .mat-expansion-panel-header-title {
+    .label {
       color: white;
     }
     .lux-card {
