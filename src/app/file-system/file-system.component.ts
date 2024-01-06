@@ -96,7 +96,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
     textContent: string
   ): Promise<void> {
     // Creates a WRITABLE STREAM. Chrome first checks if the user has granted WRITE permission to the file
-    const writeable = await fileHandle.createWritable();
+    const writeable = await (fileHandle as any).createWritable(); // Cast to any to overcome current types issues: https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/58386
 
     // Writes the textarea content to the stream.
     writeable.write(textContent);
@@ -109,7 +109,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
     const options = this.getFilePickerOptions();
 
     // Chrome 86+
-    return window
+    return (window as any) // Cast to any to overcome current types issues: https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/58386
       .showOpenFilePicker(options)
       .then((handles: FileSystemFileHandle[]) => handles[0]);
   }
@@ -119,7 +119,8 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
 
     // Chrome 86+
     options = this.getFilePickerOptions();
-    return window.showSaveFilePicker(options);
+    return (window as any) // Cast to any to overcome current types issues: https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/58386
+          .showSaveFilePicker(options);
   }
 
   private getFilePickerOptions(

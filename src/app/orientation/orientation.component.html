@@ -8,7 +8,7 @@
             <br /><br />
             <span class="flex-centered">
                 <img src="assets/icons/warning.png" class="icon-space" width="24" height="24" alt="warning icon">
-                <span>This feature works only in secure contexts (HTTPS). Use a mobile device for best results.</span>
+                <span>This feature works only in secure contexts (HTTPS). <strong>Use a mobile device for best results</strong>.</span>
             </span>
         </p>
     </mat-card>
@@ -19,10 +19,10 @@
         </mat-card-title>
         <mat-card-content>
             <p>
-                Tilt the device towards you and back to toggle the card details.
+                Tilt the device towards you and back to toggle the card details if your browser and device support it.
             </p>
             <div class="card-wrap">
-                <img src="/assets/card.png" width="400" alt="Credit Card">
+                <img src="assets/images/card.png" width="400" alt="Credit Card">
                 <div class="digits">{{ showDetails ? '1234 5647 7829 0089' : '**** **** **** ****'}}</div>
                 <div class="date">{{ showDetails ? '06/29' : '**/**'}}</div>
                 <div class="name">{{ showDetails ? 'Francesco Leardini' : '****** ******'}}</div>
