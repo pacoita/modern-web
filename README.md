@@ -1,6 +1,6 @@
 # modern-web
 
-This project is an examples gallery showing the usage of some modern browser APIs. 
+This project is an examples gallery showing the usage of some modern browser APIs in practical examples. 
 
 ## Demo
 
