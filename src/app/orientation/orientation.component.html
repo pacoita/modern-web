@@ -1,0 +1,51 @@
+<section class="content container">
+    <div class="warn-text">
+        <h1>DeviceOrientationEvent API</h1>
+    </div>
+    <mat-card class="descr-card">
+        <p>The <strong>DeviceOrientationEvent</strong> API provides web developers events carrying the
+            information about the physical orientation of the target device where the web app is running.
+            <br /><br />
+            <span class="flex-centered">
+                <img src="assets/icons/warning.png" class="icon-space" width="24" height="24" alt="warning icon">
+                <span>This feature works only in secure contexts (HTTPS). <strong>Use a mobile device for best results</strong>.</span>
+            </span>
+        </p>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-title>
+            <h2>Toggle Card Details</h2>
+        </mat-card-title>
+        <mat-card-content>
+            <p>
+                Tilt the device towards you and back to toggle the card details if your browser and device support it.
+            </p>
+            <div class="card-wrap">
+                <img src="assets/images/card.png" width="400" alt="Credit Card">
+                <div class="digits">{{ showDetails ? '1234 5647 7829 0089' : '**** **** **** ****'}}</div>
+                <div class="date">{{ showDetails ? '06/29' : '**/**'}}</div>
+                <div class="name">{{ showDetails ? 'Francesco Leardini' : '****** ******'}}</div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="accordion-container">
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <h1>Browser compatibility</h1>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                    <div class="img-container">
+                        <img src="assets/images/orientation.png" alt="Orientation Device api support">
+                    </div>
+                    <br /><br />
+                    <a href="https://caniuse.com/?search=deviceorientation" target="_blank">Source: can I use</a>
+                </ng-template>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</section>

@@ -78,18 +78,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "modern-web:build"
+            "buildTarget": "modern-web:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "modern-web:build:production"
+              "buildTarget": "modern-web:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "modern-web:build"
+            "buildTarget": "modern-web:build"
           }
         },
         "test": {

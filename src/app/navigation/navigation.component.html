@@ -33,6 +33,11 @@
         Ambient Light
       </a>
 
+      <a mat-list-item [routerLink]="['/orientation']" (click)="toggleOnNavigation()">
+        <img src="assets/icons/compass.png" class="icon-space nav-icon" width="24" height="24" alt="highlight icon">
+        Orientation
+      </a>
+
       <a mat-list-item [routerLink]="['/file']" (click)="toggleOnNavigation()">
         <img src="assets/icons/article.png" class="icon-space nav-icon" width="24" height="24" alt="File System Access icon">
         File System
