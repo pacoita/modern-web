@@ -20,12 +20,4 @@ On **desktop machines** you can install the app locally by clicking in the *inst
 
 Accessing the app with a **mobile device**, you should be automatically prompted to add the application to your device home screen.
 
-If you are interested in [learning more about PWAs](https://dev.to/paco_ita/a-gentle-introduction-to-progressive-web-apps-step-1-24da), have a look at the articles collection I wrote about this topic on the Dev.to portal.
-
-## What's coming next...
-
-If you are interested in knowing about the project status or when a new article has been published, follow me on [Twitter](https://twitter.com/paco_ITA) where I will post any update.
-
-### Published articles:
-
-- **Vibration API** on [Dev.to](https://dev.to/paco_ita/enhance-your-web-apps-with-a-vibration-43pl) and [Hashnode](https://modern-web.hashnode.dev/vibration-api)
+If you are interested in learning more about PWAs, have a look at my [PWA course](https://www.educative.io/courses/zero-to-hero-with-progressive-web-apps) on the Educative.org portal.
