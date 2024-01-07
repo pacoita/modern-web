@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, Title } from '@angular/platform-browser';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NgFor, NgIf } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 
 interface IAddress {
@@ -10,9 +14,17 @@ interface IAddress {
 }
 
 @Component({
-  selector: 'app-contact-picker',
-  templateUrl: './contact-picker.component.html',
-  styleUrls: ['./contact-picker.component.scss'],
+    selector: 'app-contact-picker',
+    templateUrl: './contact-picker.component.html',
+    styleUrls: ['./contact-picker.component.scss'],
+    standalone: true,
+    imports: [
+        MatCardModule,
+        MatButtonModule,
+        NgFor,
+        NgIf,
+        MatExpansionModule,
+    ],
 })
 export class ContactPickerComponent implements OnInit {
   statusText: string | undefined;

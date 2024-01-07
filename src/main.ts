@@ -1,12 +1,25 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { AppModule } from './app/app.module';
+import { enableProdMode, isDevMode, importProvidersFrom } from '@angular/core';
 import { environment } from './environments/environment';
+import { AppComponent } from './app/app.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { NgMaterialModule } from './app/ng-material/ng-material.module';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app/app-routing.module';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+bootstrapApplication(AppComponent, {
+    providers: [
+        importProvidersFrom(BrowserModule, AppRoutingModule, NgMaterialModule, ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        })),
+        provideAnimations()
+    ]
+})
   .catch(err => console.error(err));

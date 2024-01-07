@@ -8,11 +8,11 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [{ path: '', component: OrientationComponent }];
 
 @NgModule({
-  declarations: [OrientationComponent],
-  imports: [
-    CommonModule,
-    NgMaterialModule,
-    RouterModule.forChild(routes)
-  ]
+    imports: [
+        CommonModule,
+        NgMaterialModule,
+        RouterModule.forChild(routes),
+        OrientationComponent
+    ]
 })
 export class OrientationModule { }

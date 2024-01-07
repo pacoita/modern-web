@@ -7,11 +7,11 @@ import { OfflineComponent } from './offline.component';
 
 
 @NgModule({
-  declarations: [OfflineComponent],
-  imports: [
-    CommonModule,
-    OfflineRoutingModule,
-    NgMaterialModule
-  ]
+    imports: [
+        CommonModule,
+        OfflineRoutingModule,
+        NgMaterialModule,
+        OfflineComponent
+    ]
 })
 export class OfflineModule { }

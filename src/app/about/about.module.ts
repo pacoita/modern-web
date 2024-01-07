@@ -7,11 +7,11 @@ import { AboutComponent } from './about.component';
 
 
 @NgModule({
-  declarations: [AboutComponent],
-  imports: [
-    CommonModule,
-    AboutRoutingModule,
-    NgMaterialModule
-  ]
+    imports: [
+        CommonModule,
+        AboutRoutingModule,
+        NgMaterialModule,
+        AboutComponent
+    ]
 })
 export class AboutModule { }

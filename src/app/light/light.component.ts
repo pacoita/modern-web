@@ -1,10 +1,20 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-light',
-  templateUrl: './light.component.html',
-  styleUrls: ['./light.component.scss'],
+    selector: 'app-light',
+    templateUrl: './light.component.html',
+    styleUrls: ['./light.component.scss'],
+    standalone: true,
+    imports: [
+        NgClass,
+        MatCardModule,
+        NgIf,
+        MatExpansionModule,
+    ],
 })
 export class LightComponent implements OnInit {
   ambient: 'dark' | 'bright' = 'bright';

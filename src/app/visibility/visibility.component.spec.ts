@@ -8,8 +8,8 @@ describe('VisibilityComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ VisibilityComponent ]
-    })
+    imports: [VisibilityComponent]
+})
     .compileComponents();
   }));
 

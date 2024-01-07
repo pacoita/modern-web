@@ -8,8 +8,8 @@ describe('OfflineComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OfflineComponent ]
-    })
+    imports: [OfflineComponent]
+})
     .compileComponents();
   });
 

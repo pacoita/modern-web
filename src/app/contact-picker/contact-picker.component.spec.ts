@@ -8,8 +8,8 @@ describe('ContactPickerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContactPickerComponent ]
-    })
+    imports: [ContactPickerComponent]
+})
     .compileComponents();
   });
 

@@ -7,11 +7,11 @@ import { ContactPickerComponent } from './contact-picker.component';
 
 
 @NgModule({
-  declarations: [ContactPickerComponent],
-  imports: [
-    CommonModule,
-    ContactPickerRoutingModule,
-    NgMaterialModule
-  ]
+    imports: [
+        CommonModule,
+        ContactPickerRoutingModule,
+        NgMaterialModule,
+        ContactPickerComponent
+    ]
 })
 export class ContactPickerModule { }

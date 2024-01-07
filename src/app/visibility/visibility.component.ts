@@ -1,10 +1,14 @@
 import { Component, AfterViewInit, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-visibility',
-  templateUrl: './visibility.component.html',
-  styleUrls: ['./visibility.component.scss']
+    selector: 'app-visibility',
+    templateUrl: './visibility.component.html',
+    styleUrls: ['./visibility.component.scss'],
+    standalone: true,
+    imports: [MatCardModule, MatExpansionModule]
 })
 export class VisibilityComponent implements AfterViewInit {
 

@@ -1,9 +1,13 @@
 import { Component, HostListener } from '@angular/core';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-orientation',
-  templateUrl: './orientation.component.html',
-  styleUrls: ['./orientation.component.scss']
+    selector: 'app-orientation',
+    templateUrl: './orientation.component.html',
+    styleUrls: ['./orientation.component.scss'],
+    standalone: true,
+    imports: [MatCardModule, MatExpansionModule]
 })
 export class OrientationComponent {
 

@@ -8,8 +8,8 @@ describe('VibrationComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ VibrationComponent ]
-    })
+    imports: [VibrationComponent]
+})
     .compileComponents();
   }));
 

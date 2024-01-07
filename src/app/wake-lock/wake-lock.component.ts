@@ -1,10 +1,24 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NgIf, NgClass } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-wake-lock',
-  templateUrl: './wake-lock.component.html',
-  styleUrls: ['./wake-lock.component.scss'],
+    selector: 'app-wake-lock',
+    templateUrl: './wake-lock.component.html',
+    styleUrls: ['./wake-lock.component.scss'],
+    standalone: true,
+    imports: [
+        MatCardModule,
+        NgIf,
+        MatCheckboxModule,
+        FormsModule,
+        NgClass,
+        MatExpansionModule,
+    ],
 })
 export class WakeLockComponent implements OnInit, OnDestroy {
   isSentinelActive = false;

@@ -1,11 +1,22 @@
 import { ShareObject } from './share-object';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-share',
-  templateUrl: './share.component.html',
-  styleUrls: ['./share.component.scss'],
+    selector: 'app-share',
+    templateUrl: './share.component.html',
+    styleUrls: ['./share.component.scss'],
+    standalone: true,
+    imports: [
+        MatCardModule,
+        NgIf,
+        MatButtonModule,
+        MatExpansionModule,
+    ],
 })
 export class ShareComponent implements OnInit {
   unsupportedText: string | undefined;

@@ -8,12 +8,12 @@ import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [WakeLockComponent],
-  imports: [
-    CommonModule,
-    WakeLockRoutingModule,
-    NgMaterialModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        WakeLockRoutingModule,
+        NgMaterialModule,
+        FormsModule,
+        WakeLockComponent
+    ]
 })
 export class WakeLockModule { }

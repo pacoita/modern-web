@@ -8,12 +8,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [VibrationComponent],
-  imports: [
-    CommonModule,
-    VibrationRoutingModule,
-    NgMaterialModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        VibrationRoutingModule,
+        NgMaterialModule,
+        ReactiveFormsModule,
+        VibrationComponent
+    ]
 })
 export class VibrationModule { }

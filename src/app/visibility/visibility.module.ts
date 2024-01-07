@@ -7,11 +7,11 @@ import { NgMaterialModule } from '../ng-material/ng-material.module';
 
 
 @NgModule({
-  declarations: [VisibilityComponent],
-  imports: [
-    CommonModule,
-    VisibilityRoutingModule,
-    NgMaterialModule
-  ]
+    imports: [
+        CommonModule,
+        VisibilityRoutingModule,
+        NgMaterialModule,
+        VisibilityComponent
+    ]
 })
 export class VisibilityModule { }

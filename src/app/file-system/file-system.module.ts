@@ -7,11 +7,11 @@ import { FileSystemComponent } from './file-system.component';
 
 
 @NgModule({
-  declarations: [FileSystemComponent],
-  imports: [
-    CommonModule,
-    FileSystemRoutingModule,
-    NgMaterialModule
-  ]
+    imports: [
+        CommonModule,
+        FileSystemRoutingModule,
+        NgMaterialModule,
+        FileSystemComponent
+    ]
 })
 export class FileSystemModule { }

@@ -8,8 +8,8 @@ describe('FileSystemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FileSystemComponent ]
-    })
+    imports: [FileSystemComponent]
+})
     .compileComponents();
   });
 

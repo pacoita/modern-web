@@ -8,8 +8,8 @@ describe('WakeLockComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ WakeLockComponent ]
-    })
+    imports: [WakeLockComponent]
+})
     .compileComponents();
   }));
 

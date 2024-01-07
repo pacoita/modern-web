@@ -1,12 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as jsonData from './solutions.json';
 import { Title } from '@angular/platform-browser';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatStepperModule } from '@angular/material/stepper';
+import { NgIf, NgClass } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-vibration',
-  templateUrl: './vibration.component.html',
-  styleUrls: ['./vibration.component.scss']
+    selector: 'app-vibration',
+    templateUrl: './vibration.component.html',
+    styleUrls: ['./vibration.component.scss'],
+    standalone: true,
+    imports: [MatCardModule, NgIf, MatStepperModule, FormsModule, ReactiveFormsModule, MatRadioModule, MatButtonModule, NgClass, MatExpansionModule]
 })
 export class VibrationComponent implements OnInit {
   // Each value is in ms

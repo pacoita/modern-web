@@ -7,11 +7,11 @@ import { NgMaterialModule } from '../ng-material/ng-material.module';
 
 
 @NgModule({
-  declarations: [ShareComponent],
-  imports: [
-    CommonModule,
-    ShareRoutingModule,
-    NgMaterialModule
-  ]
+    imports: [
+        CommonModule,
+        ShareRoutingModule,
+        NgMaterialModule,
+        ShareComponent
+    ]
 })
 export class ShareModule { }

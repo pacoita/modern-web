@@ -7,11 +7,11 @@ import { LightComponent } from './light.component';
 
 
 @NgModule({
-  declarations: [LightComponent],
-  imports: [
-    CommonModule,
-    LightRoutingModule,
-    NgMaterialModule
-  ]
+    imports: [
+        CommonModule,
+        LightRoutingModule,
+        NgMaterialModule,
+        LightComponent
+    ]
 })
 export class LightModule { }
