@@ -14,10 +14,7 @@ export class OrientationComponent {
   @HostListener('window:deviceorientation', ['$event'])
   private onOrientationChange(event: DeviceOrientationEvent) {
     // event.beta value is given in degree in the range [-180,180)
-    this.doLogic(event.beta || 0);
-  }
-
-  doLogic(xValue: number) {
+    let xValue = event.beta;
     if (!xValue) {
       return;
     }
@@ -27,12 +24,15 @@ export class OrientationComponent {
       xValue = 0;
     }
 
+    // Here 70 and 160 degrees values are respectively the threshold to trigger the details toggling and the threshold to reset the flag.
+    // These values allow to enable the demo logic and still be "comfortable" while using the mobile device.
     if (xValue > 160) {
+      // The device is facing down, set isActive to true to trigger details toggling once position is restored
       this.isActive = true;
     } else if (xValue < 70 && this.isActive) {
+      // If the device is no more upside down and isActive is true, toggle the details and reset the flag
       this.isActive = false;
       this.showDetails = !this.showDetails;
     }
   }
-
 }
