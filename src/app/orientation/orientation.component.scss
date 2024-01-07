@@ -1,15 +1,16 @@
+.demo-card-title {
+    padding: 16px 16px 0 16px;
+}
+
 .card-wrap {
     position: relative;
     font-family: arial;
     color: white;
-    img {
-        width: 100%;
-        max-width: 400px;
-    }
+
 
     .digits {
         position: absolute;
-        top: 50%;
+        top: 53%;
         left: 10%;
         
         font-size: 1.5rem;
@@ -28,4 +29,36 @@
         left: 10%;
         font-size: 1.1rem;
     }
+
+    @media screen and (min-width: 780px) {
+        .digits {
+            top: 55%;
+            left: 5%;
+            font-size: 2.5rem;
+        }
+    
+        .date {
+            top: 70%;
+            left: 21%;
+            font-size: 1.2rem;
+        }
+    
+        .name {
+            top: 85%;
+            left: 5%;
+            font-size: 1.7rem;
+        }
+    }
+}
+.image-wrap {
+    margin: 0 auto;
+}
+
+.image {
+    width: 100%;
+}
+
+.card-image {
+    @extend .image; 
+    max-width: 400px;
 }
