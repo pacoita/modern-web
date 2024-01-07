@@ -9,10 +9,9 @@ export class OrientationComponent {
 
   isActive = false;
   showDetails = false;
-  sup = false;
 
   @HostListener('window:deviceorientation', ['$event'])
-  private onOrientationChange(event: DeviceOrientationEvent) {
+  private onOrientationChange(event: DeviceOrientationEvent): void {
     // event.beta value is given in degree in the range [-180,180)
     let xValue = event.beta;
     if (!xValue) {
