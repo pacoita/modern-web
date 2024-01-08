@@ -3,9 +3,26 @@
         <h1>DeviceOrientationEvent API</h1>
     </div>
     <mat-card class="descr-card">
-        <p>The <strong>DeviceOrientationEvent</strong> API provides web developers events carrying the
+        <p>The <strong>DeviceOrientationEvent</strong> API provides events with 
             information about the physical orientation of the target device where the web app is running.
             <br /><br />
+            The event object contains three properties, each related to a different axis (<cite>description below from Mozilla MDN docs</cite>):
+        </p>
+            <ul>
+                <li>The <strong>alpha</strong> 
+                    value represents the motion of the device around the z axis, represented in degrees with values ranging from 0 (inclusive) to 360 (exclusive).</li>
+                <br>
+                <li>The <strong>beta</strong> 
+                    value represents the motion of the device around the x axis, represented in degrees with values ranging from -180 (inclusive) to 180 (exclusive). This represents a front to back motion of the device.</li>
+                <br>
+                <li>The <strong>gamma</strong> 
+                    value represents the motion of the device around the y axis, represented in degrees with values ranging from -90 (inclusive) to 90 (exclusive). This represents a left to right motion of the device.</li>
+            </ul>
+            <div class="image-wrap">
+                <img class="image" src="assets/images/orientations.png" alt="Orientations schema">
+            </div>
+            <br /><br />
+        <p>
             <span class="flex-centered">
                 <img src="assets/icons/warning.png" class="icon-space" width="24" height="24" alt="warning icon">
                 <span>This feature works only in secure contexts (HTTPS). <strong>Use a mobile device for best results</strong>.</span>
@@ -15,14 +32,15 @@
 
     <mat-card>
         <mat-card-title>
-            <h2>Toggle Card Details</h2>
+            <h2 class="demo-card-title">Toggle Card Details</h2>
         </mat-card-title>
         <mat-card-content>
             <p>
-                Tilt the device towards you and back to toggle the card details if your browser and device support it.
+                In this demo we listen to the value of the <strong>beta</strong> property of the <strong>DeviceOrientationEvent</strong>. <br>
+                👉 Tilt the device towards you and then back (if your browser and device support it, the card details will be displayed or hidden).
             </p>
             <div class="card-wrap">
-                <img src="assets/images/card.png" width="400" alt="Credit Card">
+                <img class="card-image" src="assets/images/card.png" width="400" alt="Credit Card">
                 <div class="digits">{{ showDetails ? '1234 5647 7829 0089' : '**** **** **** ****'}}</div>
                 <div class="date">{{ showDetails ? '06/29' : '**/**'}}</div>
                 <div class="name">{{ showDetails ? 'Francesco Leardini' : '****** ******'}}</div>
