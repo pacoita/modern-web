@@ -20,4 +20,4 @@ On **desktop machines** you can install the app locally by clicking in the *inst
 
 Accessing the app with a **mobile device**, you should be automatically prompted to add the application to your device home screen.
 
-If you are interested in learning more about PWAs, have a look at my [PWA course](https://www.educative.io/courses/zero-to-hero-with-progressive-web-apps) on the Educative.org portal.
+If you are interested in learning more about PWAs, have a look at my [PWA course](https://www.educative.io/courses/zero-to-hero-with-progressive-web-apps) or [other topics](https://www.educative.io/profile/view/5884426195042304) on the Educative.org portal.

@@ -4,16 +4,16 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'wakelock', loadChildren: () => import('./wake-lock/wake-lock.module').then(m => m.WakeLockModule) },
-  { path: 'visibility', loadChildren: () => import('./visibility/visibility.module').then(m => m.VisibilityModule) },
-  { path: 'share', loadChildren: () => import('./share/share.module').then(m => m.ShareModule) },
-  { path: 'vibrate', loadChildren: () => import('./vibration/vibration.module').then(m => m.VibrationModule) },
-  { path: 'light', loadChildren: () => import('./light/light.module').then(m => m.LightModule) },
-  { path: 'orientation', loadChildren: () => import('./orientation/orientation.module').then(m => m.OrientationModule) },
-  { path: 'file', loadChildren: () => import('./file-system/file-system.module').then(m => m.FileSystemModule) },
-  { path: 'contacts', loadChildren: () => import('./contact-picker/contact-picker.module').then(m => m.ContactPickerModule) },
-  { path: 'offline', loadChildren: () => import('./offline/offline.module').then(m => m.OfflineModule) },
-  { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) },
+  { path: 'wakelock', loadComponent: () => import('./wake-lock/wake-lock.component').then(m => m.WakeLockComponent) },
+  { path: 'visibility', loadComponent: () => import('./visibility/visibility.component').then(m => m.VisibilityComponent) },
+  { path: 'share', loadComponent: () => import('./share/share.component').then(m => m.ShareComponent) },
+  { path: 'vibrate', loadComponent: () => import('./vibration/vibration.component').then(m => m.VibrationComponent) },
+  { path: 'light', loadComponent: () => import('./light/light.component').then(m => m.LightComponent) },
+  { path: 'orientation', loadComponent: () => import('./orientation/orientation.component').then(m => m.OrientationComponent) },
+  { path: 'file', loadComponent: () => import('./file-system/file-system.component').then(m => m.FileSystemComponent) },
+  { path: 'contacts', loadComponent: () => import('./contact-picker/contact-picker.component').then(m => m.ContactPickerComponent) },
+  { path: 'offline', loadComponent: () => import('./offline/offline.component').then(m => m.OfflineComponent) },
+  { path: 'about', loadComponent: () => import('./about/about.component').then(m => m.AboutComponent) },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home'}
 ];
