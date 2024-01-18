@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1705570341204,
+  "timestamp": 1705570565639,
   "index": "/modern-web/index.html",
   "assetGroups": [
     {
@@ -28,7 +28,7 @@
         "/modern-web/common.74a897dbae83558e.js",
         "/modern-web/favicon.ico",
         "/modern-web/index.html",
-        "/modern-web/main.636b3917e56d0f76.js",
+        "/modern-web/main.d7119047a5a0d2ba.js",
         "/modern-web/manifest.webmanifest",
         "/modern-web/polyfills.93dfa4d951b070f1.js",
         "/modern-web/runtime.ee663d68e5f1cd93.js",
@@ -164,8 +164,8 @@
     "/modern-web/assets/images/wakelock.png": "4dc186decf0e6d892ed60e1d876e405625bbb1e8",
     "/modern-web/common.74a897dbae83558e.js": "51cb32569ec8ab4361c9b76b38f5346adfa29722",
     "/modern-web/favicon.ico": "60b9f5025aface39d9b6b3b5ede71b6d8b057768",
-    "/modern-web/index.html": "ba317af54febd2909677811dd2c46d3d1f4064b1",
-    "/modern-web/main.636b3917e56d0f76.js": "5865fb174cb219ed01d558fe51f42e3db1d22a71",
+    "/modern-web/index.html": "423e18e9ff41c20b06abd231fca6bf35d42872c5",
+    "/modern-web/main.d7119047a5a0d2ba.js": "a939836d94c634423bb6a9573e56f692c348c457",
     "/modern-web/manifest.webmanifest": "c655a568a9222dedf3ff2de1afb53d353ad4689e",
     "/modern-web/polyfills.93dfa4d951b070f1.js": "99e72014d25cf3a06a0c948505ec4580f0613d73",
     "/modern-web/runtime.ee663d68e5f1cd93.js": "d2f33a758511abb0426c1302db8266a2c851b14d",
