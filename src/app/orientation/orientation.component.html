@@ -39,6 +39,14 @@
                 In this demo we listen to the value of the <strong>beta</strong> property of the <strong>DeviceOrientationEvent</strong>. <br>
                 👉 Tilt the device towards you and then back (if your browser and device support it, the card details will be displayed or hidden).
             </p>
+            <div class="toggle-section">
+                <mat-checkbox [(ngModel)]="showDegrees">
+                    Show Demo Details
+                </mat-checkbox>
+                @if(showDegrees) {
+                    <span class="degrees-value">[Active - {{isActive}}] Inclination (beta): {{ xValue }}°</span>
+                } 
+            </div>
             <div class="card-wrap">
                 <img class="card-image" src="assets/images/card.png" width="400" alt="Credit Card">
                 <div class="digits">{{ showDetails ? '1234 5647 7829 0089' : '**** **** **** ****'}}</div>

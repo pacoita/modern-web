@@ -2,11 +2,18 @@
     padding: 16px 16px 0 16px;
 }
 
+.toggle-section {
+    .degrees-value {
+        display: block;
+        margin-left: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
 .card-wrap {
     position: relative;
     font-family: arial;
     color: white;
-
 
     .digits {
         position: absolute;
