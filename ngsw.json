@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1705565780027,
+  "timestamp": 1705566640635,
   "index": "/modern-web/index.html",
   "assetGroups": [
     {
@@ -20,7 +20,7 @@
         "/modern-web/744.4db9c8c6b3d1c4bf.js",
         "/modern-web/753.670cad68e81396d5.js",
         "/modern-web/804.cdcf70cdf058a2f6.js",
-        "/modern-web/861.c76f6d452ada39a7.js",
+        "/modern-web/861.1ddd908240117b00.js",
         "/modern-web/894.a59a39ac44278077.js",
         "/modern-web/94.485e08bf78e2a8c9.js",
         "/modern-web/986.4d013faa15eec9d4.js",
@@ -28,10 +28,10 @@
         "/modern-web/common.74a897dbae83558e.js",
         "/modern-web/favicon.ico",
         "/modern-web/index.html",
-        "/modern-web/main.f7e369ac4ba34a6b.js",
+        "/modern-web/main.877a175f90ce043d.js",
         "/modern-web/manifest.webmanifest",
         "/modern-web/polyfills.93dfa4d951b070f1.js",
-        "/modern-web/runtime.1a1de8f8fbbba9a3.js",
+        "/modern-web/runtime.5c46e822658986dd.js",
         "/modern-web/styles.44c0608a3a843b07.css"
       ],
       "patterns": []
@@ -108,7 +108,7 @@
     "/modern-web/744.4db9c8c6b3d1c4bf.js": "2e19b4130f8713576d1055d410f876d85ac2d22f",
     "/modern-web/753.670cad68e81396d5.js": "25974fe90cf2493b26dd45d2b9cc2885640f5194",
     "/modern-web/804.cdcf70cdf058a2f6.js": "1a81e27dcddfb6b4ad77e1d7fa2a108352446642",
-    "/modern-web/861.c76f6d452ada39a7.js": "69572824d591375a22d069c3fa0cb4aa9c90ee9a",
+    "/modern-web/861.1ddd908240117b00.js": "8692b37b1efc6b9be013af867abf8954bf4f9634",
     "/modern-web/894.a59a39ac44278077.js": "ad0f822e8b4fdd67274406788819deee46ae748a",
     "/modern-web/94.485e08bf78e2a8c9.js": "3ba54a2cc40cfb458d26fe42736646cf8ea6c757",
     "/modern-web/986.4d013faa15eec9d4.js": "2a7d7df7485ed7f6f7ffac5c053edf0b619ca1b1",
@@ -164,11 +164,11 @@
     "/modern-web/assets/images/wakelock.png": "4dc186decf0e6d892ed60e1d876e405625bbb1e8",
     "/modern-web/common.74a897dbae83558e.js": "51cb32569ec8ab4361c9b76b38f5346adfa29722",
     "/modern-web/favicon.ico": "60b9f5025aface39d9b6b3b5ede71b6d8b057768",
-    "/modern-web/index.html": "8a59c0b0bb480d75614fcc9a77cef7005f287a36",
-    "/modern-web/main.f7e369ac4ba34a6b.js": "3ffb0b7555a527d1b371d4bd983d16994fd2d12a",
+    "/modern-web/index.html": "70d2db8d4855f4601f6a3841fcc24f11b9ed7fe8",
+    "/modern-web/main.877a175f90ce043d.js": "fac8c6a7137414667b89d971c28af0bc7054f47a",
     "/modern-web/manifest.webmanifest": "c655a568a9222dedf3ff2de1afb53d353ad4689e",
     "/modern-web/polyfills.93dfa4d951b070f1.js": "99e72014d25cf3a06a0c948505ec4580f0613d73",
-    "/modern-web/runtime.1a1de8f8fbbba9a3.js": "d3ae3b250c3fc00318bf7236e2ac17183f17425e",
+    "/modern-web/runtime.5c46e822658986dd.js": "439444d8ca6867e948b6267f485fb35a5dd432cd",
     "/modern-web/styles.44c0608a3a843b07.css": "472cc58088c5b4a7315c16cce68ad0e5a69479ac"
   },
   "navigationUrls": [
