@@ -27,7 +27,7 @@ export class OrientationComponent {
     }
 
     const isExcludedRange = this.xValue < -40 && this.xValue > -130;
-    const isActiveRange = this.xValue >= -40 || this.xValue < 50;
+    const isActiveRange = this.xValue >= -40 && this.xValue < 50;
 
     // To exclude the cases when the device is upside down the x value is partially limited
     if (isExcludedRange) {
