@@ -4,11 +4,22 @@
 }
 
 .edu-text {
-    margin-top: 1rem;
-    a {
-        margin: 0 0.35rem;
-    }
+    margin: 1rem 0.35rem 0 0;
+    display: inline;
+}
+
+.qr-code {
+    display: none;
+}
+
+#educative-logo {
+    margin-left:0.35rem;
+}
+
+@media screen and (min-width: 680px) {
     .qr-code {
+        display: block;
         margin-left: .5rem;
+        width: 120px;
     }
 }
