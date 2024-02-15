@@ -22,27 +22,38 @@
           other native apps.
         </p>
         <br>
-        <div class="camera-box">
-          <video id="video" #videoElement>Video stream not available.</video>
-          <div id="camera-actions">
-            <button (click)="takePhoto()" class="icon-button">
-              <img src="assets/icons/camera_icon.png" class="icon-space" width="24" height="24" alt="camera icon">
-            </button>
-            <button (click)="timerShot()" class="icon-button">
-              <img src="assets/icons/timer.png" class="icon-space" width="24" height="24" alt="camera icon">
-            </button>
-          </div>
-          @if (!!timerSeconds) {
+        <div class="photo-wrap">
+          <div class="camera-box">
+            <video id="video" #videoElement>Video stream not available.</video>
+            <div id="camera-actions">
+              <button (click)="takePhoto()" class="icon-button">
+                <img src="assets/icons/camera_icon.png" class="icon-space" width="24" height="24" alt="camera icon">
+              </button>
+              <button (click)="timerShot()" class="icon-button">
+                <img src="assets/icons/timer.png" class="icon-space" width="24" height="24" alt="camera icon">
+              </button>
+            </div>
+            @if (!!timerSeconds) {
             <div class="timer">{{timerSeconds}}</div>
-          } @else if (timerSeconds! === 0) {
+            } @else if (timerSeconds! === 0) {
             <div class="timer">🙂</div>
-          }
+            }
+          </div>
+          <canvas id="temp-canvas" #canvas></canvas>
+          <!-- Displays the preview after the photo shot -->
+          <div id="preview-box">
+            <img id="photo-taken" #resultShot alt="Photo preview" />
+
+            <div id="camera-actions">
+              <button  class="icon-button">
+                <img src="assets/icons/share.png" class="icon-space" width="24" height="24" alt="camera icon">
+              </button>
+              <button class="icon-button">
+                <img src="assets/icons/save_black.png" class="icon-space" width="24" height="24" alt="camera icon">
+              </button>
+            </div>
+          </div>
         </div>
-        <canvas id="temp-canvas"></canvas>
-        <!-- TODO: Display the preview after the photo shot -->
-        <!-- <div id="preview-box">
-          <img id="photo-taken" alt="Photo preview" />
-        </div> -->
       </mat-card-content>
     </mat-card>
   </ng-container>

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
@@ -18,17 +18,26 @@ import { map, take } from 'rxjs/operators';
     MatExpansionModule,
   ],
 })
-export class CameraCaptureComponent implements OnInit {
+export class CameraCaptureComponent implements AfterViewInit {
   supportedText: string | undefined;
   errorText: string | undefined;
   timerSeconds: number | undefined;
 
   @ViewChild('videoElement')
   videoElement: ElementRef | undefined;
+  videoEl: HTMLVideoElement | undefined;
+
+  @ViewChild('canvas')
+  canvas: ElementRef | undefined;
+
+  @ViewChild('resultShot')
+  photo: ElementRef | undefined;
+
+  displayPhoto = false;
+
 
   /**
    * TODO: Add share API
-   * - Timer (API ?) for self shot
    * - File System API to save the picture
    * - Share API to share the picture
    */
@@ -37,19 +46,19 @@ export class CameraCaptureComponent implements OnInit {
     this.titleService.setTitle('Camera API');
   }
 
-  async ngOnInit() {
+  async ngAfterViewInit() {
     const mediaDevices = navigator.mediaDevices;
     if (mediaDevices) {
-      this.initVideoSettings();
+      this.videoEl = this.videoElement?.nativeElement as HTMLVideoElement
       try {
+        // We get the media stream from the camera
         const stream = await mediaDevices.getUserMedia({ video: true, audio: false })
-        const videoEl = this.videoElement?.nativeElement as HTMLVideoElement;
         // We set the stream as source to our <video> element in the template
-        videoEl.srcObject = stream;
+        this.videoEl.srcObject = stream;
         // We invoke the play method to start the video
-        videoEl.play();
+        this.videoEl.play();
       } catch (error) {
-        // We land in error also if the user denies the access to the camera
+        // We get an error also if the user denies the access to the camera
         console.error(`An error occurred while fetching the media stream: ${error}`);
       }
     } else {
@@ -57,12 +66,17 @@ export class CameraCaptureComponent implements OnInit {
         'Your browser does not support the Camera API 😢';
     }
   }
-  initVideoSettings() {
-
-  }
 
   takePhoto() {
-    console.log('Take photo');
+    const context = this.canvas?.nativeElement.getContext("2d");
+    const height = (this.videoEl!.videoHeight / this.videoEl!.videoWidth) * 400;
+    this.canvas!.nativeElement.width = 400;
+    this.canvas!.nativeElement.height = height;
+    context.drawImage(this.videoEl, 0, 0, 400, height);
+
+    this.displayPhoto = true;
+    const data = this.canvas?.nativeElement.toDataURL("image/png");
+    this.photo?.nativeElement.setAttribute("src", data);
   }
 
   timerShot(timeSecs: number = 5) {
@@ -71,7 +85,7 @@ export class CameraCaptureComponent implements OnInit {
     ).subscribe(secondsElapsed => {
       this.timerSeconds = timeSecs - secondsElapsed;
       if (this.timerSeconds === 0) {
-        this.takePhoto();
+        this.takePhoto(); 
       } else if (this.timerSeconds < 0) {
         this.timerSeconds = undefined;
       }

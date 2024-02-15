@@ -12,13 +12,44 @@
 .container {
   padding: 1rem;
 
-  .camera-box {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
+  .photo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 
-    #video {
-      width: 100%;
+    .camera-box {
+      position: relative;
+      width: 50%;
+      max-width: 400px;
+
+      @media screen and (max-width: 480px) {
+        width: 100%;
+      }
+
+      #video,
+      #temp-canvas {
+        width: 100%;
+      }
+
+
+
+      .timer {
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        font-size: 7rem;
+        color: #fffefe99;
+      }
+
+    }
+
+    #preview-box {
+      width: 50%;
+      position: relative;
+
+      @media screen and (max-width: 480px) {
+        width: 100%;
+      }
     }
 
     #camera-actions {
@@ -44,16 +75,8 @@
         }
       }
     }
-
-    .timer {
-      position: absolute;
-      top: 50%;
-      left: 40%;
-      font-size: 7rem;
-      color: #fffefe99;
-    }
-
   }
+
 
   #temp-canvas {
     display: none;
