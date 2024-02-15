@@ -66,12 +66,15 @@ export class CameraCaptureComponent implements OnInit {
   }
 
   timerShot(timeSecs: number = 5) {
-    console.log('Take photo with timer');
     timer(0, 1000).pipe(
-      take(timeSecs),
-      map(secondsElapsed => 300 - secondsElapsed)
-    ).subscribe(secondsLeft => {
-      this.timerSeconds = secondsLeft;
+      take(timeSecs + 2),
+    ).subscribe(secondsElapsed => {
+      this.timerSeconds = timeSecs - secondsElapsed;
+      if (this.timerSeconds === 0) {
+        this.takePhoto();
+      } else if (this.timerSeconds < 0) {
+        this.timerSeconds = undefined;
+      }
     });
   }
 }

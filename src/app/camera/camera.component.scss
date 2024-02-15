@@ -32,17 +32,25 @@
       .icon-button {
         width: 36px;
         height: 36px;
-  
+
         border: none;
         color: white;
         cursor: pointer;
         border-radius: 50%;
         background-color: #0764f454;
-  
+
         &:hover {
           background-color: #ffed26c0;
         }
       }
+    }
+
+    .timer {
+      position: absolute;
+      top: 50%;
+      left: 40%;
+      font-size: 7rem;
+      color: #fffefe99;
     }
 
   }

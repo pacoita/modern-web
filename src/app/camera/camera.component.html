@@ -3,11 +3,13 @@
     <h1 class="label">Media Capture API</h1>
   </div>
   <mat-card class="descr-card">
-    <p> 
-      With the <strong>Media Capture and Streams API</strong>, we can connect to devices that capture media, such as cameras and microphones. 
+    <p>
+      With the <strong>Media Capture and Streams API</strong>, we can connect to devices that capture media, such as
+      cameras and microphones.
       This API lets us access any hardware-based media data source on a target device.
       <br><br>
-      Invoking the <strong>getUserMedia()</strong> method it is possible to get a video stream and manipulate it in various ways within our app.
+      Invoking the <strong>getUserMedia()</strong> method it is possible to get a video stream and manipulate it in
+      various ways within our app.
     </p>
   </mat-card>
 
@@ -16,7 +18,8 @@
     <mat-card>
       <mat-card-content>
         <p>
-          After allowing to use the camera, we can take a photo (even with timer), then save the shot taken or share via other native apps.
+          After allowing to use the camera, we can take a photo (even with timer), then save the shot taken or share via
+          other native apps.
         </p>
         <br>
         <div class="camera-box">
@@ -29,6 +32,11 @@
               <img src="assets/icons/timer.png" class="icon-space" width="24" height="24" alt="camera icon">
             </button>
           </div>
+          @if (!!timerSeconds) {
+            <div class="timer">{{timerSeconds}}</div>
+          } @else if (timerSeconds! === 0) {
+            <div class="timer">🙂</div>
+          }
         </div>
         <canvas id="temp-canvas"></canvas>
         <!-- TODO: Display the preview after the photo shot -->
