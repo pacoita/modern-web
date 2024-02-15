@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'contacts', loadComponent: () => import('./contact-picker/contact-picker.component').then(m => m.ContactPickerComponent) },
   { path: 'offline', loadComponent: () => import('./offline/offline.component').then(m => m.OfflineComponent) },
   { path: 'about', loadComponent: () => import('./about/about.component').then(m => m.AboutComponent) },
+  { path: 'camera', loadComponent: () => import('./camera/camera.component').then(m => m.CameraCaptureComponent) },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home'}
 ];

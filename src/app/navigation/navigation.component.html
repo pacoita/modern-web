@@ -43,6 +43,11 @@
         File System
       </a>
 
+      <a mat-list-item [routerLink]="['/camera']" (click)="toggleOnNavigation()">
+        <img src="assets/icons/camera_icon.png" class="icon-space nav-icon" width="24" height="24" alt="camera icon">
+        Media Capture
+      </a>
+
       <a mat-list-item [routerLink]="['/share']" (click)="toggleOnNavigation()">
         <img src="assets/icons/share.png" class="icon-space nav-icon" width="24" height="24" alt="share icon">
         Web Share
