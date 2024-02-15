@@ -1,0 +1,53 @@
+@import "../../styles/variables";
+
+.warn-text {
+  margin-bottom: 2rem;
+
+  h1 {
+    margin: 0 2rem 0 0;
+  }
+}
+
+
+.container {
+  padding: 1rem;
+
+  .camera-box {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+
+    #video {
+      width: 100%;
+    }
+
+    #camera-actions {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+
+      .icon-button {
+        width: 36px;
+        height: 36px;
+  
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: #0764f454;
+  
+        &:hover {
+          background-color: #ffed26c0;
+        }
+      }
+    }
+
+  }
+
+  #temp-canvas {
+    display: none;
+  }
+}

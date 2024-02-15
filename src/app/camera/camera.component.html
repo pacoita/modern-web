@@ -1,0 +1,63 @@
+<section class="content container">
+  <div class="warn-text">
+    <h1 class="label">Media Capture API</h1>
+  </div>
+  <mat-card class="descr-card">
+    <p> 
+      With the <strong>Media Capture and Streams API</strong>, we can connect to devices that capture media, such as cameras and microphones. 
+      This API lets us access any hardware-based media data source on a target device.
+      <br><br>
+      Invoking the <strong>getUserMedia()</strong> method it is possible to get a video stream and manipulate it in various ways within our app.
+    </p>
+  </mat-card>
+
+  <ng-container *ngIf="!supportedText; else noSupported">
+    <h2 class="label">{{errorText}}</h2>
+    <mat-card>
+      <mat-card-content>
+        <p>
+          After allowing to use the camera, we can take a photo (even with timer), then save the shot taken or share via other native apps.
+        </p>
+        <br>
+        <div class="camera-box">
+          <video id="video" #videoElement>Video stream not available.</video>
+          <div id="camera-actions">
+            <button (click)="takePhoto()" class="icon-button">
+              <img src="assets/icons/camera_icon.png" class="icon-space" width="24" height="24" alt="camera icon">
+            </button>
+            <button (click)="timerShot()" class="icon-button">
+              <img src="assets/icons/timer.png" class="icon-space" width="24" height="24" alt="camera icon">
+            </button>
+          </div>
+        </div>
+        <canvas id="temp-canvas"></canvas>
+        <!-- TODO: Display the preview after the photo shot -->
+        <!-- <div id="preview-box">
+          <img id="photo-taken" alt="Photo preview" />
+        </div> -->
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+  <ng-template #noSupported>
+    <h2>{{supportedText}}</h2>
+  </ng-template>
+
+  <div class="accordion-container">
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1>Browser compatibility</h1>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <div class="img-container">
+            <img src="assets/images/camera.png" alt="Ambient Light Sensor api support">
+          </div>
+          <br /><br />
+          <a href="https://caniuse.com/?search=getUserMedia" target="_blank">Source: can I use</a>
+        </ng-template>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</section>
