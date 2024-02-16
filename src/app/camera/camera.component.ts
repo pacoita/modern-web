@@ -105,8 +105,20 @@ export class CameraCaptureComponent implements AfterViewInit {
     });
   }
 
-  savePhoto(){
-    // TODO: Save the photo using the File System API
+  async savePhoto(){
+    try {
+      this.canvas?.nativeElement.toBlob(async (blob: Blob) => {
+        // Show the file save dialog.
+        const handle = await (window as any).showSaveFilePicker({suggestedName: 'photo_shot.jpg'});
+        // Write the blob to the file.
+        const writable = await handle.createWritable();
+        await writable.write(blob);
+        await writable.close();
+        return;
+      });
+    } catch (error) {
+        console.error(error);
+    }
   }
 
   share(){
