@@ -4,7 +4,14 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { NgClass, NgIf } from '@angular/common';
 import { timer } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
+
+enum WebCapability {
+  camera = 'camera',
+  share = 'share',
+  fileSystem = 'fileSystem',
+
+}
 
 @Component({
   selector: 'app-light',
@@ -32,9 +39,12 @@ export class CameraCaptureComponent implements AfterViewInit {
 
   @ViewChild('resultShot')
   photo: ElementRef | undefined;
-
   displayPhoto = false;
+  mediaDevices: MediaDevices | undefined;
 
+  webCapabilities: {[apieKey: string]: boolean} = {};
+
+  webCapability = WebCapability;
 
   /**
    * TODO: Add share API
@@ -44,15 +54,18 @@ export class CameraCaptureComponent implements AfterViewInit {
 
   constructor(private titleService: Title) {
     this.titleService.setTitle('Camera API');
+    this.mediaDevices = navigator.mediaDevices;
+    this.webCapabilities[WebCapability.camera] = !!this.mediaDevices;
+    this.webCapabilities[WebCapability.share] = 'share' in navigator;
+    this.webCapabilities[WebCapability.fileSystem] = 'showOpenFilePicker' in window;
   }
 
   async ngAfterViewInit() {
-    const mediaDevices = navigator.mediaDevices;
-    if (mediaDevices) {
+    if (this.mediaDevices) {
       this.videoEl = this.videoElement?.nativeElement as HTMLVideoElement
       try {
         // We get the media stream from the camera
-        const stream = await mediaDevices.getUserMedia({ video: true, audio: false })
+        const stream = await this.mediaDevices.getUserMedia({ video: true, audio: false })
         // We set the stream as source to our <video> element in the template
         this.videoEl.srcObject = stream;
         // We invoke the play method to start the video
@@ -90,5 +103,23 @@ export class CameraCaptureComponent implements AfterViewInit {
         this.timerSeconds = undefined;
       }
     });
+  }
+
+  savePhoto(){
+    // TODO: Save the photo using the File System API
+  }
+
+  share(){
+    try {
+      const url = this.videoEl?.currentSrc;
+      navigator.share({
+        title: 'My photo',
+        text: 'Check out my photo',
+        url: url
+      });
+    } catch (error) {
+      this.errorText = `An error occurred while sharing the photo`;
+      console.error(error);
+    } 
   }
 }

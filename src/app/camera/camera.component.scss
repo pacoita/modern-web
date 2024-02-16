@@ -16,6 +16,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 1rem;
 
     .camera-box {
       position: relative;
@@ -46,6 +47,11 @@
     #preview-box {
       width: 50%;
       position: relative;
+      display: none;
+      
+      &.displayPhoto {
+        display: block;
+      }
 
       @media screen and (max-width: 480px) {
         width: 100%;
