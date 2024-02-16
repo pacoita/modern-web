@@ -92,7 +92,7 @@ export class CameraCaptureComponent implements AfterViewInit {
     this.photo?.nativeElement.setAttribute("src", data);
   }
 
-  timerShot(timeSecs: number = 5) {
+  timerShot(timeSecs: number = 3) {
     timer(0, 1000).pipe(
       take(timeSecs + 2),
     ).subscribe(secondsElapsed => {
