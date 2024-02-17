@@ -24,8 +24,8 @@
       <br>
       <div class="photo-wrap">
         <div class="camera-box">
-          <video id="video" #videoElement>Video stream not available.</video>
-          <div id="camera-actions">
+          <video id="video" #videoElement>Media input stream not available</video>
+          <div id="camera-actions" *ngIf="!!videoEl?.srcObject">
             <button (click)="takePhoto()" class="icon-button">
               <img src="assets/icons/camera_icon.png" class="icon-space" width="24" height="24" alt="camera icon">
             </button>
