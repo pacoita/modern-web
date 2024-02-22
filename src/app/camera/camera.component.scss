@@ -15,6 +15,7 @@
   .photo-wrap {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1rem;
 
@@ -45,7 +46,11 @@
       width: 50%;
       position: relative;
       display: none;
-      
+
+      img {
+        width: 100%;
+      }
+
       &.displayPhoto {
         display: block;
       }

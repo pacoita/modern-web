@@ -29,28 +29,17 @@ export class CameraCaptureComponent implements AfterViewInit {
   supportedText: string | undefined;
   errorText: string | undefined;
   timerSeconds: number | undefined;
-
   @ViewChild('videoElement')
   videoElement: ElementRef | undefined;
   videoEl: HTMLVideoElement | undefined;
-
   @ViewChild('canvas')
   canvas: ElementRef | undefined;
-
   @ViewChild('resultShot')
   photo: ElementRef | undefined;
   displayPhoto = false;
   mediaDevices: MediaDevices | undefined;
-
-  webCapabilities: {[apieKey: string]: boolean} = {};
-
+  webCapabilities: { [apieKey: string]: boolean } = {};
   webCapability = WebCapability;
-
-  /**
-   * TODO: Add share API
-   * - File System API to save the picture
-   * - Share API to share the picture
-   */
 
   constructor(private titleService: Title) {
     this.titleService.setTitle('Camera API');
@@ -98,40 +87,51 @@ export class CameraCaptureComponent implements AfterViewInit {
     ).subscribe(secondsElapsed => {
       this.timerSeconds = timeSecs - secondsElapsed;
       if (this.timerSeconds === 0) {
-        this.takePhoto(); 
+        this.takePhoto();
       } else if (this.timerSeconds < 0) {
         this.timerSeconds = undefined;
       }
     });
   }
 
-  async savePhoto(){
+  async savePhoto() {
     try {
       this.canvas?.nativeElement.toBlob(async (blob: Blob) => {
         // Show the file save dialog.
-        const handle = await (window as any).showSaveFilePicker({suggestedName: 'photo_shot.jpg'});
+        const handle = await (window as any).showSaveFilePicker({ suggestedName: 'photo_shot.jpg' });
         // Write the blob to the file.
         const writable = await handle.createWritable();
         await writable.write(blob);
         await writable.close();
-        return;
       });
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
   }
 
-  share(){
+  share() {
     try {
-      const url = this.videoEl?.currentSrc;
-      navigator.share({
-        title: 'My photo',
-        text: 'Check out my photo',
-        url: url
+      this.canvas?.nativeElement.toBlob(async (blob: Blob) => {
+        const photoFile = new File([blob],
+            'demo_shot.jpg',
+            {
+              type: "image/jpeg",
+              lastModified: new Date().getTime()
+            }
+          );
+        const url = 'https://github.com/pacoita/modern-web';
+        navigator.share({
+          title: 'My photo',
+          text: 'Check out my photo',
+          url: url,
+          files: [photoFile],
+        });
       });
     } catch (error) {
       this.errorText = `An error occurred while sharing the photo`;
       console.error(error);
-    } 
+    }
   }
+
+
 }

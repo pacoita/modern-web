@@ -18,8 +18,8 @@
   <mat-card>
     <mat-card-content>
       <p>
-        After allowing to use the camera, we can take a photo directly or with a timer (3 secs), then save the shot taken or share via
-        other native apps.
+        After granting permissions to use the camera, we can take a photo immediately or with a timer (3 secs). If the browser allows it, we can save on the local file system 
+        the image taken or share it via the available native apps.
       </p>
       <br>
       <div class="photo-wrap">
@@ -30,7 +30,7 @@
               <img src="assets/icons/camera_icon.png" class="icon-space" width="24" height="24" alt="camera icon">
             </button>
             <button (click)="timerShot()" class="icon-button">
-              <img src="assets/icons/timer.png" class="icon-space" width="24" height="24" alt="camera icon">
+              <img src="assets/icons/timer.png" class="icon-space" width="24" height="24" alt="timer icon">
             </button>
           </div>
           @if (!!timerSeconds) {
@@ -46,10 +46,10 @@
 
           <div id="camera-actions">
             <button class="icon-button" *ngIf="webCapabilities[webCapability.share]" (click)="share()">
-              <img src="assets/icons/share.png" class="icon-space" width="24" height="24" alt="camera icon">
+              <img src="assets/icons/share.png" class="icon-space" width="24" height="24" alt="share icon">
             </button>
             <button class="icon-button" *ngIf="webCapabilities[webCapability.fileSystem]" (click)="savePhoto()">
-              <img src="assets/icons/save_black.png" class="icon-space" width="24" height="24" alt="camera icon">
+              <img src="assets/icons/save_black.png" class="icon-space" width="24" height="24" alt="save icon">
             </button>
           </div>
         </div>
