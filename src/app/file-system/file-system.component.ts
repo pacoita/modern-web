@@ -7,23 +7,21 @@ import { NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-    selector: 'app-file-system',
-    templateUrl: './file-system.component.html',
-    styleUrls: ['./file-system.component.scss'],
-    standalone: true,
-    imports: [
-        MatCardModule,
-        NgIf,
-        MatButtonModule,
-        MatExpansionModule,
-    ],
+  selector: 'app-file-system',
+  templateUrl: './file-system.component.html',
+  styleUrls: ['./file-system.component.scss'],
+  standalone: true,
+  imports: [
+    MatCardModule,
+    NgIf,
+    MatButtonModule,
+    MatExpansionModule,
+  ],
 })
 export class FileSystemComponent implements OnInit, AfterViewInit {
   unsupportedText: string | undefined;
   errorText: string | undefined;
 
-  // TIP: We could persist the fileHandle locally in an IndexedDB in order to
-  // restore previously opened files or show the latest opened files.
   fileHandle: FileSystemFileHandle | undefined;
 
   @ViewChild('textbox')
@@ -131,7 +129,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
     // Chrome 86+
     options = this.getFilePickerOptions();
     return (window as any) // Cast to any to overcome current types issues: https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/58386
-          .showSaveFilePicker(options);
+      .showSaveFilePicker(options);
   }
 
   private getFilePickerOptions(

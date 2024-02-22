@@ -22,9 +22,6 @@ export class OrientationComponent {
   private onOrientationChange(event: DeviceOrientationEvent): void {
     // event.beta value is given in degree in the range [-180,180)
     this.xValue = Math.round(event.beta ?? 0);
-    if (!this.xValue) {
-      return;
-    }
 
     const isExcludedRange = this.xValue < -40 && this.xValue > -130;
     const isActiveRange = this.xValue >= -40 && this.xValue < 50;
