@@ -72,7 +72,7 @@ export class WakeLockComponent implements OnInit, OnDestroy {
         'screen'
       );
 
-      // 3. From this moment we have the screen lock!
+      // 3. From this moment we have the screen locked!
 
       // The screen wake lock is automatically released when we minimize a window
       // or open a new browser tab when a screen wake lock is active.

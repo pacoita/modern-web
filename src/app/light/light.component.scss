@@ -1,5 +1,8 @@
 @import "../../styles/variables";
+
 .warn-text {
+  display: flex;
+  align-items: center;
   margin-bottom: 2rem;
   h1 {
     margin: 0 2rem 0 0;

@@ -1,6 +1,9 @@
 <section class="content container" [ngClass]="ambient === 'bright' ? 'lightTheme' : 'darkTheme'">
   <div class="warn-text">
     <h1 class="label">Ambient Light Sensor</h1>
+    <div class="image">
+      <img [src]="'/assets/images/'+ (ambient === 'bright' ? 'sun': 'night') +'.png'" width="64" alt="sun or moon icon">
+    </div>
   </div>
   <mat-card class="descr-card">
     <p>The <strong>AmbientLightSensor</strong> interface of the Sensor API returns the current level of the ambient
@@ -49,6 +52,8 @@
           </div>
           <br /><br />
           <a href="https://caniuse.com/?search=ambient%20light" target="_blank">Source: can I use</a>
+          <br /><br />
+          <a href="https://www.flaticon.com/free-icons/night" title="night icons">Night icons created by Freepik - Flaticon</a>
         </ng-template>
       </mat-expansion-panel>
     </mat-accordion>

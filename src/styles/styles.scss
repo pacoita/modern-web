@@ -21,6 +21,7 @@ section.content {
 
 .icon-space {
   margin-right: 0.5rem;
+
   &.nav-icon {
     margin-bottom: -0.35rem;
   }
@@ -74,6 +75,7 @@ div.mat-step-label.mat-step-label-active.mat-step-label-selected {
 
   .img-container {
     text-align: center;
+    margin-top: 1.5rem;
 
     img {
       width: 100%;
@@ -87,4 +89,23 @@ div.mat-step-label.mat-step-label-active.mat-step-label-selected {
   text-decoration: none;
   font-weight: 500;
   color: $materialBlue;
+}
+
+.darkTheme {
+  color: white;
+  background-color: #1b1d1e !important;
+  .mat-mdc-card {
+    background-color: #2d2e2f !important;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+    border-color: #303436 !important;
+  }
+  .mat-expansion-panel-header {
+    background-color: #2d2e2f !important;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+    border-color: #303436 !important;
+    .mat-expansion-panel-header-title,
+    .mat-expansion-indicator::after{
+      color: white !important;
+    }
+  }
 }

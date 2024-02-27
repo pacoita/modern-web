@@ -21,7 +21,6 @@ export class LightComponent implements OnInit {
   supportedText: string | undefined;
   errorText: string | undefined;
   luxValue: number | undefined;
-  private sensor: any;
 
   constructor(private cdRef: ChangeDetectorRef, private titleService: Title) {
     this.titleService.setTitle('Ambient light');
@@ -38,17 +37,18 @@ export class LightComponent implements OnInit {
 
   private readAmbientLight(): void {
     try {
-      // 1. We create a new instance of the AmbientLightSensor object.
-      this.sensor = this.sensor ?? new (window as any).AmbientLightSensor();
+      // 1. We create a new instance of the AmbientLightSensor interface
+      const sensor = new (window as any).AmbientLightSensor();
 
-      // 2. Permissions must be granted in order to proceed successfully
-      this.sensor.onerror = async (event: any) => {
+      // 2. Permissions to the 'ambient-light-sensor' must be granted in order to proceed successfully
+      sensor.onerror = async (event: any) => {
         // Ask for permissions if not granted yet
         if (event.error.name === 'NotAllowedError') {
           // https://github.com/microsoft/TypeScript/issues/33923#issuecomment-911409125
           const permissionName = 'ambient-light-sensor' as PermissionName;
 
-          // The "permissions" object provides access to the Permissions API... yet another API :)
+          // The "permissions" property allows to query and update the status of APIs 
+          // The Permissions API... yet another web API :)
           const result = await navigator.permissions.query({
             name: permissionName,
           });
@@ -67,12 +67,13 @@ export class LightComponent implements OnInit {
       };
 
       // 4. "LIVE" light value changes are registered
-      this.sensor.onreading = () => {
-        this.updateTheme(this.sensor.illuminance);
+      // The illuminance value is expressed in "lux" (unit of illuminance) around the hosting device
+      sensor.onreading = () => {
+        this.updateTheme(sensor.illuminance);
       };
 
       // 3. We start "reading" light values
-      this.sensor.start();
+      sensor.start();
 
     } catch (err) {
       this.errorText = `An error occurred.`;
