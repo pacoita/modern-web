@@ -19,7 +19,9 @@
     <mat-card-content>
       <p>
         After granting permissions to use the camera, we can take a photo immediately or with a timer (3 secs). If the browser allows it, we can save on the local file system 
-        the image taken or share it via the available native apps.
+        the image taken or share it via the available native apps.<br>
+        If the the DeviceOrientationEvent is supported, tilting the device forward (the device, e.g. a phone, must face down) and backward 
+        will trigger the timer function.
       </p>
       <br>
       <div class="photo-wrap">
@@ -40,7 +42,7 @@
           }
         </div>
         <canvas id="temp-canvas" #canvas></canvas>
-        <!-- Displays the preview after the photo shot -->
+        <!-- Displays the preview after the photo shot is taken -->
         <div id="preview-box" [ngClass]="{'displayPhoto': displayPhoto}">
           <img id="photo-taken" #resultShot alt="Photo preview" />
 
