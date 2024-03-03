@@ -15,8 +15,11 @@ section {
     align-items: center;
     margin: 1rem 0;
 
-    .mid-img {
-      margin: 0 2rem;
+    a {
+      margin-right: 2rem;
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 
