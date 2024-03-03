@@ -3,7 +3,7 @@
   "index": "/index.html",
   "assetGroups": [
     {
-      "name": "app",
+      "name": "app-core",
       "installMode": "prefetch",
       "resources": {
         "files": [
