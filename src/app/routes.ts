@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'wakelock', loadComponent: () => import('./wake-lock/wake-lock.component').then(m => m.WakeLockComponent) },
   { path: 'visibility', loadComponent: () => import('./visibility/visibility.component').then(m => m.VisibilityComponent) },
@@ -19,8 +18,3 @@ const routes: Routes = [
   { path: '**', redirectTo: '/home'}
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes, {})],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
