@@ -48,6 +48,11 @@
         Media Capture
       </a>
 
+      <a mat-list-item [routerLink]="['/back-sync']" (click)="toggleOnNavigation()">
+        <img src="assets/icons/background-sync.png" class="icon-space nav-icon" width="24" height="24" alt="back-sync icon">
+        Background Sync
+      </a>
+
       <a mat-list-item [routerLink]="['/share']" (click)="toggleOnNavigation()">
         <img src="assets/icons/share.png" class="icon-space nav-icon" width="24" height="24" alt="share icon">
         Web Share
@@ -62,6 +67,7 @@
         <img src="assets/icons/signal_wifi.png" class="icon-space nav-icon" width="24" height="24" alt="Wifi icon">
         Offline/Online
       </a>
+
       <a mat-list-item [routerLink]="['/vibrate']" (click)="toggleOnNavigation()">
         <img src="assets/icons/vibration.png" class="icon-space nav-icon" width="24" height="24" alt="vibration icon">
         Vibration
