@@ -1,0 +1,46 @@
+<section class="content">
+    <h1>Background Sync API</h1>
+    <mat-card class="descr-card">
+      <p>The <strong>Background Synchronization API</strong> web applications to defer network-related actions to a service worker for later execution. 
+        This enables functionality even when the user is offline. 
+        <br><br>
+        The API offers a way to register a task to be executed by the service worker when a network connection becomes available again. 
+        This feature is triggered by events within the service worker, allowing developers to implement functionalities that work seamlessly regardless of the user's network connectivity. 
+        <br><br><br>
+        <span class="flex-centered">
+          <img src="assets/icons/lock.png" class="icon-space" width="24" height="24" alt="lock icon">
+          <span>This feature is available only over secure connections (HTTPS) and requires an installed Service Worker.</span>
+        </span>
+      </p>
+    </mat-card>
+    <div *ngIf="!unsupportedText; else noSupported">
+      
+        <h3>TODO: Here the form for the demo...</h3>
+
+      <p class="error">
+        {{errorText}}
+      </p>
+    </div>
+    <ng-template #noSupported>
+      <h2>{{unsupportedText}}</h2>
+    </ng-template>
+  
+    <div class="accordion-container">
+      <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h1>Browser compatibility</h1>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-template matExpansionPanelContent>
+            <div class="img-container">
+              <img src="assets/images/background-sync.png" alt="Background sync api support">
+            </div>
+            <br /><br />
+            <a href="https://caniuse.com/background-sync" target="_blank">Source: can I use</a>
+          </ng-template>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </section>
