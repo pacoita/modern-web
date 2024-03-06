@@ -49,9 +49,7 @@ export class BackgroundSyncComponent {
 
   submit() {
     const payload = this.registrationForm.value;
-
-    // TODO: Create local server
-    this.http.post('http://localhost:3600/back-sync/post', payload)
+    this.http.post('http://localhost:3000/back-sync/form-data', payload)
       .pipe(
         takeUntilDestroyed(this.destroyRef)
       )
@@ -60,6 +58,8 @@ export class BackgroundSyncComponent {
           this.displayNotification('Form data has been delivered! ✅');
         },
         error: (error: HttpErrorResponse) => {
+          console.log('Error while sending the form data', error);
+          
           if (error.status === 504) {
             this.displayNotification('🔥 You are OFFLINE 🔥 We will send the data when you are back online 📡');
             this.registerForSync();

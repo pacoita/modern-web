@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "open": "ng serve -o",
+    "open": "ng serve -o --port 4670",
     "build": "ng build"
   },
   "private": true,
