@@ -1,10 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Component, DestroyRef, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-background-sync',
@@ -13,7 +17,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatCardModule,
     NgIf,
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatExpansionModule,
+    ReactiveFormsModule
   ],
   templateUrl: './background-sync.component.html',
   styleUrl: './background-sync.component.scss'
@@ -21,8 +28,18 @@ import { MatExpansionModule } from '@angular/material/expansion';
 export class BackgroundSyncComponent {
   unsupportedText: string | undefined;
   errorText: string | undefined;
-  http = inject(HttpClient);
-  destroyRef = inject(DestroyRef);
+  isLoading = false;
+  private http = inject(HttpClient);
+  private destroyRef = inject(DestroyRef);
+  private fb = inject(FormBuilder);
+  private snackBar = inject(MatSnackBar);
+
+  registrationForm = this.fb.group({
+    firstname: '',
+    lastname: '',
+    email: '',
+    feedback: ''
+  });
 
   constructor() {
     if (!('serviceWorker' in navigator) && !('SyncManager' in window)) {
@@ -30,21 +47,25 @@ export class BackgroundSyncComponent {
     }
   }
 
-  sendFormData() {
-    // TODO: Create demo form
-    const formData = { name: 'John Doe', age: '30', city: 'New York City' };
+  submit() {
+    const payload = this.registrationForm.value;
 
     // TODO: Create local server
-    this.http.post('http://localhost:3600/back-sync/post', formData)
-      .pipe(takeUntilDestroyed(this.destroyRef))
+    this.http.post('http://localhost:3600/back-sync/post', payload)
+      .pipe(
+        takeUntilDestroyed(this.destroyRef)
+      )
       .subscribe({
         next: () => {
-          console.log('Form data sent successfully');
+          this.displayNotification('Form data has been delivered! ✅');
         },
-        error: (error) => {
-          // Filter by error type
-          console.error('Error sending form data', error);
-          this.registerForSync();
+        error: (error: HttpErrorResponse) => {
+          if (error.status === 504) {
+            this.displayNotification('🔥 You are OFFLINE 🔥 We will send the data when you are back online 📡');
+            this.registerForSync();
+          } else {
+            this.displayNotification('Upsie! Something went really wrong 😢');
+          }
         }
       });
   }
@@ -58,6 +79,13 @@ export class BackgroundSyncComponent {
         return registration.sync.register('syncFormData');
       })
       .catch((error) => console.error('Error while registering the sync', error));
+  }
+
+  displayNotification(text: string) {
+    this.snackBar.open(text, 'X', {
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+    });
   }
 
 }

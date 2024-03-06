@@ -1,0 +1,23 @@
+.card-content {
+  display: flex;
+  gap: 1rem;
+  padding-top: 2rem;
+
+  form {
+      width: 50%;
+      flex: 1;
+      mat-form-field {
+        width: 100%;
+      }
+    }
+    
+    .img-wrap {
+      width: 50%;
+      img {
+        width: 100%;
+      }
+    }
+}
+
+
+
