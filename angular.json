@@ -30,7 +30,8 @@
               "src/assets",
               "src/manifest.webmanifest",
               "src/custom-sw.js",
-              "src/root-sw.js"
+              "src/root-sw.js",
+              "src/idb.js"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
@@ -73,18 +74,6 @@
               "sourceMap": true,
               "optimization": false,
               "namedChunks": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "650kb",
-                  "maximumError": "750kb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
             }
@@ -94,7 +83,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "modern-web:build"
+            "buildTarget": "modern-web:build:develop"
           },
           "configurations": {
             "production": {

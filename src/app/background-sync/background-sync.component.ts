@@ -4,11 +4,13 @@ import { Component, DestroyRef, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { IDBPDatabase } from 'idb';
+import { IdbService } from './idb-service.service';
 
 @Component({
   selector: 'app-background-sync',
@@ -33,6 +35,10 @@ export class BackgroundSyncComponent {
   private destroyRef = inject(DestroyRef);
   private fb = inject(FormBuilder);
   private snackBar = inject(MatSnackBar);
+  private idb = inject(IdbService);
+  private dbRef: IDBPDatabase | null = null;
+  private readonly FORM_DB_NAME = 'BackSyncDb';
+  private readonly FORM_TABLE_NAME = 'FormData';
 
   registrationForm = this.fb.group({
     firstname: '',
@@ -47,9 +53,9 @@ export class BackgroundSyncComponent {
     }
   }
 
-  submit() {
+  async submit() {
     const payload = this.registrationForm.value;
-    this.http.post('http://localhost:3000/back-sync/form-data', payload)
+    this.http.post(`http://localhost:3600/back-sync/form-data`, payload)
       .pipe(
         takeUntilDestroyed(this.destroyRef)
       )
@@ -58,11 +64,10 @@ export class BackgroundSyncComponent {
           this.displayNotification('Form data has been delivered! ✅');
         },
         error: (error: HttpErrorResponse) => {
-          console.log('Error while sending the form data', error);
-          
           if (error.status === 504) {
-            this.displayNotification('🔥 You are OFFLINE 🔥 We will send the data when you are back online 📡');
-            this.registerForSync();
+            this.displayNotification('🔥 You are OFFLINE 🔥 We will send the data once back online 📡');
+            this.storeFormDataInIDB(payload)
+              .then(() => this.registerForSync());
           } else {
             this.displayNotification('Upsie! Something went really wrong 😢');
           }
@@ -70,12 +75,23 @@ export class BackgroundSyncComponent {
       });
   }
 
-  registerForSync() {    
+  private async storeFormDataInIDB(formData: any) {
+    try {
+      if (!this.dbRef) {
+        this.dbRef = await this.idb.createObjectStore(this.FORM_DB_NAME, [this.FORM_TABLE_NAME]);
+      }
+      await this.idb.insert(this.dbRef!, this.FORM_TABLE_NAME, formData);
+    } catch (error) {
+      console.error('Error while storing form data: ', error)
+    }
+  }
+
+  private registerForSync() {
     // Need to cast to any since background-sync is still draft and 
     // typings aren't available in typescript yet.
     // https://wicg.github.io/background-sync/spec/
     navigator.serviceWorker.ready
-    .then((registration: any) => {
+      .then((registration: any) => {
         return registration.sync.register('syncFormData');
       })
       .catch((error) => console.error('Error while registering the sync', error));
@@ -87,6 +103,12 @@ export class BackgroundSyncComponent {
       verticalPosition: 'top',
     });
   }
+
+  saveFormToIDb() {
+    // Save the form data to IndexedDB
+    const openRequest = window.indexedDB.open('FormData', 1);
+  }
+
 
 }
 
