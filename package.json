@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "open": "ng serve -o --port 4670",
+    "server": "npx http-server ./dist -p 4670",
     "build": "ng build"
   },
   "private": true,

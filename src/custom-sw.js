@@ -10,7 +10,7 @@ async function syncData() {
   const FORM_STORE_NAME = 'FormData';
 
   const openRequest = indexedDB.open(FORM_DB_NAME, 1);
-  openRequest.onsuccess = function (event) {
+  openRequest.onsuccess = (event) => {
     const db = event.target.result;
 
     if (db.objectStoreNames.contains(FORM_STORE_NAME)) {

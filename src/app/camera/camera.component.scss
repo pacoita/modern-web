@@ -22,10 +22,10 @@
     .camera-box {
       position: relative;
       width: 47%;
-      max-width: 400px;
-
-      @media screen and (max-width: 480px) {
+      
+      @media screen and (max-width: 850px) {
         width: 100%;
+        max-width: none;
       }
 
       #video,
@@ -46,16 +46,16 @@
       width: 47%;
       position: relative;
       display: none;
-
+      
       img {
         width: 100%;
       }
-
+      
       &.displayPhoto {
         display: block;
       }
-
-      @media screen and (max-width: 480px) {
+      
+      @media screen and (max-width: 850px) {
         width: 100%;
       }
     }

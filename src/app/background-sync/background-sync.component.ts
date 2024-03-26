@@ -66,8 +66,7 @@ export class BackgroundSyncComponent {
         error: (error: HttpErrorResponse) => {
           if (error.status === 504) {
             this.displayNotification('🔥 You are OFFLINE 🔥 We will send the data once back online 📡');
-            this.storeFormDataInIDB(payload)
-              .then(() => this.registerForSync());
+            this.storeFormDataInIDB(payload).then(() => this.registerForSync());
           } else {
             this.displayNotification('Upsie! Something went really wrong 😢');
           }
