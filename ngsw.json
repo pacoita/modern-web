@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1710832956932,
+  "timestamp": 1711466166867,
   "index": "/modern-web/index.html",
   "assetGroups": [
     {
@@ -14,7 +14,7 @@
         "/modern-web/about.component-LD2L6RIY.js",
         "/modern-web/assets/images/cat_offline.png",
         "/modern-web/background-sync.component-5NVLCRPG.js",
-        "/modern-web/camera.component-PZPXRQ4R.js",
+        "/modern-web/camera.component-NYNWGQBW.js",
         "/modern-web/chunk-A3RG36PJ.js",
         "/modern-web/chunk-BY27MXQR.js",
         "/modern-web/chunk-E72YGAJ2.js",
@@ -30,7 +30,7 @@
         "/modern-web/idb.js",
         "/modern-web/index.html",
         "/modern-web/light.component-S3AYZ3JQ.js",
-        "/modern-web/main-LMYXH7JQ.js",
+        "/modern-web/main-EYPP7UQB.js",
         "/modern-web/manifest.webmanifest",
         "/modern-web/offline.component-GVLC4MQF.js",
         "/modern-web/orientation.component-OY7NBG2D.js",
@@ -40,7 +40,7 @@
         "/modern-web/styles-FVZ4ZUWJ.css",
         "/modern-web/vibration.component-3EF4V66C.js",
         "/modern-web/visibility.component-ICM5TQ6S.js",
-        "/modern-web/wake-lock.component-3HBC2FPK.js"
+        "/modern-web/wake-lock.component-NS7PX436.js"
       ],
       "patterns": []
     },
@@ -181,7 +181,7 @@
     "/modern-web/assets/images/wakelock.png": "4dc186decf0e6d892ed60e1d876e405625bbb1e8",
     "/modern-web/assets/images/x.svg": "b7fab24d382271ee517bfa22f87dba8169a2fa10",
     "/modern-web/background-sync.component-5NVLCRPG.js": "0dc67acb811c46a68197f9a0e4a922e414a6d390",
-    "/modern-web/camera.component-PZPXRQ4R.js": "692e4dad5efc5e2d041ae6b56c79e6ea8b274c26",
+    "/modern-web/camera.component-NYNWGQBW.js": "0fe74b2bcad8f9237f1aed1259533eacd8d0a32f",
     "/modern-web/chunk-A3RG36PJ.js": "2e09db5b60065bf1afcf306434c2b53185c8765d",
     "/modern-web/chunk-BY27MXQR.js": "fe39732f9360a8596e854006d3ce2dc720e259ff",
     "/modern-web/chunk-E72YGAJ2.js": "3f996b191d0cee673b539b8c1b5f80f1a731740a",
@@ -191,13 +191,13 @@
     "/modern-web/chunk-O24WLSDE.js": "6a39a8ee0eb2d63231628fd60b1767604ffb8aba",
     "/modern-web/chunk-XBY2TUXP.js": "ab6dc5e2122b3fb07e583e4433941b97e25ba6af",
     "/modern-web/contact-picker.component-PJG5LJ2S.js": "34167a76244bdb46b83fe1c13624f9e10c5db8a4",
-    "/modern-web/custom-sw.js": "468bf18616dab822d163dcccf71c08b37d4933f6",
+    "/modern-web/custom-sw.js": "8ea0fc4d7f9639e30176878c55efedcb1322ccac",
     "/modern-web/favicon.ico": "60b9f5025aface39d9b6b3b5ede71b6d8b057768",
     "/modern-web/file-system.component-EMMRFGBU.js": "2427f3df5ed2ad2b93461e93e7465fc3118b6249",
     "/modern-web/idb.js": "222e725b4f68bdfc414dc47cc1abc3f686b8a899",
-    "/modern-web/index.html": "be1f9a8b306b1e61bb9dfb2dec0c0fe5721c07c3",
+    "/modern-web/index.html": "7c63a86bb3e1bfa9082e7a8720156233283d4dc5",
     "/modern-web/light.component-S3AYZ3JQ.js": "314b85cc2c6d5eee121f60b9bf45a076b7f9864a",
-    "/modern-web/main-LMYXH7JQ.js": "b5d21affbd24af8a544a6fe77f57322ed5109365",
+    "/modern-web/main-EYPP7UQB.js": "f366709137f6c42d9d594fd365bda17774d113a1",
     "/modern-web/manifest.webmanifest": "c655a568a9222dedf3ff2de1afb53d353ad4689e",
     "/modern-web/offline.component-GVLC4MQF.js": "1573d4761cbd79dd02900defed8b4a1f88f88b3d",
     "/modern-web/orientation.component-OY7NBG2D.js": "9aaebb27f050ae53656ec0ba904240a0601679f0",
@@ -207,7 +207,7 @@
     "/modern-web/styles-FVZ4ZUWJ.css": "0e25b4808570b301eb2741e96da262f1d2f00f1d",
     "/modern-web/vibration.component-3EF4V66C.js": "21284703120646818e76686ffef45faab5e40213",
     "/modern-web/visibility.component-ICM5TQ6S.js": "6a4acf72a28ee30f1321ce11a8a90d9334d2601a",
-    "/modern-web/wake-lock.component-3HBC2FPK.js": "5a24e9185fa21e06105b072cea16e2a113b13666"
+    "/modern-web/wake-lock.component-NS7PX436.js": "7b04679740bc9d03ea06d1f52b6b8977d6683ba6"
   },
   "navigationUrls": [
     {
