@@ -1,5 +1,4 @@
 import { enableProdMode, isDevMode } from '@angular/core';
-import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
 import { provideServiceWorker } from '@angular/service-worker';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -7,10 +6,6 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/routes';
 import { provideHttpClient } from '@angular/common/http';
-
-if (environment.production) {
-  enableProdMode();
-}
 
 bootstrapApplication(AppComponent, {
   providers: [
