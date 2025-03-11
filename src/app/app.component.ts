@@ -5,7 +5,6 @@ import { NavigationComponent } from './navigation/navigation.component';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    standalone: true,
     imports: [NavigationComponent]
 })
 export class AppComponent {}

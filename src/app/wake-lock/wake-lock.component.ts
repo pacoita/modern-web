@@ -10,7 +10,6 @@ import { MatCardModule } from '@angular/material/card';
     selector: 'app-wake-lock',
     templateUrl: './wake-lock.component.html',
     styleUrls: ['./wake-lock.component.scss'],
-    standalone: true,
     imports: [
         MatCardModule,
         NgIf,
@@ -18,7 +17,7 @@ import { MatCardModule } from '@angular/material/card';
         FormsModule,
         NgClass,
         MatExpansionModule,
-    ],
+    ]
 })
 export class WakeLockComponent implements OnInit, OnDestroy {
   isSentinelActive = false;

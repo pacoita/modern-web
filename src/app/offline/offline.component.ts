@@ -8,7 +8,6 @@ import { MatCardModule } from '@angular/material/card';
     selector: 'app-offline',
     templateUrl: './offline.component.html',
     styleUrls: ['./offline.component.scss'],
-    standalone: true,
     imports: [MatCardModule, NgClass, NgIf, MatExpansionModule]
 })
 export class OfflineComponent {

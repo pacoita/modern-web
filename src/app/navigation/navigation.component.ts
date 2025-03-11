@@ -12,7 +12,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     selector: 'app-navigation',
     templateUrl: './navigation.component.html',
     styleUrls: ['./navigation.component.scss'],
-    standalone: true,
     imports: [
         MatToolbarModule,
         MatButtonModule,
@@ -20,7 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
         MatSidenavModule,
         MatListModule,
         RouterOutlet,
-    ],
+    ]
 })
 export class NavigationComponent implements OnInit, OnDestroy {
   isHandset: boolean | undefined;

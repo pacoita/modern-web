@@ -14,16 +14,15 @@ enum WebCapability {
 }
 
 @Component({
-  selector: 'app-light',
-  templateUrl: './camera.component.html',
-  styleUrls: ['./camera.component.scss'],
-  standalone: true,
-  imports: [
-    NgClass,
-    MatCardModule,
-    NgIf,
-    MatExpansionModule,
-  ],
+    selector: 'app-light',
+    templateUrl: './camera.component.html',
+    styleUrls: ['./camera.component.scss'],
+    imports: [
+        NgClass,
+        MatCardModule,
+        NgIf,
+        MatExpansionModule,
+    ]
 })
 export class CameraCaptureComponent implements OnInit, AfterViewInit {
 

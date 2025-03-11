@@ -7,16 +7,15 @@ import { NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-file-system',
-  templateUrl: './file-system.component.html',
-  styleUrls: ['./file-system.component.scss'],
-  standalone: true,
-  imports: [
-    MatCardModule,
-    NgIf,
-    MatButtonModule,
-    MatExpansionModule,
-  ],
+    selector: 'app-file-system',
+    templateUrl: './file-system.component.html',
+    styleUrls: ['./file-system.component.scss'],
+    imports: [
+        MatCardModule,
+        NgIf,
+        MatButtonModule,
+        MatExpansionModule,
+    ]
 })
 export class FileSystemComponent implements OnInit, AfterViewInit {
   unsupportedText: string | undefined;

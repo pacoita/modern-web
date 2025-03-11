@@ -13,7 +13,6 @@ import { MatCardModule } from '@angular/material/card';
     selector: 'app-vibration',
     templateUrl: './vibration.component.html',
     styleUrls: ['./vibration.component.scss'],
-    standalone: true,
     imports: [MatCardModule, NgIf, MatStepperModule, FormsModule, ReactiveFormsModule, MatRadioModule, MatButtonModule, NgClass, MatExpansionModule]
 })
 export class VibrationComponent implements OnInit {

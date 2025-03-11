@@ -5,7 +5,6 @@ import { MatCardModule } from '@angular/material/card';
     selector: 'app-about',
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.scss'],
-    standalone: true,
     imports: [MatCardModule]
 })
 export class AboutComponent implements OnInit {

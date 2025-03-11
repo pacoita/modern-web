@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-orientation',
     templateUrl: './orientation.component.html',
     styleUrls: ['./orientation.component.scss'],
-    standalone: true,
     imports: [MatCardModule, MatExpansionModule, MatCheckboxModule, FormsModule]
 })
 export class OrientationComponent {

@@ -10,13 +10,12 @@ import { MatCardModule } from '@angular/material/card';
     selector: 'app-share',
     templateUrl: './share.component.html',
     styleUrls: ['./share.component.scss'],
-    standalone: true,
     imports: [
         MatCardModule,
         NgIf,
         MatButtonModule,
         MatExpansionModule,
-    ],
+    ]
 })
 export class ShareComponent implements OnInit {
   unsupportedText: string | undefined;

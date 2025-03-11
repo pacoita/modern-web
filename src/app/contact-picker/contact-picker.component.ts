@@ -17,14 +17,13 @@ interface IAddress {
     selector: 'app-contact-picker',
     templateUrl: './contact-picker.component.html',
     styleUrls: ['./contact-picker.component.scss'],
-    standalone: true,
     imports: [
         MatCardModule,
         MatButtonModule,
         NgFor,
         NgIf,
         MatExpansionModule,
-    ],
+    ]
 })
 export class ContactPickerComponent implements OnInit {
   statusText: string | undefined;

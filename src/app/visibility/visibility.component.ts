@@ -7,7 +7,6 @@ import { MatCardModule } from '@angular/material/card';
     selector: 'app-visibility',
     templateUrl: './visibility.component.html',
     styleUrls: ['./visibility.component.scss'],
-    standalone: true,
     imports: [MatCardModule, MatExpansionModule]
 })
 export class VisibilityComponent implements AfterViewInit {

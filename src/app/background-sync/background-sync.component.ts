@@ -13,19 +13,18 @@ import { IDBPDatabase } from 'idb';
 import { IdbService } from './idb-service.service';
 
 @Component({
-  selector: 'app-background-sync',
-  standalone: true,
-  imports: [
-    MatCardModule,
-    NgIf,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatExpansionModule,
-    ReactiveFormsModule
-  ],
-  templateUrl: './background-sync.component.html',
-  styleUrl: './background-sync.component.scss'
+    selector: 'app-background-sync',
+    imports: [
+        MatCardModule,
+        NgIf,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatExpansionModule,
+        ReactiveFormsModule
+    ],
+    templateUrl: './background-sync.component.html',
+    styleUrl: './background-sync.component.scss'
 })
 export class BackgroundSyncComponent {
   unsupportedText: string | undefined;
