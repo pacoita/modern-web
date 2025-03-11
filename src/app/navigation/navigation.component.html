@@ -23,6 +23,11 @@
         Page Visibility
       </a>
 
+      <a mat-list-item [routerLink]="['/summary']" (click)="toggleOnNavigation()">
+        <img src="assets/icons/summarize.png" class="icon-space nav-icon" width="24" height="24" alt="Summary icon">
+        Summarize
+      </a>
+
       <a mat-list-item [routerLink]="['/wakelock']" (click)="toggleOnNavigation()">
         <img src="assets/icons/app_blocking.png" class="icon-space nav-icon" width="24" height="24" alt="app_blocking icon">
         Wake Lock
@@ -39,7 +44,7 @@
       </a>
 
       <a mat-list-item [routerLink]="['/file']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/article.png" class="icon-space nav-icon" width="24" height="24" alt="File System Access icon">
+        <img src="assets/icons/folder.png" class="icon-space nav-icon" width="24" height="24" alt="File System Access icon">
         File System
       </a>
 
