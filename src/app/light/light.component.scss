@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@use '../../styles/variables' as vars;
 
 .warn-text {
   display: flex;
@@ -11,11 +11,11 @@
 
 .generic-value-light {
   text-align: center;
-  max-width: $max-width;
+  max-width: vars.$max-width;
   h1 {
     padding: 1.5rem;
     font-size: 5em;
-    color: $grayLight;
+    color: vars.$grayLight;
   }
 }
 

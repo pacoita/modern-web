@@ -1,9 +1,9 @@
-@import "../../styles/variables";
+@use '../../styles/variables' as vars;
 .cards-container {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  max-width: $max-width;
+  max-width: vars.$max-width;
   .share-btn {
     position: absolute;
     top: 1rem;

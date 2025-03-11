@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables' as vars;
 
 html,
 body {
@@ -12,11 +12,11 @@ body {
 }
 
 section.content {
-  max-width: $max-width;
+  max-width: vars.$max-width;
 }
 
 .error {
-  color: $redSignal;
+  color: vars.$redSignal;
 }
 
 .icon-space {
@@ -65,7 +65,7 @@ div.mat-step-label.mat-step-label-active.mat-step-label-selected {
 
 .accordion-container {
   // 2rem to align with the mat-card, having 1rem padding left/right
-  max-width: calc(#{$max-width} + 2rem);
+  max-width: calc(#{vars.$max-width} + 2rem);
   margin-top: 2rem;
 
   h1 {
@@ -88,7 +88,7 @@ div.mat-step-label.mat-step-label-active.mat-step-label-selected {
 .link:hover {
   text-decoration: none;
   font-weight: 500;
-  color: $materialBlue;
+  color: vars.$materialBlue;
 }
 
 .darkTheme {

@@ -1,6 +1,6 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as vars;
 
 video {
   width: 100%;
-  max-width: $max-width;
+  max-width: vars.$max-width;
 }

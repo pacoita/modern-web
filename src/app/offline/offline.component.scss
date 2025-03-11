@@ -1,11 +1,11 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as vars;
 section {
   .online {
-    background-color: $onlineGreen;
+    background-color: vars.$onlineGreen;
   }
 
   .offline {
-    background-color: $offlineRed;
+    background-color: vars.$offlineRed;
   }
 
   .img-center {
@@ -22,7 +22,7 @@ section {
       &:visited,
       &:hover,
       &:active {
-        color: $grayDark;
+        color: vars.$grayDark;
       }
     }
   }

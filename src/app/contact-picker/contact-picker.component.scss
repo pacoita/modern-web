@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as vars;
 section {
   .cards-container {
     margin-top: 1rem;
@@ -7,7 +7,7 @@ section {
     gap: 1.5rem;
 
     .mat-card-content {
-      border-top: 1px solid $grayLight;
+      border-top: 1px solid vars.$grayLight;
       padding-top: 0.5rem;
       span {
         display: flex;
