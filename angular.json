@@ -88,6 +88,9 @@
           "configurations": {
             "production": {
               "buildTarget": "modern-web:build:production"
+            },
+            "develop": {
+              "buildTarget": "modern-web:build:develop"
             }
           }
         },
