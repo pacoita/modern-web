@@ -1,1 +1,113 @@
-<p>summarize works!</p>
+<section class="content">
+  <h1>Summarizer API</h1>
+  <mat-card class="descr-card">
+    <p>The <strong>Summarizer API</strong> <br /><br /></p>
+    <span class="flex-centered">
+      <img
+        src="assets/icons/warning.png"
+        class="icon-space"
+        width="24"
+        height="24"
+        alt="warning icon"
+      />
+      You to enable
+      <strong>chrome://flags/#summarization-api-for-gemini-nano</strong> flag to
+      test it.
+    </span>
+  </mat-card>
+  @if(!unsupportedText) {
+  <div class="accordion-options">
+    <mat-accordion multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="option-label">Options</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <div class="options-container">
+            <div class="optionSelect">
+              <label for="type">Output Type </label>
+              <select
+                id="type"
+                matNativeControl
+                [(ngModel)]="selectedType"
+                name="type"
+              >
+                @for (type of outputTypes; track type) {
+                <option [value]="type.value">{{ type.label }}</option>
+                }
+              </select>
+            </div>
+            <div class="optionSelect">
+              <label for="type">Format </label>
+              <select
+                id="type"
+                matNativeControl
+                [(ngModel)]="selectedFormat"
+                name="format"
+              >
+                @for (format of outputFormats; track format) {
+                <option [value]="format.value">{{ format.label }}</option>
+                }
+              </select>
+            </div>
+            <div class="optionSelect">
+              <label for="type">Length </label>
+              <select
+                id="type"
+                matNativeControl
+                [(ngModel)]="selectedLength"
+                name="length"
+              >
+                @for (length of outputLengths; track length) {
+                <option [value]="length.value">{{ length.label }}</option>
+                }
+              </select>
+            </div>
+          </div>
+          <fieldset>
+            <legend>Active options</legend>
+            <div class="selectedOption">
+              <label class="optionLabel">Length: </label>
+              <span class="optionValue">{{ selectedLength() }}</span>
+            </div>
+            <div class="selectedOption">
+              <label class="optionLabel">Format: </label>
+              <span class="optionValue">{{ selectedFormat() }}</span>
+            </div>
+            <div class="selectedOption">
+              <label class="optionLabel">Output Type: </label>
+              <span class="optionValue">{{ selectedType() }}</span>
+            </div>
+          </fieldset>
+        </ng-template>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="content">
+    <textarea
+      #textbox
+      name="textbox"
+      id="textbox"
+      rows="15"
+      placeholder="Copy the text you want to summarize and click the button below"
+    ></textarea>
+    <button
+      color="primary"
+      mat-raised-button
+      (click)="summarizeText(textbox.value)"
+    >
+      Summarize
+    </button>
+  </div>
+  @if (isSummarizing) {
+  <h3>Summarizing the text...</h3>
+  } @else if (summarizedText) {
+  <div class="result">
+    <pre>{{ summarizedText }}</pre>
+  </div>
+  } } @else {
+  <span >{{ unsupportedText }}</span >
+  }
+</section>

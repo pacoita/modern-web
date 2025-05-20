@@ -21,7 +21,7 @@
       "ES2022",
       "dom"
     ],
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false    
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

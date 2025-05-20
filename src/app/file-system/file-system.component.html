@@ -1,52 +1,93 @@
 <section class="content">
   <h1>File System Access API</h1>
   <mat-card class="descr-card">
-    <p>The <strong>File System Access API</strong> offers new features to manipulate local files and provide an
-      improved experience similar to a desktop/native app.
-      We don't have to download the file each time we want to edit it, but we can save it directly.
-      We could even implement an auto-save functionality if needed.
-      <br><br>
+    <p>
+      The <strong>File System Access API</strong> offers new features to
+      manipulate local files and provide an improved experience similar to a
+      desktop/native app. We don't have to download the file each time we want
+      to edit it, but we can save it directly. We could even implement an
+      auto-save functionality if needed. <br /><br />
       <span class="flex-centered">
-        <img src="assets/icons/lock.png" class="icon-space" width="24" height="24" alt="lock icon">
-        <span>This feature is available only over secure connections (HTTPS) and through user interaction.</span>
+        <img
+          src="assets/icons/lock.png"
+          class="icon-space"
+          width="24"
+          height="24"
+          alt="lock icon"
+        />
+        <span
+          >This feature is available only over secure connections (HTTPS) and
+          through user interaction.</span
+        >
       </span>
-      <br>
+      <br />
       <span class="flex-centered">
-        <img src="assets/icons/warning.png" class="icon-space" width="24" height="24" alt="warning icon">
+        <img
+          src="assets/icons/warning.png"
+          class="icon-space"
+          width="24"
+          height="24"
+          alt="warning icon"
+        />
         Active by default from Chrome 86.
       </span>
-      In older Chrome versions you might need to enable the related flag in Chrome to test it
-      (chrome://flags/#native-file-system-api).
+      In older Chrome versions you might need to enable the related flag in
+      Chrome to test it (chrome://flags/#native-file-system-api).
     </p>
   </mat-card>
-  <div class="native-demo" *ngIf="!unsupportedText; else noSupported">
+  @if (!unsupportedText) {
+  <div class="native-demo">
     <p class="file-name">
-      <ng-container *ngIf="fileHandle">File opened: {{fileHandle.name}}</ng-container>
+      <ng-container *ngIf="fileHandle"
+        >File opened: {{ fileHandle.name }}</ng-container
+      >
     </p>
     <div class="action-bar">
       <button mat-raised-button (click)="openFile()">
-        <img src="assets/icons/folder_open.png" class="icon-space" width="24" height="24" alt="folder_open icon">
+        <img
+          src="assets/icons/folder.png"
+          class="icon-space"
+          width="24"
+          height="24"
+          alt="folder_open icon"
+        />
         Open
       </button>
       <button mat-raised-button (click)="saveAs(textbox.value)">
         <img src="assets/icons/playlist_add.png" class="icon-space" width="24" height="24" alt="playlist_add icon">
         Save as
       </button>
-      <button *ngIf="fileHandle" color="primary" mat-raised-button (click)="saveFile(textbox.value)">
-        <img src="assets/icons/save.png" class="icon-space" width="24" height="24" alt="save icon">
+      <button
+        *ngIf="fileHandle"
+        color="primary"
+        mat-raised-button
+        (click)="saveFile(textbox.value)"
+      >
+        <img
+          src="assets/icons/save.png"
+          class="icon-space"
+          width="24"
+          height="24"
+          alt="save icon"
+        />
         Save
       </button>
     </div>
-    <textarea #textbox name="textbox" id="textbox" rows="15"
-      placeholder=" Start digiting your biography and save it for the future generations... 👇"></textarea>
+    <textarea
+      #textbox
+      name="textbox"
+      id="textbox"
+      rows="15"
+      placeholder=" Start writing your biography and save it for the future generations... 👇"
+    ></textarea>
     <cite>For demo purposes, only .txt files are accepted.</cite>
     <p class="error">
-      {{errorText}}
+      {{ errorText }}
     </p>
   </div>
-  <ng-template #noSupported>
-    <h2>{{unsupportedText}}</h2>
-  </ng-template>
+  } @else {
+  <h2>{{ unsupportedText }}</h2>
+  }
 
   <div class="accordion-container">
     <mat-accordion class="example-headers-align" multi>
@@ -58,10 +99,15 @@
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
           <div class="img-container">
-            <img src="assets/images/native-file.png" alt="Native File System api support">
+            <img
+              src="assets/images/native-file.png"
+              alt="Native File System api support"
+            />
           </div>
           <br /><br />
-          <a href="https://caniuse.com/native-filesystem-api" target="_blank">Source: can I use</a>
+          <a href="https://caniuse.com/native-filesystem-api" target="_blank"
+            >Source: can I use</a
+          >
         </ng-template>
       </mat-expansion-panel>
     </mat-accordion>

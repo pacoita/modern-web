@@ -1,0 +1,74 @@
+#textbox {
+    width: 100%;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+    padding: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+
+
+.accordion-options {
+    max-width: 400px;
+    margin-bottom: 1rem;
+
+    .option-label {
+        font-size: 1.125rem;
+    }
+
+    .options-container {
+        width: 40%;
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        label {
+            font-weight: 700;
+        }
+
+        @media screen and (max-width: 468px) {
+            flex-direction: column;
+            width: 100%;
+            max-width: none;
+        }
+    }
+
+    fieldset {
+        border: 1px solid #c5c5c5;
+        border-radius: 5px;
+        box-sizing: border-box;
+        max-width: 270px;
+
+        @media screen and (max-width: 468px) {
+            width: 100%;
+            max-width: none;
+        }
+    }
+}
+
+.optionSelect {
+    margin-bottom: .5rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.optionLabel {
+    font-weight: 600;
+    margin-bottom: .5rem;
+}
+
+.result {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #c5c5c5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    pre {
+        text-wrap: auto;
+    }
+}
