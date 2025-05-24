@@ -59,7 +59,28 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
       const openedFile = await this.fileHandle.getFile();
       this.textAreaElement.value = await openedFile.text();
     } catch (error) {
-      this.errorText = (error as any).message;
+       if (error instanceof DOMException) {
+        switch (error.name) {
+          case 'AbortError':
+            this.errorText = 'File selection aborted by the user or system.';
+            break;
+          case 'NotAllowedError':
+            this.errorText = 'Permission to read the file was denied.';
+            break;
+          case 'NotFoundError':
+            this.errorText = 'The selected file was not found.';
+            break;
+          case 'SecurityError':
+            this.errorText = 'File access was denied due to a security policy (e.g., not a user gesture).';
+            break;
+          default:
+            this.errorText = `An unexpected file system error occurred: ${error.message} (Code: ${error.name})`;
+        }
+      } else if (error instanceof TypeError) {
+        this.errorText = `A type error occurred during file open: ${error.message}`;
+      } else {
+        this.errorText = `An unexpected error occurred during file open: ${(error as Error).message || 'Unknown error'}`;
+      }
       console.error(error);
     }
   }
@@ -94,7 +115,29 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
       this.fileHandle = await this.getNewFileHandle();
       await this.writeTextFile(this.fileHandle, fileText);
     } catch (error) {
-      this.errorText = (error as any).message;
+      if (error instanceof DOMException) {
+          switch (error.name) {
+            case 'AbortError':
+              this.errorText = 'File saving operation was aborted by the user or system.';
+              break;
+            case 'NotAllowedError':
+              this.errorText = 'Permission to save the file was denied.';
+              break;
+            case 'NotFoundError': // Should not typically happen here unless fileHandle was invalidated
+              this.errorText = 'The file to save to was not found or became invalid.';
+              break;
+            case 'NoModificationAllowedError':
+              this.errorText = 'Modification of the file was not allowed (e.g., file locked or exclusive write conflict).';
+              break;
+            case 'SecurityError': // Less common here unless initial handle acquisition failed this way
+              this.errorText = 'File saving was denied due to a security policy.';
+              break;
+            default:
+              this.errorText = `An unexpected file system error occurred during save: ${error.message} (Code: ${error.name})`;
+          }
+        } else {
+          this.errorText = `An unexpected error occurred during save: ${(error as Error).message || 'Unknown error'}`;
+        } 
       console.error(error);
     }
   }
@@ -104,7 +147,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
     textContent: string
   ): Promise<void> {
     // Creates a WRITABLE STREAM. Chrome first checks if the user has granted WRITE permission to the file
-    const writeable = await (fileHandle as any).createWritable(); // Cast to any to overcome current types issues: https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/58386
+    const writeable = await fileHandle.createWritable();
 
     // Writes the textarea content to the stream.
     writeable.write(textContent);
@@ -117,8 +160,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
     const options = this.getFilePickerOptions();
 
     // Chrome 86+
-    return (window as any) // Cast to any to overcome current types issues: https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/58386
-      .showOpenFilePicker(options)
+    return window.showOpenFilePicker(options)
       .then((handles: FileSystemFileHandle[]) => handles[0]);
   }
 
@@ -127,8 +169,7 @@ export class FileSystemComponent implements OnInit, AfterViewInit {
 
     // Chrome 86+
     options = this.getFilePickerOptions();
-    return (window as any) // Cast to any to overcome current types issues: https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/58386
-      .showSaveFilePicker(options);
+    return window.showSaveFilePicker(options);
   }
 
   private getFilePickerOptions(

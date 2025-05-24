@@ -106,7 +106,5 @@ export class BackgroundSyncComponent {
     // Save the form data to IndexedDB
     const openRequest = window.indexedDB.open('FormData', 1);
   }
-
-
 }
 

@@ -13,70 +13,12 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [attr.role]="isHandset ? 'dialog' : 'navigation'"
     [mode]="isHandset ? 'over' : 'side'" [opened]="isHandset === false">
     <mat-nav-list class="links-panel">
-      <a mat-list-item [routerLink]="['/home']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/home.png" class="icon-space nav-icon" width="24" height="24" alt="Home icon">
-        Home
-      </a>
-
-      <a mat-list-item [routerLink]="['/visibility']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/visibility.png" class="icon-space nav-icon" width="24" height="24" alt="Visibility icon">
-        Page Visibility
-      </a>
-
-      <a mat-list-item [routerLink]="['/summary']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/summarize.png" class="icon-space nav-icon" width="24" height="24" alt="Summary icon">
-        Summarize
-      </a>
-
-      <a mat-list-item [routerLink]="['/wakelock']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/app_blocking.png" class="icon-space nav-icon" width="24" height="24" alt="app_blocking icon">
-        Wake Lock
-      </a>
-
-      <a mat-list-item [routerLink]="['/light']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/highlight.png" class="icon-space nav-icon" width="24" height="24" alt="highlight icon">
-        Ambient Light
-      </a>
-
-      <a mat-list-item [routerLink]="['/orientation']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/compass.png" class="icon-space nav-icon" width="24" height="24" alt="highlight icon">
-        Orientation
-      </a>
-
-      <a mat-list-item [routerLink]="['/file']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/folder.png" class="icon-space nav-icon" width="24" height="24" alt="File System Access icon">
-        File System
-      </a>
-
-      <a mat-list-item [routerLink]="['/camera']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/camera_icon.png" class="icon-space nav-icon" width="24" height="24" alt="camera icon">
-        Media Capture
-      </a>
-
-      <a mat-list-item [routerLink]="['/back-sync']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/background-sync.png" class="icon-space nav-icon" width="24" height="24" alt="back-sync icon">
-        Background Sync
-      </a>
-
-      <a mat-list-item [routerLink]="['/share']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/share.png" class="icon-space nav-icon" width="24" height="24" alt="share icon">
-        Web Share
-      </a>
-
-      <a mat-list-item [routerLink]="['/contacts']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/contact.png" class="icon-space nav-icon" width="24" height="24" alt="Contacts icon">
-        Contact Picker
-      </a>
-
-      <a mat-list-item [routerLink]="['/offline']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/signal_wifi.png" class="icon-space nav-icon" width="24" height="24" alt="Wifi icon">
-        Offline/Online
-      </a>
-
-      <a mat-list-item [routerLink]="['/vibrate']" (click)="toggleOnNavigation()">
-        <img src="assets/icons/vibration.png" class="icon-space nav-icon" width="24" height="24" alt="vibration icon">
-        Vibration
-      </a>
+      @for (link of navLinks; track $index) {
+        <a mat-list-item [routerLink]="[link.path]" (click)="toggleOnNavigation()">
+          <img [src]="link.icon" class="icon-space nav-icon" width="24" height="24" [alt]="link.alt">
+          {{ link.label }}
+        </a>   
+      }
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="content">
