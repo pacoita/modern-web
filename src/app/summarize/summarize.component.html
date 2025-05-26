@@ -1,19 +1,15 @@
 <section class="content">
   <h1>Summarizer API</h1>
   <mat-card class="descr-card">
-    <p>The <strong>Summarizer API</strong> <br /><br /></p>
-    <span class="flex-centered">
-      <img
-        src="assets/icons/warning.png"
-        class="icon-space"
-        width="24"
-        height="24"
-        alt="warning icon"
-      />
-      You to enable
-      <strong>chrome://flags/#summarization-api-for-gemini-nano</strong> flag to
-      test it.
-    </span>
+    <p>This API is part of Chrome built-in AI APIs. With them, a web application can perform AI-powered tasks, without needing to deploy, manage, or self-host AI models. 
+      The Summarizer API allows to summarize text content and produce the output in three different lengths and types.</p>
+    <h2>Prerequisites</h2>
+    <ul>
+      <li>Use Chrome <a href="https://www.google.com/chrome/canary/" target="_blank">Canary (min 138.0.7190.0)</a></li>
+      <li>At least 22 GB of free storage space available. If the available storage space falls below 10 GB after the download, the model will be deleted. 
+        While the model requires far less storage (around a couple of GB), this requirement exists to ensure you have an ample storage margin.</li>
+      <li>Enable the chrome://flags/#summarization-api-for-gemini-nano flag</li>
+    </ul>
   </mat-card>
   @if(!unsupportedText) {
   <div class="accordion-options">
@@ -25,62 +21,62 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
-          <div class="options-container">
-            <div class="optionSelect">
-              <label for="type">Output Type </label>
-              <select
-                id="type"
-                matNativeControl
-                [(ngModel)]="selectedType"
-                name="type"
-              >
-                @for (type of outputTypes; track type) {
-                <option [value]="type.value">{{ type.label }}</option>
-                }
-              </select>
+            <div class="options-container">
+              <div class="optionSelect">
+                <label for="type">Output Type </label>
+                <select
+                  id="type"
+                  matNativeControl
+                  [(ngModel)]="selectedType"
+                  name="type"
+                >
+                  @for (type of outputTypes; track type) {
+                  <option [value]="type.value">{{ type.label }}</option>
+                  }
+                </select>
+              </div>
+              <div class="optionSelect">
+                <label for="type">Format </label>
+                <select
+                  id="type"
+                  matNativeControl
+                  [(ngModel)]="selectedFormat"
+                  name="format"
+                >
+                  @for (format of outputFormats; track format) {
+                  <option [value]="format.value">{{ format.label }}</option>
+                  }
+                </select>
+              </div>
+              <div class="optionSelect">
+                <label for="type">Length </label>
+                <select
+                  id="type"
+                  matNativeControl
+                  [(ngModel)]="selectedLength"
+                  name="length"
+                >
+                  @for (length of outputLengths; track length) {
+                  <option [value]="length.value">{{ length.label }}</option>
+                  }
+                </select>
+              </div>
             </div>
-            <div class="optionSelect">
-              <label for="type">Format </label>
-              <select
-                id="type"
-                matNativeControl
-                [(ngModel)]="selectedFormat"
-                name="format"
-              >
-                @for (format of outputFormats; track format) {
-                <option [value]="format.value">{{ format.label }}</option>
-                }
-              </select>
-            </div>
-            <div class="optionSelect">
-              <label for="type">Length </label>
-              <select
-                id="type"
-                matNativeControl
-                [(ngModel)]="selectedLength"
-                name="length"
-              >
-                @for (length of outputLengths; track length) {
-                <option [value]="length.value">{{ length.label }}</option>
-                }
-              </select>
-            </div>
-          </div>
-          <fieldset>
-            <legend>Active options</legend>
-            <div class="selectedOption">
-              <label class="optionLabel">Length: </label>
-              <span class="optionValue">{{ selectedLength() }}</span>
-            </div>
-            <div class="selectedOption">
-              <label class="optionLabel">Format: </label>
-              <span class="optionValue">{{ selectedFormat() }}</span>
-            </div>
-            <div class="selectedOption">
-              <label class="optionLabel">Output Type: </label>
-              <span class="optionValue">{{ selectedType() }}</span>
-            </div>
-          </fieldset>
+            <fieldset>
+              <legend>Active options</legend>
+              <div class="selectedOption">
+                <label class="optionLabel">Length: </label>
+                <span class="optionValue">{{ selectedLength() }}</span>
+              </div>
+              <div class="selectedOption">
+                <label class="optionLabel">Format: </label>
+                <span class="optionValue">{{ selectedFormat() }}</span>
+              </div>
+              <div class="selectedOption">
+                <label class="optionLabel">Output Type: </label>
+                <span class="optionValue">{{ selectedType() }}</span>
+              </div>
+            </fieldset>
         </ng-template>
       </mat-expansion-panel>
     </mat-accordion>
@@ -91,7 +87,7 @@
       name="textbox"
       id="textbox"
       rows="15"
-      placeholder="Copy the text you want to summarize and click the button below"
+      placeholder="Enter the text you want to summarize and click the button below"
     ></textarea>
     <button
       color="primary"
@@ -107,7 +103,7 @@
   <div class="result">
     <pre>{{ summarizedText }}</pre>
   </div>
-  } } @else {
+  }} @else {
   <span >{{ unsupportedText }}</span >
   }
 </section>
