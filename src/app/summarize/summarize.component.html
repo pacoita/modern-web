@@ -99,10 +99,14 @@
   </div>
   @if (isSummarizing) {
   <h3>Summarizing the text...</h3>
-  } @else if (summarizedText) {
-  <div class="result">
-    <pre>{{ summarizedText }}</pre>
-  </div>
+  } @else {
+    @if (summarizedText && !errorMessage) {
+      <div class="result">
+        <pre>{{ summarizedText }}</pre>
+      </div>
+    } @else {
+      <span class="error-text">{{ errorMessage }}</span>
+    }
   }} @else {
   <span >{{ unsupportedText }}</span >
   }

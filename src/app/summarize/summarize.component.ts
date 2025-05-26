@@ -6,13 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 
-// Declare Summarizer, LanguageModel and ai as globals, to avoid the TS compiler complaining about
-// unknown objects in the global scope.
+// Declare Summarizer as a global, to avoid the TS compiler complaining about unknown objects in the global scope.
 declare global {
   interface Window {
-    Summarizer: any,
-    LanguageModel: any,
-    ai: any,
+    Summarizer: any
   }
 }
 
@@ -32,6 +29,7 @@ export class SummarizeComponent implements OnInit {
   @ViewChild('textbox') textbox?: ElementRef<HTMLTextAreaElement>;
   unsupportedText?: string;
   summarizedText?: string;
+  errorMessage?: string;
   isSummarizing = false;
   private summarizer?: AISummarizer;
 
@@ -116,9 +114,17 @@ export class SummarizeComponent implements OnInit {
   async summarizeText(targetText: string) {
     if (!this.summarizer || !targetText) return;
 
-    this.isSummarizing = true;
-    this.summarizedText = await this.summarizer.summarize(targetText);
-    this.isSummarizing = false;
+    try {
+      this.errorMessage = undefined;
+      this.summarizedText = undefined;
+      this.isSummarizing = true;
+      this.summarizedText = await this.summarizer.summarize(targetText);
+      this.isSummarizing = false;
+    } catch (error) {
+      this.errorMessage = error instanceof Error ? error.message : 'An unknown error occurred while summarizing the text.';
+      console.error(error);
+      this.isSummarizing = false;
+    }
   }
 
 }
