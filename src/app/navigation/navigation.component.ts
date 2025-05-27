@@ -26,6 +26,7 @@ export class NavigationComponent implements OnInit {
     { path: '/home', icon: 'assets/icons/home.png', alt: 'Home icon', label: 'Home' },
     { path: '/visibility', icon: 'assets/icons/visibility.png', alt: 'Visibility icon', label: 'Page Visibility' },
     { path: '/summary', icon: 'assets/icons/summarize.png', alt: 'Summary icon', label: 'Summarize' },
+    { path: '/prompt', icon: 'assets/icons/prompt.png', alt: 'Prompt icon', label: 'Prompt' },
     { path: '/wakelock', icon: 'assets/icons/app_blocking.png', alt: 'Wake Lock icon', label: 'Wake Lock' },
     { path: '/light', icon: 'assets/icons/highlight.png', alt: 'Ambient Light icon', label: 'Ambient Light' },
     { path: '/orientation', icon: 'assets/icons/compass.png', alt: 'Orientation icon', label: 'Orientation' },

@@ -1,0 +1,31 @@
+#textbox {
+    width: 100%;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+    padding: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+.result {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #c5c5c5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    pre {
+        text-wrap: auto;
+    }
+}
+
+.content {
+    margin-bottom: 1.5rem;
+}
+
+.error-text {
+    color: red;
+    font-weight: 600;
+    margin-top: 1rem;
+}

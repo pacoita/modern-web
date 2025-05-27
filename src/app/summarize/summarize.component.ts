@@ -71,7 +71,7 @@ export class SummarizeComponent implements OnInit {
       // Effect should be called whenever the summarizeOptions changes but skipping the initial execution.
       let newOptions = this.summarizeOptions()
       if(this.summarizer) {
-        this.summarizer = await (self.Summarizer).create(newOptions);
+        this.summarizer = await self.Summarizer.create(newOptions);
         this.summarizeText(this.textbox?.nativeElement?.value || '');
       }
     });
@@ -84,19 +84,19 @@ export class SummarizeComponent implements OnInit {
          - readily: The current browser supports the Summarizer API, and it can be used right away.
          - after-download: The current browser supports the Summarizer API, but it needs to download the model first.
        */
-      const available = await (self.Summarizer).availability();
+      const available = await self.Summarizer.availability();
       if (available === 'no') {
         this.unsupportedText = "The Summarizer API isn't usable. This could be for a number of reasons, such as insufficient available disk space to download the model.";
         return;
       }
       if (available === 'readily') {
         if (!this.summarizer) {
-          this.summarizer = await (self.Summarizer).create(this.summarizeOptions());
+          this.summarizer = await self.Summarizer.create(this.summarizeOptions());
         }
       } else {
         // The Summarizer API can be used after the model is downloaded
         if (!this.summarizer) {
-          this.summarizer = await (self.Summarizer).create({
+          this.summarizer = await self.Summarizer.create({
             monitor(m: AICreateMonitor) {
               m.addEventListener('downloadprogress', (e: DownloadProgressEvent) => {
                 console.log(`Downloaded ${e.loaded} of ${e.total} bytes.`);

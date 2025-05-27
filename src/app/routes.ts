@@ -16,6 +16,7 @@ export const routes: Routes = [
   { path: 'camera', loadComponent: () => import('./camera/camera.component').then(c => c.CameraCaptureComponent) },
   { path: 'back-sync', loadComponent: () => import('./background-sync/background-sync.component').then(c => c.BackgroundSyncComponent) },
   { path: 'summary', loadComponent: () => import('./summarize/summarize.component').then(c => c.SummarizeComponent) },
+  { path: 'prompt', loadComponent: () => import('./prompt/prompt.component').then(c => c.PromptComponent) },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home'}
 ];
