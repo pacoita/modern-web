@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 // Declare LanguageModel as a global, to avoid the TS compiler complaining about unknown objects in the global scope.
 declare global {
@@ -20,6 +22,8 @@ declare global {
     MatCardModule,
     MatButtonModule,
     MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
     FormsModule,
   ],
   templateUrl: './prompt.component.html',
@@ -30,9 +34,8 @@ export class PromptComponent implements OnInit {
   unsupportedText?: string;
   errorMessage?: string;
 
-  selectedFormat = signal('plain-text');
-  selectedLength = signal('long');
-  selectedType = signal('tldr');
+  temperature = signal<number>(0.7);
+  topK = signal<number>(3);
 
   async ngOnInit() {
     if ('LanguageModel' in self) {

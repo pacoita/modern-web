@@ -8,6 +8,15 @@
     margin-bottom: 1rem;
 }
 
+.options-fields {
+    .mat-mdc-form-field {
+        width: 120px;
+        &:first-child {
+            margin-right: 1.5rem;
+        }
+    }
+}
+
 .result {
     margin-top: 1rem;
     padding: 1rem;

@@ -18,11 +18,24 @@
   </mat-card>
   @if(!unsupportedText) {
   <div class="content">
+
+    <div class="options-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Temperature</mat-label>
+        <input matInput type="number" [(ngModel)]="temperature" min="0" max="1" step="0.1" maxlength="3">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Top-K</mat-label>
+        <input matInput type="number" [(ngModel)]="topK" min="0" max="1" step="0.1" maxlength="3">
+      </mat-form-field>
+    </div>
+
     <textarea
       #textbox
       name="textbox"
       id="textbox"
       rows="8"
+      placeholder="Enter your prompt here"
     ></textarea>
     <button
       color="primary"
