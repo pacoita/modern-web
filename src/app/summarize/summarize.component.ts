@@ -8,9 +8,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 // Declare Summarizer as a global, to avoid the TS compiler complaining about unknown objects in the global scope.
 declare global {
-  interface Window {
-    Summarizer: any
-  }
+  // interface Window {
+  //   Summarizer: any
+  // }
 }
 
 @Component({
@@ -31,7 +31,7 @@ export class SummarizeComponent implements OnInit {
   summarizedText?: string;
   errorMessage?: string;
   isSummarizing = false;
-  private summarizer?: AISummarizer;
+  private summarizer?: Summarizer;
 
   outputTypes = [
     { value: 'key-points', label: 'Key Points' },
@@ -58,20 +58,20 @@ export class SummarizeComponent implements OnInit {
   selectedLength = signal('long');
   selectedType = signal('tldr');
 
-  summarizeOptions = computed(() => {
+  summarizeCreateOptions = computed(() => {
     return {
       format: this.selectedFormat(),
       type: this.selectedType(),
       length: this.selectedLength(),
-    };
+    } as SummarizerCreateOptions;
   });
 
   constructor() {
     effect(async () => {      
       // Effect should be called whenever the summarizeOptions changes but skipping the initial execution.
-      let newOptions = this.summarizeOptions()
+      let newOptions = this.summarizeCreateOptions()
       if(this.summarizer) {
-        this.summarizer = await self.Summarizer.create(newOptions);
+        this.summarizer = await Summarizer.create(newOptions);
         this.summarizeText(this.textbox?.nativeElement?.value || '');
       }
     });
@@ -80,25 +80,25 @@ export class SummarizeComponent implements OnInit {
   async ngOnInit() {
     if ('Summarizer' in self) {
       /**
-       * - no: The current browser supports the Summarizer API, but it can't be used at the moment. This could be for a number of reasons, such as insufficient available disk space to download the model.
+       * - unavailable: The current browser supports the Summarizer API, but it can't be used at the moment. This could be for a number of reasons, such as insufficient available disk space to download the model.
          - readily: The current browser supports the Summarizer API, and it can be used right away.
          - after-download: The current browser supports the Summarizer API, but it needs to download the model first.
        */
-      const available = await self.Summarizer.availability();
-      if (available === 'no') {
+      const availabilityStatus = await Summarizer.availability();
+      if (availabilityStatus === 'unavailable') {
         this.unsupportedText = "The Summarizer API isn't usable. This could be for a number of reasons, such as insufficient available disk space to download the model.";
         return;
       }
-      if (available === 'readily') {
+      if (availabilityStatus === 'available') {
         if (!this.summarizer) {
-          this.summarizer = await self.Summarizer.create(this.summarizeOptions());
+          this.summarizer = await Summarizer.create(this.summarizeCreateOptions());
         }
       } else {
         // The Summarizer API can be used after the model is downloaded
         if (!this.summarizer) {
-          this.summarizer = await self.Summarizer.create({
-            monitor(m: AICreateMonitor) {
-              m.addEventListener('downloadprogress', (e: DownloadProgressEvent) => {
+          this.summarizer = await Summarizer.create({
+            monitor(m: CreateMonitor) {
+              m.addEventListener('downloadprogress', (e: ProgressEvent<EventTarget>) => {
                 console.log(`Downloaded ${e.loaded} of ${e.total} bytes.`);
               });
             }

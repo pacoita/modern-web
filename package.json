@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^19.2.1",
     "@angular/router": "^19.2.1",
     "@angular/service-worker": "^19.2.1",
-    "@types/dom-chromium-ai": "^0.0.6",
+    "@types/dom-chromium-ai": "^0.0.7",
     "idb": "^8.0.0",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
