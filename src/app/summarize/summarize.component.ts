@@ -6,13 +6,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 
-// Declare Summarizer as a global, to avoid the TS compiler complaining about unknown objects in the global scope.
-declare global {
-  // interface Window {
-  //   Summarizer: any
-  // }
-}
-
 @Component({
   selector: 'app-summarize',
   imports: [
@@ -80,9 +73,10 @@ export class SummarizeComponent implements OnInit {
   async ngOnInit() {
     if ('Summarizer' in self) {
       /**
-       * - unavailable: The current browser supports the Summarizer API, but it can't be used at the moment. This could be for a number of reasons, such as insufficient available disk space to download the model.
-         - readily: The current browser supports the Summarizer API, and it can be used right away.
-         - after-download: The current browser supports the Summarizer API, but it needs to download the model first.
+       * "unavailable" means that the browser does not support the requested options, or does not support prompting a language model at all.
+       * "downloadable" means that the browser supports the requested options, but it will have to download something (for example, the language model itself, or a fine-tuning) before it can create a session using those options.
+       * "downloading" means that the browser supports the requested options, but will need to finish an ongoing download operation before it can create a session using those options.
+       * "available" means that the browser supports the requested options without requiring any new downloads.
        */
       const availabilityStatus = await Summarizer.availability();
       if (availabilityStatus === 'unavailable') {

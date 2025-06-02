@@ -1,33 +1,88 @@
 <section class="content">
   <h1>Prompt API</h1>
   <mat-card class="descr-card">
-    <p>This API is part of Chrome built-in AI APIs. With them, a web application can perform AI-powered tasks, without needing to deploy, manage, or self-host AI models. 
-      The Prompt API allows to generate text prompts.</p>
+    <p>
+      This API is part of Chrome built-in AI APIs. With them, a web application
+      can perform AI-powered tasks, without needing to deploy, manage, or
+      self-host AI models. The Prompt API allows to generate text prompts.
+    </p>
     <h2>Prerequisites</h2>
     <ul>
-      <li>Use Chrome <a href="https://www.google.com/chrome/canary/" target="_blank">Canary (min 138.0.7190.0)</a></li>
-      <li>At least 22 GB of free storage space available. If the available storage space falls below 10 GB after the download, the model will be deleted. 
-        While the model requires far less storage (around a couple of GB), this requirement exists to ensure you have an ample storage margin.</li>
-      <li>Enable the following chrome flags:
+      <li>
+        Use Chrome
+        <a href="https://www.google.com/chrome/canary/" target="_blank"
+          >Canary (min 138.0.7190.0)</a
+        >
+      </li>
+      <li>
+        At least 22 GB of free storage space available. If the available storage
+        space falls below 10 GB after the download, the model will be deleted.
+        While the model requires far less storage (around a couple of GB), this
+        requirement exists to ensure you have an ample storage margin.
+      </li>
+      <li>
+        Enable the following chrome flags:
         <ul>
-          <li>#prompt-api-for-gemini-nano and/or #prompt-api-for-gemini-nano-multimodal-input</li>
-          <li>#optimization-guide-on-device-model (set to "Enabled BypassPerfRequirement")</li>
-        </ul> 
+          <li>
+            #prompt-api-for-gemini-nano and/or
+            #prompt-api-for-gemini-nano-multimodal-input
+          </li>
+          <li>
+            #optimization-guide-on-device-model (set to "Enabled
+            BypassPerfRequirement")
+          </li>
+        </ul>
       </li>
     </ul>
   </mat-card>
   @if(!unsupportedText) {
   <div class="content">
-
     <div class="options-fields">
       <mat-form-field appearance="outline">
         <mat-label>Temperature</mat-label>
-        <input matInput type="number" [(ngModel)]="temperature" min="0" max="1" step="0.1" maxlength="3">
+        <input
+          matInput
+          type="number"
+          [(ngModel)]="temperature"
+          min="0"
+          max="1"
+          step="0.1"
+          maxlength="3"
+        />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Top-K</mat-label>
-        <input matInput type="number" [(ngModel)]="topK" min="0" max="1" step="0.1" maxlength="3">
+        <input
+          matInput
+          type="number"
+          [(ngModel)]="topK"
+          min="0"
+          max="1"
+          step="0.1"
+          maxlength="3"
+        />
       </mat-form-field>
+    </div>
+
+    <input
+      type="file"
+      class="file-input"
+      accept="image/*"
+      (change)="onImageSelected($event)"
+      #fileUpload
+    />
+
+    <div class="file-upload">
+      {{ imageFileName || "No file uploaded yet." }}
+
+      <button
+        mat-mini-fab
+        color="primary"
+        class="upload-btn"
+        (click)="fileUpload.click()"
+      >
+        <mat-icon>attach_file</mat-icon>
+      </button>
     </div>
 
     <textarea
@@ -40,19 +95,20 @@
     <button
       color="primary"
       mat-raised-button
+      (click)="sendPrompt(textbox.value)"
     >
       Send prompt
     </button>
   </div>
   @if (!errorMessage) {
-    <!-- 
-    <div class="result">
-      <pre>{{ result }}</pre>
-    </div>
-     -->
+
+  <div class="result">
+    <pre>{{ result }}</pre>
+  </div>
+
   } @else {
-    <span class="error-text">{{ errorMessage }}</span>
+  <span class="error-text">{{ errorMessage }}</span>
   }} @else {
-  <span >{{ unsupportedText }}</span >
+  <span>{{ unsupportedText }}</span>
   }
 </section>
