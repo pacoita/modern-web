@@ -64,48 +64,62 @@
       </mat-form-field>
     </div>
 
-    <input
-      type="file"
-      class="file-input"
-      accept="image/*"
-      (change)="onImageSelected($event)"
-      #fileUpload
-    />
-
-    <div class="file-upload">
-      {{ imageFileName || "No file uploaded yet." }}
-
-      <button
-        mat-mini-fab
-        color="primary"
-        class="upload-btn"
-        (click)="fileUpload.click()"
-      >
-        <mat-icon>attach_file</mat-icon>
-      </button>
+    <div class="textarea-container" [ngClass]="{'hidden': !!imageFile }">
+      <div class="textarea-wrapper">
+        <textarea
+          #textbox
+          name="textbox"
+          id="textbox"
+          rows="8"
+          placeholder="Enter the prompt for the master chef"
+          
+        ></textarea>
+        <div class="cooking-icon">🍳</div>
+      </div>
     </div>
 
-    <textarea
-      #textbox
-      name="textbox"
-      id="textbox"
-      rows="8"
-      placeholder="Enter your prompt here"
-    ></textarea>
-    <button
-      color="primary"
-      mat-raised-button
-      (click)="sendPrompt(textbox.value)"
-    >
-      Send prompt
-    </button>
-  </div>
-  @if (!errorMessage) {
+    <div class="buttons-box">
+      <button
+        color="primary"
+        mat-raised-button
+        (click)="sendPrompt(textbox.value)"
+      >
+        {{imageFile ? 'Describe the image' : 'Ask the chef!'}}
 
+        <!-- TODO: Implement the delete image button -->
+      </button>
+
+      <input
+        type="file"
+        class="file-input"
+        accept="image/*"
+        (change)="onImageSelected($event)"
+        #fileUpload
+      />
+
+      <div class="file-upload">
+        <button
+          mat-mini-fab
+          color="primary"
+          class="upload-btn"
+          (click)="fileUpload.click()"
+        >
+          <img src="assets/icons/imagesmode.png" alt="Image" width="24" height="24" title="Upload an image">
+        </button>
+        <span>{{imageFile?.name}}</span>
+        <img (click)="removeImage()" [ngClass]="{'hidden': !imageFile }" src="assets/icons/delete.png" alt="Delete" width="24" height="24" title="Remove the image">
+      </div>
+    </div>
+
+    <!-- Image preview -->
+    <div *ngIf="imagePreviewUrl" class="image-preview">
+      <img [src]="imagePreviewUrl" alt="Image preview"/>
+    </div>
+  </div>
+  @if (!errorMessage && result) {
   <div class="result">
     <pre>{{ result }}</pre>
   </div>
-
   } @else {
   <span class="error-text">{{ errorMessage }}</span>
   }} @else {

@@ -6,7 +6,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
@@ -18,8 +17,7 @@ import { MatInputModule } from '@angular/material/input';
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
-    MatIconModule
+    FormsModule
   ],
   templateUrl: './prompt.component.html',
   styleUrl: './prompt.component.scss'
@@ -29,8 +27,8 @@ export class PromptComponent implements OnInit {
   unsupportedText?: string;
   result?: string;
   errorMessage?: string;
-  imageFileName?: string;
-
+  imagePreviewUrl: string | ArrayBuffer | null = null;
+  imageFile?: File;
   temperature = signal<number>(0.7);
   topK = signal<number>(3);
 
@@ -39,11 +37,15 @@ export class PromptComponent implements OnInit {
     topK: this.topK(),
     initialPrompts: [{
       role: 'system',
-      content: 'You are an expert chef, able to provide culinary advice and imngredient list from the provided images.'
-    }]
+      content: 'You are an expert chef, able to provide culinary advice and ingredient list from the provided images'
+    }],
+    expectedInputs: [
+      { type: "audio" },
+      { type: "image" }
+    ]
   };
 
-  model?: LanguageModel;
+  session?: LanguageModel;
 
   async ngOnInit() {
     if ('LanguageModel' in self) {
@@ -59,20 +61,24 @@ export class PromptComponent implements OnInit {
         return;
       }
       else if (availabilityStatus === 'available') {
-        if (!this.model) {
-          this.model = await LanguageModel.create(this.languegeModelCreateOptions);
+        if (!this.session) {
+          this.session = await LanguageModel.create(this.languegeModelCreateOptions);
         }
       } else {
         // The Prompt API can be used after the model is downloaded
-        if (!this.model) {
-          this.model = await LanguageModel.create({
+        if (!this.session) {
+          this.session = await LanguageModel.create({
+            expectedInputs: [
+              { type: "audio" },
+              { type: "image" }
+            ],
             monitor(m: CreateMonitor) {
               m.addEventListener('downloadprogress', (e: ProgressEvent<EventTarget>) => {
                 console.log(`Downloaded ${e.loaded} of ${e.total} bytes.`);
               });
             }
           });
-          await (this.model as any)?.ready;
+          // await (this.session as any)?.ready;
         }
       }     
     } else {
@@ -81,21 +87,68 @@ export class PromptComponent implements OnInit {
   }
 
   async sendPrompt(prompt: string) {
-    if (!this.model || !prompt) return;
-    this.result = await this.model.prompt([{
+    if (!this.session) return;
+    // Clone an existing session for efficiency, instead of recreating one each time.
+    const clonedSession = await this.session.clone(); 
+    console.log('Quota used before prompt: ', clonedSession.inputQuota, clonedSession.inputUsage);
+
+    const textPromtpt: LanguageModelMessage = {
       role: 'user',
       content: [{
-        type: 'text', // 'image'
-        value: prompt  //ImageBitmapSource
+        type: this.imageFile ? 'image' : 'text',
+        value: prompt
       }]
-    }])
+    };
+
+    const imagePrompt: LanguageModelMessage = {
+      role: 'user',
+      content: [
+        { type: "text", value: "Provide a description of the upoloaded image and list the ingredients needed to make the dish:" },
+        { type: "image", value: this.imageFile! }
+      ]
+    };
+
+    // this.result = await clonedSession.prompt([ this.imageFile ? imagePrompt : textPromtpt])
+    this.result = ''; // Clear previous result
+
+    // Use streaming
+    const stream = clonedSession.promptStreaming([ this.imageFile ? imagePrompt : textPromtpt ]);
+    for await (const chunk of stream as any) {
+      this.result += chunk;
+      // If you want to ensure Angular updates the view immediately, you can use:
+      // (import ChangeDetectorRef and inject it as private cdr: ChangeDetectorRef)
+      // this.cdr.detectChanges();
+    }
+
+    console.log('Quota used after prompt: ', clonedSession.inputQuota, clonedSession.inputUsage);
+
+
+    /**const stream = session.promptStreaming("Write me an extra-long poem.");
+for await (const chunk of stream) {
+  console.log(chunk);
+} */
   }
 
-  onImageSelected(event: Event) {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
-      this.imageFileName = file.name;
+  onImageSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.imageFile = input?.files?.[0];
+    if (this.imageFile) {
+      const imageFileName = this.imageFile.name;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreviewUrl = reader.result;
+      };
+      reader.readAsDataURL(this.imageFile);
+    } else {
+      this.imageFile = undefined;
+      this.imagePreviewUrl = null;
     }
+  }
+
+  removeImage() {
+    this.imageFile = undefined;
+    this.imagePreviewUrl = null;
   }
 
 }
