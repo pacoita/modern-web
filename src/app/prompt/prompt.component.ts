@@ -90,7 +90,7 @@ export class PromptComponent implements OnInit {
     if (!this.session) return;
     // Clone an existing session for efficiency, instead of recreating one each time.
     const clonedSession = await this.session.clone(); 
-    console.log('Quota used before prompt: ', clonedSession.inputQuota, clonedSession.inputUsage);
+    console.log(`Total tokens: ${clonedSession.inputQuota}, Used tokens: ${clonedSession.inputUsage}`);
 
     const textPromtpt: LanguageModelMessage = {
       role: 'user',
@@ -108,25 +108,14 @@ export class PromptComponent implements OnInit {
       ]
     };
 
-    // this.result = await clonedSession.prompt([ this.imageFile ? imagePrompt : textPromtpt])
     this.result = ''; // Clear previous result
 
-    // Use streaming
     const stream = clonedSession.promptStreaming([ this.imageFile ? imagePrompt : textPromtpt ]);
     for await (const chunk of stream as any) {
       this.result += chunk;
-      // If you want to ensure Angular updates the view immediately, you can use:
-      // (import ChangeDetectorRef and inject it as private cdr: ChangeDetectorRef)
-      // this.cdr.detectChanges();
     }
 
-    console.log('Quota used after prompt: ', clonedSession.inputQuota, clonedSession.inputUsage);
-
-
-    /**const stream = session.promptStreaming("Write me an extra-long poem.");
-for await (const chunk of stream) {
-  console.log(chunk);
-} */
+    console.log(`Total tokens: ${clonedSession.inputQuota}, Used tokens: ${clonedSession.inputUsage}`);
   }
 
   onImageSelected(event: Event): void {

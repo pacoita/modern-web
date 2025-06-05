@@ -1,15 +1,15 @@
-import { enableProdMode, isDevMode } from '@angular/core';
+import { isDevMode } from '@angular/core';
 import { AppComponent } from './app/app.component';
 import { provideServiceWorker } from '@angular/service-worker';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withViewTransitions } from '@angular/router';
 import { routes } from './app/routes';
 import { provideHttpClient } from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(routes),
+    provideRouter(routes, withViewTransitions()),
     provideHttpClient(),
     provideAnimations(),
     provideServiceWorker('root-sw.js', {
