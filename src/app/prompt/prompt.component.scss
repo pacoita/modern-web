@@ -1,99 +1,203 @@
-.textarea-container {
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Georgia', serif;
-}
-
-.textarea-wrapper {
-    position: relative;
-    max-width: 500px;
-    width: 100%;
-    display: flex;
-
-    textarea {
-        width: 100%;
-        padding: 25px 30px 25px 25px;
-        border: none;
-        border-radius: 15px;
-        background: #fff8f0;
-        box-shadow:
-            0 8px 32px rgba(0, 0, 0, 0.1),
-            inset 0 2px 4px rgba(255, 255, 255, 0.8),
-            0 0 0 3px #e8b4a0;
-        font-family: 'Georgia', serif;
-        font-size: 16px;
-        line-height: 1.6;
-        color: #5d4037;
-        resize: vertical;
-        min-height: 300px;
-        transition: all 0.3s ease;
-        background-image:
-            repeating-linear-gradient(transparent,
-                transparent 24px,
-                rgba(139, 69, 19, 0.1) 24px,
-                rgba(139, 69, 19, 0.1) 26px);
+.inner-content {
+    h1 {
+        font-size: 2.25em;
+        text-align: center;
+        margin: 1rem 0;
     }
 
-    textarea:focus {
-        outline: none;
-        box-shadow:
-            0 12px 40px rgba(0, 0, 0, 0.15),
-            inset 0 2px 4px rgba(255, 255, 255, 0.9),
-            0 0 0 4px #d4a574,
-            0 0 20px rgba(212, 165, 116, 0.3);
-        transform: translateY(-2px);
-    }
-
-    textarea::placeholder {
-        color: #a1887f;
-        font-style: italic;
-        opacity: 0.8;
-    }
-
-    .cooking-icon {
-        position: absolute;
-        top: -10px;
-        right: -8px;
-        font-size: 32px;
-        background: #ff8a65;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+    .textarea-container {
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 12px rgba(255, 138, 101, 0.3);
-        transition: all 0.3s ease;
-        cursor: default;
+        font-family: 'Georgia', serif;
+    }
 
-        &:hover {
-            transform: rotate(15deg) scale(1.1);
-            box-shadow: 0 6px 16px rgba(255, 138, 101, 0.4);
+    .textarea-wrapper {
+        position: relative;
+        max-width: 500px;
+        width: 100%;
+        display: flex;
+
+        textarea {
+            width: 100%;
+            padding: 25px 30px 25px 25px;
+            border: none;
+            border-radius: 15px;
+            background: #fff8f0;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 2px 4px rgba(255, 255, 255, 0.8),
+                0 0 0 3px #e8b4a0;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #5d4037;
+            resize: vertical;
+            transition: all 0.3s ease;
+            background-image:
+                repeating-linear-gradient(transparent,
+                    transparent 24px,
+                    rgba(139, 69, 19, 0.1) 24px,
+                    rgba(139, 69, 19, 0.1) 26px);
         }
+
+        textarea:focus {
+            outline: none;
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.15),
+                inset 0 2px 4px rgba(255, 255, 255, 0.9),
+                0 0 0 4px #d4a574,
+                0 0 20px rgba(212, 165, 116, 0.3);
+            transform: translateY(-2px);
+        }
+
+        textarea::placeholder {
+            color: #a1887f;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .cooking-icon {
+            position: absolute;
+            top: -10px;
+            right: -8px;
+            font-size: 32px;
+            background: #ff8a65;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 138, 101, 0.3);
+            transition: all 0.3s ease;
+            cursor: default;
+
+            &:hover {
+                transform: rotate(15deg) scale(1.1);
+                box-shadow: 0 6px 16px rgba(255, 138, 101, 0.4);
+            }
+        }
+    }
+
+    /* Add a subtle paper texture */
+    textarea::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image:
+            radial-gradient(circle at 1px 1px, rgba(139, 69, 19, 0.05) 1px, transparent 0);
+        background-size: 20px 20px;
+        pointer-events: none;
+        border-radius: 15px;
+    }
+
+    .header {
+        display: flex;
+        align-items: end;
+        justify-content: center;
+
+        .options-fields {
+            display: flex;
+            flex-direction: column;
+
+            .mat-mdc-form-field {
+                width: 120px;
+
+                &:first-child {
+                    margin-right: 1.5rem;
+                }
+            }
+        }
+
+        .icon-chef-wrap {
+            width: 120px;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .content {
+        margin-bottom: 1.5rem;
+    }
+
+    .error-text {
+        color: red;
+        font-weight: 600;
+        margin-top: 1rem;
+    }
+
+    .buttons-box {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .file-input {
+            @extend .hidden;
+        }
+    }
+
+    .file-upload {
+        display: flex;
+        align-items: center;
+
+        span {
+            color: #f85f31;
+            font-weight: 600;
+            margin-left: .5rem;
+        }
+    }
+
+    .image-preview {
+        img {
+            width: 100%;
+            max-width: 450px;
+            max-height: 450px;
+            margin-top: 1rem;
+        }
+    }
+
+    .hidden {
+        display: none;
     }
 }
 
-/* Add a subtle paper texture */
-textarea::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        radial-gradient(circle at 1px 1px, rgba(139, 69, 19, 0.05) 1px, transparent 0);
-    background-size: 20px 20px;
-    pointer-events: none;
-    border-radius: 15px;
+.prompt-prereq {
+    border: 0 !important;
+    box-shadow: none !important;
+
+    .mat-expansion-panel-header {
+        padding-left: 0 !important;
+    }
+}
+
+.result {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #c5c5c5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    pre {
+        text-wrap: wrap;
+    }
 }
 
 /* Responsive design */
 @media (max-width: 600px) {
+    .inner-content {
+        h1 {
+            font-size: 2em;
+        }
+    }
+
     .container {
         padding: 20px;
     }
@@ -110,69 +214,4 @@ textarea::before {
         top: 12px;
         right: 12px;
     }
-}
-
-.options-fields {
-    .mat-mdc-form-field {
-        width: 120px;
-
-        &:first-child {
-            margin-right: 1.5rem;
-        }
-    }
-}
-
-.result {
-    margin-top: 1rem;
-    padding: 1rem;
-    border-radius: 5px;
-    border: 1px solid #c5c5c5;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    pre {
-        text-wrap: auto;
-    }
-}
-
-.content {
-    margin-bottom: 1.5rem;
-}
-
-.error-text {
-    color: red;
-    font-weight: 600;
-    margin-top: 1rem;
-}
-
-.buttons-box {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-
-    .file-input {
-        @extend .hidden;
-    }
-}
-
-.file-upload {
-    display: flex;
-    align-items: center;
-    span {
-        color: #f85f31;
-        font-weight: 600;
-        margin-left: .5rem;
-    }
-}
-
-.image-preview {
-    img {
-        width: 100%;
-        max-width: 450px;
-        max-height: 450px;
-        margin-top: 1rem;
-    }
-}
-
-.hidden {
-    display: none;
 }

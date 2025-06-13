@@ -4,75 +4,94 @@
     <p>
       This API is part of Chrome built-in AI APIs. With them, a web application
       can perform AI-powered tasks, without needing to deploy, manage, or
-      self-host AI models. The Prompt API allows to generate text prompts.
+      self-host AI models. The Prompt API supports text, audio and image as
+      inputs, while returning text as output results.
     </p>
-    <h2>Prerequisites</h2>
-    <ul>
-      <li>
-        Use Chrome
-        <a href="https://www.google.com/chrome/canary/" target="_blank"
-          >Canary (min 138.0.7190.0)</a
-        >
-      </li>
-      <li>
-        At least 22 GB of free storage space available. If the available storage
-        space falls below 10 GB after the download, the model will be deleted.
-        While the model requires far less storage (around a couple of GB), this
-        requirement exists to ensure you have an ample storage margin.
-      </li>
-      <li>
-        Enable the following chrome flags:
-        <ul>
-          <li>
-            #prompt-api-for-gemini-nano and/or
-            #prompt-api-for-gemini-nano-multimodal-input
-          </li>
-          <li>
-            #optimization-guide-on-device-model (set to "Enabled
-            BypassPerfRequirement")
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <mat-accordion>
+      <mat-expansion-panel class="prompt-prereq">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h2>Prerequisites</h2>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <ul>
+            <li>
+              Use Chrome
+              <a href="https://www.google.com/chrome/canary/" target="_blank"
+                >Canary (min 138.0.7190.0)</a
+              >
+            </li>
+            <li>
+              At least 22 GB of free storage space available. If the available
+              storage space falls below 10 GB after the download, the model will
+              be deleted. While the model requires far less storage (around a
+              couple of GB), this requirement exists to ensure you have an ample
+              storage margin.
+            </li>
+            <li>
+              Enable the following chrome flags:
+              <ul>
+                <li>
+                  #prompt-api-for-gemini-nano and/or
+                  #prompt-api-for-gemini-nano-multimodal-input
+                </li>
+                <li>
+                  #optimization-guide-on-device-model (set to "Enabled
+                  BypassPerfRequirement")
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </ng-template>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-card>
   @if(!unsupportedText) {
-  <div class="content">
-    <div class="options-fields">
-      <mat-form-field appearance="outline">
-        <mat-label>Temperature</mat-label>
-        <input
-          matInput
-          type="number"
-          [(ngModel)]="temperature"
-          min="0"
-          max="1"
-          step="0.1"
-          maxlength="3"
-        />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Top-K</mat-label>
-        <input
-          matInput
-          type="number"
-          [(ngModel)]="topK"
-          min="0"
-          max="1"
-          step="0.1"
-          maxlength="3"
-        />
-      </mat-form-field>
+  <div class="inner-content">
+    <h1>Ask anything to chef Luigi</h1>
+    <div class="header">
+      <div class="options-fields">
+        <mat-form-field appearance="outline">
+          <mat-label>Temperature</mat-label>
+          <input
+            matInput
+            type="number"
+            [(ngModel)]="temperature"
+            min="0"
+            max="1"
+            step="0.1"
+            maxlength="3"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Top-K</mat-label>
+          <input
+            matInput
+            type="number"
+            [(ngModel)]="topK"
+            min="0"
+            max="1"
+            step="0.1"
+            maxlength="3"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="icon-chef-wrap">
+        <img src="assets/icons/chef.png" alt="Chef Icon" />
+      </div>
     </div>
 
-    <div class="textarea-container" [ngClass]="{'hidden': !!imageFile }">
+    <div class="textarea-container" [ngClass]="{ hidden: !!imageFile }">
       <div class="textarea-wrapper">
         <textarea
           #textbox
           name="textbox"
           id="textbox"
-          rows="8"
+          rows="4"
           placeholder="Enter the prompt for the master chef"
-          
+          (keydown.shift.enter)="sendKeyPrompt($event, textbox.value)"
         ></textarea>
         <div class="cooking-icon">🍳</div>
       </div>
@@ -84,9 +103,7 @@
         mat-raised-button
         (click)="sendPrompt(textbox.value)"
       >
-        {{imageFile ? 'Describe the image' : 'Ask the chef!'}}
-
-        <!-- TODO: Implement the delete image button -->
+        {{ imageFile ? "Describe the image" : "Ask the chef!" }}
       </button>
 
       <input
@@ -104,16 +121,30 @@
           class="upload-btn"
           (click)="fileUpload.click()"
         >
-          <img src="assets/icons/imagesmode.png" alt="Image" width="24" height="24" title="Upload an image">
+          <img
+            src="assets/icons/imagesmode.png"
+            alt="Image"
+            width="24"
+            height="24"
+            title="Upload an image"
+          />
         </button>
-        <span>{{imageFile?.name}}</span>
-        <img (click)="removeImage()" [ngClass]="{'hidden': !imageFile }" src="assets/icons/delete.png" alt="Delete" width="24" height="24" title="Remove the image">
+        <span>{{ imageFile?.name }}</span>
+        <img
+          (click)="removeImage()"
+          [ngClass]="{ hidden: !imageFile }"
+          src="assets/icons/delete.png"
+          alt="Delete"
+          width="24"
+          height="24"
+          title="Remove the image"
+        />
       </div>
     </div>
 
     <!-- Image preview -->
     <div *ngIf="imagePreviewUrl" class="image-preview">
-      <img [src]="imagePreviewUrl" alt="Image preview"/>
+      <img [src]="imagePreviewUrl" alt="Image preview" />
     </div>
   </div>
   @if (!errorMessage && result) {

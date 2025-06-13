@@ -73,10 +73,10 @@ export class SummarizeComponent implements OnInit {
   async ngOnInit() {
     if ('Summarizer' in self) {
       /**
-       * "unavailable" means that the browser does not support the requested options, or does not support prompting a language model at all.
-       * "downloadable" means that the browser supports the requested options, but it will have to download something (for example, the language model itself, or a fine-tuning) before it can create a session using those options.
-       * "downloading" means that the browser supports the requested options, but will need to finish an ongoing download operation before it can create a session using those options.
-       * "available" means that the browser supports the requested options without requiring any new downloads.
+       * "unavailable" the browser does not support the requested options, or does not support prompting a language model at all.
+       * "downloadable" the browser supports the requested options, but it will have to download something (for example, the language model itself, or a fine-tuning) before it can create a session using those options.
+       * "downloading" the browser supports the requested options, but will need to finish an ongoing download operation before it can create a session using those options.
+       * "available" the browser supports the requested options without requiring any new downloads.
        */
       const availabilityStatus = await Summarizer.availability();
       if (availabilityStatus === 'unavailable') {
@@ -84,16 +84,14 @@ export class SummarizeComponent implements OnInit {
         return;
       }
       if (availabilityStatus === 'available') {
-        if (!this.summarizer) {
-          this.summarizer = await Summarizer.create(this.summarizeCreateOptions());
-        }
+        this.summarizer = await Summarizer.create(this.summarizeCreateOptions());
       } else {
         // The Summarizer API can be used after the model is downloaded
         if (!this.summarizer) {
           this.summarizer = await Summarizer.create({
             monitor(m: CreateMonitor) {
               m.addEventListener('downloadprogress', (e: ProgressEvent<EventTarget>) => {
-                console.log(`Downloaded ${e.loaded} of ${e.total} bytes.`);
+                console.log(`Downloaded ${e.loaded * 100}%`);
               });
             }
           });

@@ -2,14 +2,11 @@
   <h1>Summarizer API</h1>
   <mat-card class="descr-card">
     <p>This API is part of Chrome built-in AI APIs. With them, a web application can perform AI-powered tasks, without needing to deploy, manage, or self-host AI models. 
-      The Summarizer API allows to summarize text content and produce the output in three different lengths and types.</p>
-    <h2>Prerequisites</h2>
-    <ul>
-      <li>Use Chrome <a href="https://www.google.com/chrome/canary/" target="_blank">Canary (min 138.0.7190.0)</a></li>
-      <li>At least 22 GB of free storage space available. If the available storage space falls below 10 GB after the download, the model will be deleted. 
-        While the model requires far less storage (around a couple of GB), this requirement exists to ensure you have an ample storage margin.</li>
-      <li>Enable the chrome://flags/#summarization-api-for-gemini-nano flag</li>
-    </ul>
+      The Summarizer API transforms lengthy text into condensed versions or reformats content according to specified parameters like length, structure, and style. 
+      This API enables developers to create summaries for news articles, reviews, blog posts, and other content.
+    <br><br>
+      The Summarizer API is available from Chrome 138 stable.
+    </p>
   </mat-card>
   @if(!unsupportedText) {
   <div class="accordion-options">
