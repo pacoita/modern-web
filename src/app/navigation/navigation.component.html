@@ -17,6 +17,9 @@
         <a mat-list-item [routerLink]="[link.path]" (click)="toggleOnNavigation()">
           <img [src]="link.icon" class="icon-space nav-icon" width="24" height="24" [alt]="link.alt">
           {{ link.label }}
+          @if(link.isAI) {
+            <img src="assets/icons/gemini-color.png" width="24" height="24" alt="AI icon" title="Chrome AI API">
+          }
         </a>   
       }
     </mat-nav-list>
