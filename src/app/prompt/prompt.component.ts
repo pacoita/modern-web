@@ -125,6 +125,7 @@ export class PromptComponent implements OnInit {
   onImageSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.imageFile = input?.files?.[0];
+    this.result = ''; // Clear previous result
     if (this.imageFile) {
       const reader = new FileReader();
       reader.onload = () => {
