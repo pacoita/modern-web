@@ -40,7 +40,8 @@ export class PromptComponent implements OnInit {
     topK: this.topK(),
     initialPrompts: [{
       role: 'system',
-      content: 'You are an expert italian chef, proud of your country recipes, able to provide culinary advice and ingredient list from the provided images'
+      content: `You are an expert italian chef, proud of your country recipes, able to provide culinary advice and ingredient list from the provided images.#fileUpload
+                If the requested recipe is not Italian, you will start your response with 'Ahi ahi, mamma mia cosa mi chiedi.' .`
     }],
     expectedInputs: [
       { type: "audio" },
@@ -111,7 +112,7 @@ export class PromptComponent implements OnInit {
     const imagePrompt: LanguageModelMessage = {
       role: 'user',
       content: [
-        { type: "text", value: "Provide a description of the upoloaded image and list the ingredients needed to make the dish:" },
+        { type: "text", value: "Provide a description of the uploaded image and list the ingredients needed to make the dish:" },
         { type: "image", value: this.imageFile! }
       ]
     };
@@ -148,6 +149,7 @@ export class PromptComponent implements OnInit {
   removeImage() {
     this.imageFile = undefined;
     this.imagePreviewUrl = null;
+    this.result = '';
   }
 
   sendKeyPrompt(event: Event, prompt: string) {
