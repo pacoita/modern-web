@@ -49,7 +49,7 @@
   </mat-card>
   @if(!unsupportedText) {
   <div class="inner-content">
-    <h1>Ask anything to chef Luigi</h1>
+    <h1>🇮🇹 Ask a recipe to chef Luigi 🇮🇹</h1>
     <div class="header">
       <div class="options-fields">
         <mat-form-field appearance="outline">
@@ -103,7 +103,25 @@
         mat-raised-button
         (click)="sendPrompt(textbox.value)"
       >
-        {{ imageFile ? "Describe the image" : "Ask the chef!" }}
+        @if(imageFile){
+        <span>Describe the image</span>
+        } @else {
+        <span class="btn-text">Ask the chef</span>
+        <img
+          src="assets/icons/shift.png"
+          alt="Image"
+          width="18"
+          height="18"
+          title="Shift key"
+        />
+        <img
+          src="assets/icons/return.png"
+          alt="Image"
+          width="18"
+          height="18"
+          title="Return key"
+        />
+        }
       </button>
 
       <input

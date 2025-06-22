@@ -142,6 +142,10 @@
         .file-input {
             @extend .hidden;
         }
+
+        .btn-text {
+            margin-right: .5rem;
+        }
     }
 
     .file-upload {

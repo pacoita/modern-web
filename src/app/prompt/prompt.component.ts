@@ -24,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class PromptComponent implements OnInit {
   @ViewChild('textbox') textbox!: ElementRef<HTMLTextAreaElement>;
+  @ViewChild('fileUpload') fileUpload!: ElementRef<HTMLInputElement>;
   unsupportedText?: string;
   result?: string;
   errorMessage?: string;
@@ -52,44 +53,45 @@ export class PromptComponent implements OnInit {
   async ngOnInit() {
     try {
       if ('LanguageModel' in self) {
-      /**
-       * "unavailable" means that the browser does not support the requested options, or does not support prompting a language model at all.
-       * "downloadable" means that the browser supports the requested options, but it will have to download something (for example, the language model itself, or a fine-tuning) before it can create a session using those options.
-       * "downloading" means that the browser supports the requested options, but will need to finish an ongoing download operation before it can create a session using those options.
-       * "available" means that the browser supports the requested options without requiring any new downloads.
-       */
-      const availabilityStatus = await LanguageModel.availability();
-      if (availabilityStatus === 'unavailable') {
-        this.unsupportedText = "The Prompt API isn't usable. This could be for a number of reasons, such as insufficient available disk space to download the model.";
-        return;
-      }
-      else if (availabilityStatus === 'available') {
-        if (!this.session) {
-          this.session = await LanguageModel.create(this.languageModelCreateOptions);
+        /**
+         * "unavailable" means that the browser does not support the requested options, or does not support prompting a language model at all.
+         * "downloadable" means that the browser supports the requested options, but it will have to download something (for example, the language model itself, or a fine-tuning) before it can create a session using those options.
+         * "downloading" means that the browser supports the requested options, but will need to finish an ongoing download operation before it can create a session using those options.
+         * "available" means that the browser supports the requested options without requiring any new downloads.
+         */
+        const availabilityStatus = await LanguageModel.availability();
+        if (availabilityStatus === 'unavailable') {
+          this.unsupportedText = "The Prompt API isn't usable. This could be for a number of reasons, such as insufficient available disk space to download the model.";
+          return;
+        }
+        else if (availabilityStatus === 'available') {
+          if (!this.session) {
+            this.session = await LanguageModel.create(this.languageModelCreateOptions);
+          }
+        } else {
+          // The Prompt API can be used after the model is downloaded
+          if (!this.session) {
+            this.session = await LanguageModel.create({
+              expectedInputs: [
+                { type: "audio" },
+                { type: "image" }
+              ],
+              monitor(m: CreateMonitor) {
+                m.addEventListener('downloadprogress', (e: ProgressEvent<EventTarget>) => {
+                  console.log(`Downloaded ${e.loaded * 100}%`);
+                });
+              }
+            });
+          }
         }
       } else {
-        // The Prompt API can be used after the model is downloaded
-        if (!this.session) {
-          this.session = await LanguageModel.create({
-            expectedInputs: [
-              { type: "audio" },
-              { type: "image" }
-            ],
-            monitor(m: CreateMonitor) {
-              m.addEventListener('downloadprogress', (e: ProgressEvent<EventTarget>) => {
-                console.log(`Downloaded ${e.loaded * 100}%`);
-              });
-            }
-          });
-        }
-      }     
-    } else {
-      this.unsupportedText = 'The Prompt API is not supported in your browser.';
-    }  
-  } catch (error) {
-      this.unsupportedText = 'The Prompt API is not supported in your browser.';
+        this.unsupportedText = 'The Prompt API is not supported in your browser.';
+      }
+    } catch (error) {
+      this.unsupportedText = 'An error occurred while checking Prompt API support in your browser.';
+      console.error(error);
     }
-    
+
   }
 
   async sendPrompt(prompt: string) {
@@ -116,7 +118,7 @@ export class PromptComponent implements OnInit {
 
     this.result = ''; // Clear previous result
     this.textbox.nativeElement.value = ''; // Clear the input textbox after sending the prompt
-    const stream = this.session.promptStreaming([ this.imageFile ? imagePrompt : textPromtpt ]);
+    const stream = this.session.promptStreaming([this.imageFile ? imagePrompt : textPromtpt]);
     for await (const chunk of stream as any) {
       this.result += chunk;
     }
@@ -140,6 +142,7 @@ export class PromptComponent implements OnInit {
     } else {
       this.removeImage();
     }
+    this.fileUpload.nativeElement.value = '';
   }
 
   removeImage() {

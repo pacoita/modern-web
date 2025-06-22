@@ -102,7 +102,8 @@ export class SummarizeComponent implements OnInit {
         this.unsupportedText = 'The Summarizer API is not supported in your browser.';
       }
     } catch (error) {
-      this.unsupportedText = 'The Summarizer API is not supported in your browser.';
+      this.unsupportedText = 'An error occurred while checking Summarizer API support in your browser.';
+      console.error(error);
     }
 
   }
