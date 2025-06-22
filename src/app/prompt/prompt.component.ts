@@ -50,7 +50,8 @@ export class PromptComponent implements OnInit {
   session?: LanguageModel;
 
   async ngOnInit() {
-    if ('LanguageModel' in self) {
+    try {
+      if ('LanguageModel' in self) {
       /**
        * "unavailable" means that the browser does not support the requested options, or does not support prompting a language model at all.
        * "downloadable" means that the browser supports the requested options, but it will have to download something (for example, the language model itself, or a fine-tuning) before it can create a session using those options.
@@ -84,7 +85,11 @@ export class PromptComponent implements OnInit {
       }     
     } else {
       this.unsupportedText = 'The Prompt API is not supported in your browser.';
+    }  
+  } catch (error) {
+      this.unsupportedText = 'The Prompt API is not supported in your browser.';
     }
+    
   }
 
   async sendPrompt(prompt: string) {
