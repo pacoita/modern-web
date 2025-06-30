@@ -11,6 +11,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IDBPDatabase } from 'idb';
 import { IdbService } from './idb-service.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-background-sync',
@@ -46,7 +47,8 @@ export class BackgroundSyncComponent {
     feedback: ''
   });
 
-  constructor() {
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Background Sync');
     if (!('serviceWorker' in navigator) && !('SyncManager' in window)) {
       this.unsupportedText = 'Your browser does not support the Background Sync API and/or Service Workers.';
     }
