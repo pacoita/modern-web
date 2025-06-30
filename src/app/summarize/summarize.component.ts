@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-summarize',
@@ -58,7 +59,9 @@ export class SummarizeComponent implements OnInit {
     } as SummarizerCreateOptions;
   });
 
-  constructor() {
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Summarizer');
+
     effect(async () => {
       // Effect should be called whenever the summarizeOptions changes but skipping the initial execution.
       let newOptions = this.summarizeCreateOptions()

@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-prompt',
@@ -50,6 +51,10 @@ export class PromptComponent implements OnInit {
   };
 
   session?: LanguageModel;
+
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Prompt API');
+  }
 
   async ngOnInit() {
     try {

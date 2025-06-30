@@ -3,6 +3,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-orientation',
@@ -42,5 +43,9 @@ export class OrientationComponent {
       this.isActive = false;
       this.showDetails = !this.showDetails;
     }
+  }
+
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Orientation');
   }
 }
